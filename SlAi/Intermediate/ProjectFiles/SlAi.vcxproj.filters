@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\SlAi.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{51E132FC-3F94-466E-A24F-D2DF2964003A}</UniqueIdentifier>
+      <UniqueIdentifier>{4A9A2309-6636-45C2-97C6-57FE7A104143}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\SlAi.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{C567BE5A-389B-41FE-A1D9-DE27E698AAD3}</UniqueIdentifier>
+      <UniqueIdentifier>{DDC631F0-C5CE-42CB-88A7-DD3FC19E2C54}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -24,7 +24,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\SlAi">
-      <UniqueIdentifier>{2662C1F8-ABA8-473D-84E3-AB2A32946D99}</UniqueIdentifier>
+      <UniqueIdentifier>{E988462E-7FBD-4625-ABE5-62C3AFF65A47}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\SlAi\SlAi.Build.cs">
       <Filter>Source\SlAi</Filter>
@@ -40,6 +40,66 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\SlAi\SlAiGameModeBase.h">
       <Filter>Source\SlAi</Filter>
+    </ClInclude>
+    <Filter Include="Source\SlAi\Private">
+      <UniqueIdentifier>{BF8EAE4F-FB59-4FC9-9195-A69D839D9AF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\SlAi\Private\GamePlay">
+      <UniqueIdentifier>{26260140-4789-4E65-BAE8-0E6DAB068B20}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\SlAi\Private\GamePlay\SlAiMenuController.cpp">
+      <Filter>Source\SlAi\Private\GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlAi\Private\GamePlay\SlAIMenuGameMode.cpp">
+      <Filter>Source\SlAi\Private\GamePlay</Filter>
+    </ClCompile>
+    <Filter Include="Source\SlAi\Private\UI">
+      <UniqueIdentifier>{F6D2469C-B58D-4B0C-BE3C-5BF8C9E30E4E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\SlAi\Private\UI\HUD">
+      <UniqueIdentifier>{295A530B-9C85-4EE4-8190-27E9A1BC191E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\SlAi\Private\UI\HUD\SlAiMenuHUD.cpp">
+      <Filter>Source\SlAi\Private\UI\HUD</Filter>
+    </ClCompile>
+    <Filter Include="Source\SlAi\Private\UI\Widget">
+      <UniqueIdentifier>{DA48DFC7-F3C0-4014-AC6B-54824FF4447B}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\SlAi\Private\UI\Widget\SSlAiMenuHUDWidget.cpp">
+      <Filter>Source\SlAi\Private\UI\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlAi\Private\UI\Widget\SSlAiMenuWidget.cpp">
+      <Filter>Source\SlAi\Private\UI\Widget</Filter>
+    </ClCompile>
+    <Filter Include="Source\SlAi\Public">
+      <UniqueIdentifier>{7B04F823-F256-4EF8-A098-0A7DC1530BF8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\SlAi\Public\GamePlay">
+      <UniqueIdentifier>{CBA37E78-1218-4F8D-A74C-AE72BF521644}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\SlAi\Public\GamePlay\SlAiMenuController.h">
+      <Filter>Source\SlAi\Public\GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlAi\Public\GamePlay\SlAIMenuGameMode.h">
+      <Filter>Source\SlAi\Public\GamePlay</Filter>
+    </ClInclude>
+    <Filter Include="Source\SlAi\Public\UI">
+      <UniqueIdentifier>{293AD418-E896-47FD-9BC9-56E78F2EEB77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\SlAi\Public\UI\HUD">
+      <UniqueIdentifier>{F8CC0A91-6311-4219-8ACA-3E78E0D42528}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\SlAi\Public\UI\HUD\SlAiMenuHUD.h">
+      <Filter>Source\SlAi\Public\UI\HUD</Filter>
+    </ClInclude>
+    <Filter Include="Source\SlAi\Public\UI\Widget">
+      <UniqueIdentifier>{410BDFD1-C358-49C3-BE85-C2E9D0FA5FCA}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\SlAi\Public\UI\Widget\SSlAiMenuHUDWidget.h">
+      <Filter>Source\SlAi\Public\UI\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlAi\Public\UI\Widget\SSlAiMenuWidget.h">
+      <Filter>Source\SlAi\Public\UI\Widget</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,0 +1,26 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (D:\Code\UE4\SlAi).
+  Building SlAiEditor...
+  Using Visual Studio 2019 14.28.29337 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Distributing 4 actions to XGE
+  --------------------Build System Warning---------------------------------------
+  License is invalid:
+      License information is invalid. Please try reloading your license file using the Coordinator Monitor application on the Coordinator machine, or reinstall IncrediBuild.
+      This build will run in standalone mode.
+  
+  -------------------------------------------------------------------------------
+  --------------------Project: Default-------------------------------------------
+  SSlAiMenuHUDWidget.cpp (0:00.48 at +0:00)
+  UE4Editor-SlAi.dll (0:00.45 at +0:00)
+    正在创建库 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.suppressed.lib 和对象 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.suppressed.exp
+  UE4Editor-SlAi.lib (0:00.09 at +0:00)
+    正在创建库 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.lib 和对象 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.exp
+  SlAiEditor.target (0:00.17 at +0:01)
+  ---------------------- Done ----------------------
+  
+      Rebuild All: 1 succeeded, 0 failed, 0 skipped
+  
+  1 build system warning(s):
+     - License is invalid
+  
+  Total time in XGE executor: 1.40 seconds
+  Total execution time: 1.87 seconds
