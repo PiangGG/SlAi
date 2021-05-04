@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "SlAi",
+			"Path": "D:\\Code\\UE4\\SlAi\\SlAi\\Source\\SlAi.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "SlAiEditor",
+			"Path": "D:\\Code\\UE4\\SlAi\\SlAi\\Source\\SlAiEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\Code\\UE4\\SlAi\\SlAi\\Source\\SlAi\\SlAi.Build.cs",
+		"D:\\Code\\UE4\\SlAi\\SlAi\\Source\\SlAi.Target.cs",
+		"D:\\Code\\UE4\\SlAi\\SlAi\\Source\\SlAiEditor.Target.cs"
+	],
+	"EngineVersion": "4.26.2"
+}
