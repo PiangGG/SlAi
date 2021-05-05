@@ -10,6 +10,8 @@
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiMenuController.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAIMenuGameMode.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiMenuHUD.cpp.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiMenuWidgetStyle.cpp.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAIStyle.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SSlAiMenuHUDWidget.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SSlAiMenuWidget.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAi.cpp.obj"
@@ -19,6 +21,7 @@
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiMenuController.gen.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAIMenuGameMode.gen.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiMenuHUD.gen.cpp.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiMenuWidgetStyle.gen.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\Default.rc2.res"
 /OUT:"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.lib"
 /INCLUDE:IMPLEMENT_MODULE_SlAi

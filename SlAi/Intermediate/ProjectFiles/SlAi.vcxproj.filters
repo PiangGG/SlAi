@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\SlAi.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{4A9A2309-6636-45C2-97C6-57FE7A104143}</UniqueIdentifier>
+      <UniqueIdentifier>{D83637D5-97A9-4E6C-850F-E769D4898989}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\SlAi.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{DDC631F0-C5CE-42CB-88A7-DD3FC19E2C54}</UniqueIdentifier>
+      <UniqueIdentifier>{D680C1E6-CA1C-4C4B-BDE6-623571D76657}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -24,7 +24,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\SlAi">
-      <UniqueIdentifier>{E988462E-7FBD-4625-ABE5-62C3AFF65A47}</UniqueIdentifier>
+      <UniqueIdentifier>{0D8FAB50-FA0E-40A9-AB91-31AE4307F195}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\SlAi\SlAi.Build.cs">
       <Filter>Source\SlAi</Filter>
@@ -42,10 +42,10 @@
       <Filter>Source\SlAi</Filter>
     </ClInclude>
     <Filter Include="Source\SlAi\Private">
-      <UniqueIdentifier>{BF8EAE4F-FB59-4FC9-9195-A69D839D9AF7}</UniqueIdentifier>
+      <UniqueIdentifier>{4A41E508-56C7-4DD3-B429-5BB6F9A49F6A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\SlAi\Private\GamePlay">
-      <UniqueIdentifier>{26260140-4789-4E65-BAE8-0E6DAB068B20}</UniqueIdentifier>
+      <UniqueIdentifier>{7CE39CA8-B209-48A0-9CEC-0ED311867995}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\SlAi\Private\GamePlay\SlAiMenuController.cpp">
       <Filter>Source\SlAi\Private\GamePlay</Filter>
@@ -54,16 +54,25 @@
       <Filter>Source\SlAi\Private\GamePlay</Filter>
     </ClCompile>
     <Filter Include="Source\SlAi\Private\UI">
-      <UniqueIdentifier>{F6D2469C-B58D-4B0C-BE3C-5BF8C9E30E4E}</UniqueIdentifier>
+      <UniqueIdentifier>{4F96967C-150E-4DD1-BB35-3396D32995C9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\SlAi\Private\UI\HUD">
-      <UniqueIdentifier>{295A530B-9C85-4EE4-8190-27E9A1BC191E}</UniqueIdentifier>
+      <UniqueIdentifier>{97F28EAA-CF56-4424-B06B-7C88CCDB9617}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\SlAi\Private\UI\HUD\SlAiMenuHUD.cpp">
       <Filter>Source\SlAi\Private\UI\HUD</Filter>
     </ClCompile>
+    <Filter Include="Source\SlAi\Private\UI\Style">
+      <UniqueIdentifier>{5580E1AC-1676-4221-BF8A-EC99C1098001}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\SlAi\Private\UI\Style\SlAiMenuWidgetStyle.cpp">
+      <Filter>Source\SlAi\Private\UI\Style</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SlAi\Private\UI\Style\SlAIStyle.cpp">
+      <Filter>Source\SlAi\Private\UI\Style</Filter>
+    </ClCompile>
     <Filter Include="Source\SlAi\Private\UI\Widget">
-      <UniqueIdentifier>{DA48DFC7-F3C0-4014-AC6B-54824FF4447B}</UniqueIdentifier>
+      <UniqueIdentifier>{A516492A-E3E2-4F81-A083-5EAE98A1A1E4}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\SlAi\Private\UI\Widget\SSlAiMenuHUDWidget.cpp">
       <Filter>Source\SlAi\Private\UI\Widget</Filter>
@@ -72,10 +81,10 @@
       <Filter>Source\SlAi\Private\UI\Widget</Filter>
     </ClCompile>
     <Filter Include="Source\SlAi\Public">
-      <UniqueIdentifier>{7B04F823-F256-4EF8-A098-0A7DC1530BF8}</UniqueIdentifier>
+      <UniqueIdentifier>{423DC3D1-F323-42A7-8C7D-FD18F03A5566}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\SlAi\Public\GamePlay">
-      <UniqueIdentifier>{CBA37E78-1218-4F8D-A74C-AE72BF521644}</UniqueIdentifier>
+      <UniqueIdentifier>{3E2C1544-E778-4CD8-8A9F-376709DAD620}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\SlAi\Public\GamePlay\SlAiMenuController.h">
       <Filter>Source\SlAi\Public\GamePlay</Filter>
@@ -84,16 +93,25 @@
       <Filter>Source\SlAi\Public\GamePlay</Filter>
     </ClInclude>
     <Filter Include="Source\SlAi\Public\UI">
-      <UniqueIdentifier>{293AD418-E896-47FD-9BC9-56E78F2EEB77}</UniqueIdentifier>
+      <UniqueIdentifier>{F95EC90F-D704-4957-BB60-D4C676FC7D8B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\SlAi\Public\UI\HUD">
-      <UniqueIdentifier>{F8CC0A91-6311-4219-8ACA-3E78E0D42528}</UniqueIdentifier>
+      <UniqueIdentifier>{1E157F4B-F2F0-441F-81EA-6F1224C8F44A}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\SlAi\Public\UI\HUD\SlAiMenuHUD.h">
       <Filter>Source\SlAi\Public\UI\HUD</Filter>
     </ClInclude>
+    <Filter Include="Source\SlAi\Public\UI\Style">
+      <UniqueIdentifier>{3A50CB29-ED9F-4D16-969D-4B2F49443533}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\SlAi\Public\UI\Style\SlAiMenuWidgetStyle.h">
+      <Filter>Source\SlAi\Public\UI\Style</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SlAi\Public\UI\Style\SlAIStyle.h">
+      <Filter>Source\SlAi\Public\UI\Style</Filter>
+    </ClInclude>
     <Filter Include="Source\SlAi\Public\UI\Widget">
-      <UniqueIdentifier>{410BDFD1-C358-49C3-BE85-C2E9D0FA5FCA}</UniqueIdentifier>
+      <UniqueIdentifier>{862F0AAD-2F2E-440F-B31A-E9B979F1C45C}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\SlAi\Public\UI\Widget\SSlAiMenuHUDWidget.h">
       <Filter>Source\SlAi\Public\UI\Widget</Filter>
