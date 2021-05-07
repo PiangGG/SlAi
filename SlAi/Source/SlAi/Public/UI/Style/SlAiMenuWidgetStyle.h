@@ -24,8 +24,12 @@ struct SLAI_API FSlAiMenuStyle : public FSlateWidgetStyle
 	virtual const FName GetTypeName() const override { return TypeName; };
 	static const FSlAiMenuStyle& GetDefault();
 
+	//整体背景图片
 	UPROPERTY(EditAnywhere,Category=MenuHUD)
 	FSlateBrush MenuHUDBackgroundBrush;
+	//菜单背景图片
+	UPROPERTY(EditAnywhere,Category=MenuHUD)
+	FSlateBrush MenuBackgroundBrush;
 };	
 
 /**

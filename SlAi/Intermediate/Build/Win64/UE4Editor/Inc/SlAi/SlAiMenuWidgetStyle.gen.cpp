@@ -56,6 +56,10 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MenuHUDBackgroundBrush_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_MenuHUDBackgroundBrush;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MenuBackgroundBrush_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_MenuBackgroundBrush;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UE4CodeGen_Private::FStructParams ReturnStructParams;
 	};
@@ -72,12 +76,24 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuHUDBackgroundBrush_MetaData[] = {
 		{ "Category", "MenuHUD" },
+		{ "Comment", "//\xe6\x95\xb4\xe4\xbd\x93\xe8\x83\x8c\xe6\x99\xaf\xe5\x9b\xbe\xe7\x89\x87\n" },
 		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "\xe6\x95\xb4\xe4\xbd\x93\xe8\x83\x8c\xe6\x99\xaf\xe5\x9b\xbe\xe7\x89\x87" },
 	};
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuHUDBackgroundBrush = { "MenuHUDBackgroundBrush", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, MenuHUDBackgroundBrush), Z_Construct_UScriptStruct_FSlateBrush, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuHUDBackgroundBrush_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuHUDBackgroundBrush_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundBrush_MetaData[] = {
+		{ "Category", "MenuHUD" },
+		{ "Comment", "//\xe8\x8f\x9c\xe5\x8d\x95\xe8\x83\x8c\xe6\x99\xaf\xe5\x9b\xbe\xe7\x89\x87\n" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "\xe8\x8f\x9c\xe5\x8d\x95\xe8\x83\x8c\xe6\x99\xaf\xe5\x9b\xbe\xe7\x89\x87" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundBrush = { "MenuBackgroundBrush", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, MenuBackgroundBrush), Z_Construct_UScriptStruct_FSlateBrush, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundBrush_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundBrush_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuHUDBackgroundBrush,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundBrush,
 	};
 	const UE4CodeGen_Private::FStructParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::ReturnStructParams = {
 		(UObject* (*)())Z_Construct_UPackage__Script_SlAi,
@@ -107,7 +123,7 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 248307644U; }
+	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 2053643404U; }
 	void USlAiMenuWidgetStyle::StaticRegisterNativesUSlAiMenuWidgetStyle()
 	{
 	}
