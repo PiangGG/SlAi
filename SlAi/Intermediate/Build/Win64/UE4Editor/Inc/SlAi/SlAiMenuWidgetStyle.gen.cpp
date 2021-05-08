@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeSlAiMenuWidgetStyle() {}
 	UPackage* Z_Construct_UPackage__Script_SlAi();
 	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSlateWidgetStyle();
 	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSlateBrush();
+	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSlateFontInfo();
 	SLAI_API UClass* Z_Construct_UClass_USlAiMenuWidgetStyle_NoRegister();
 	SLAI_API UClass* Z_Construct_UClass_USlAiMenuWidgetStyle();
 	SLATECORE_API UClass* Z_Construct_UClass_USlateWidgetStyleContainerBase();
@@ -72,6 +73,10 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_TitleBorderBrush_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_TitleBorderBrush;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SlateFontInfo_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_SlateFontInfo;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UE4CodeGen_Private::FStructParams ReturnStructParams;
 	};
@@ -130,12 +135,22 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 	};
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_TitleBorderBrush = { "TitleBorderBrush", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, TitleBorderBrush), Z_Construct_UScriptStruct_FSlateBrush, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_TitleBorderBrush_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_TitleBorderBrush_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo_MetaData[] = {
+		{ "Category", "Menu" },
+		{ "Comment", "//\xe5\xad\x97\xe4\xbd\x93\n" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "\xe5\xad\x97\xe4\xbd\x93" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo = { "SlateFontInfo", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, SlateFontInfo), Z_Construct_UScriptStruct_FSlateFontInfo, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuHUDBackgroundBrush,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundBrush,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_LeftIconBruch,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_RightIconBruch,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_TitleBorderBrush,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo,
 	};
 	const UE4CodeGen_Private::FStructParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::ReturnStructParams = {
 		(UObject* (*)())Z_Construct_UPackage__Script_SlAi,
@@ -165,7 +180,7 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 439082420U; }
+	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 890859523U; }
 	void USlAiMenuWidgetStyle::StaticRegisterNativesUSlAiMenuWidgetStyle()
 	{
 	}

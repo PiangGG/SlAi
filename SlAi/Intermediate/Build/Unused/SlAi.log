@@ -9,12 +9,12 @@
   
   -------------------------------------------------------------------------------
   --------------------Project: Default-------------------------------------------
-  SSlAiMenuHUDWidget.cpp (0:00.48 at +0:00)
-  UE4Editor-SlAi.dll (0:00.45 at +0:00)
+  SSlAiMenuHUDWidget.cpp (0:00.92 at +0:00)
+  UE4Editor-SlAi.dll (0:00.64 at +0:00)
     正在创建库 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.suppressed.lib 和对象 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.suppressed.exp
-  UE4Editor-SlAi.lib (0:00.09 at +0:00)
+  UE4Editor-SlAi.lib (0:00.12 at +0:01)
     正在创建库 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.lib 和对象 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.exp
-  SlAiEditor.target (0:00.17 at +0:01)
+  SlAiEditor.target (0:00.15 at +0:01)
   ---------------------- Done ----------------------
   
       Rebuild All: 1 succeeded, 0 failed, 0 skipped
@@ -22,5 +22,5 @@
   1 build system warning(s):
      - License is invalid
   
-  Total time in XGE executor: 1.40 seconds
-  Total execution time: 1.87 seconds
+  Total time in XGE executor: 1.98 seconds
+  Total execution time: 2.51 seconds

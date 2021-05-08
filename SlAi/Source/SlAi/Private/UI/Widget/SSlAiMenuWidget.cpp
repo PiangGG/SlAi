@@ -11,6 +11,7 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 {
 	MenuStyle=&SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");
+
 	ChildSlot
 	[
 		// Populate the widget
@@ -54,9 +55,10 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 					.HAlign(HAlign_Center)
 					.VAlign(VAlign_Center)
 					[
-						SAssignNew(TitleText,STextBlock)
-						.Font(SlAiStyle::Get().GetFontStyle("MenuItemFont"))
-						.Text(FText::FromString("PIANG"))
+					SAssignNew(TitleText, STextBlock)//标题
+					//.Font(SlAiStyle::Get().GetFontStyle("MenuItemFont"))
+					//.Text(FText::FromString("I am 12"))
+					.Text(NSLOCTEXT("SlAiMenu", "Menu", "Menu"))//文字本地化
 					]
 				]
 			]
@@ -64,5 +66,9 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 	];
 	RootSizeBox->SetWidthOverride(600.0f);
 	RootSizeBox->SetHeightOverride(510.f);
+	if (&MenuStyle->SlateFontInfo&&TitleText)
+	{
+		TitleText->SetFont(FSlateFontInfo(MenuStyle->SlateFontInfo));
+	}
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
