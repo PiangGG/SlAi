@@ -7,6 +7,7 @@ D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\HUD.generated.h
 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiMenuHUD.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiMenuHUDWidget.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiMenuWidget.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\SlateBasics.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MonolithicHeaderBoilerplate.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Core.h

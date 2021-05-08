@@ -28,8 +28,18 @@ struct SLAI_API FSlAiMenuStyle : public FSlateWidgetStyle
 	UPROPERTY(EditAnywhere,Category=MenuHUD)
 	FSlateBrush MenuHUDBackgroundBrush;
 	//菜单背景图片
-	UPROPERTY(EditAnywhere,Category=MenuHUD)
+	UPROPERTY(EditAnywhere,Category=Menu)
 	FSlateBrush MenuBackgroundBrush;
+	//菜单左图标Bursh
+	UPROPERTY(EditAnywhere,Category=Menu)
+	FSlateBrush LeftIconBruch;
+	//菜单右图标Bursh
+	UPROPERTY(EditAnywhere,Category=Menu)
+	FSlateBrush RightIconBruch;
+	//菜单标题图标Bursh
+	UPROPERTY(EditAnywhere,Category=Menu)
+	FSlateBrush TitleBorderBrush;
+		
 };	
 
 /**

@@ -8,6 +8,8 @@
 /**
  * 
  */
+class SBox;
+class STextBlock;
 class SLAI_API SSlAiMenuWidget : public SCompoundWidget
 {
 public:
@@ -17,4 +19,12 @@ public:
 
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
+
+	private:
+	//保存根节点
+	TSharedPtr<SBox> RootSizeBox;
+	//获取MenuStyle
+	const struct FSlAiMenuStyle *MenuStyle;
+	//标题文字
+	TSharedPtr<STextBlock> TitleText;
 };

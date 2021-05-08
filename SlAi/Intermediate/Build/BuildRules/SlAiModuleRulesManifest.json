@@ -1,6 +1,11 @@
 {
 	"SourceFiles": [
 		"D:\\Code\\UE4\\SlAi\\SlAi\\Source\\SlAi\\SlAi.Build.cs",
+		"D:\\Code\\UE4\\SlAi\\SlAi\\Plugins\\Developer\\RiderLink\\Source\\RD\\RD.Build.cs",
+		"D:\\Code\\UE4\\SlAi\\SlAi\\Plugins\\Developer\\RiderLink\\Source\\RiderBlueprintExtension\\RiderBlueprintExtension.Build.cs",
+		"D:\\Code\\UE4\\SlAi\\SlAi\\Plugins\\Developer\\RiderLink\\Source\\RiderGameControlExtension\\RiderGameControlExtension.Build.cs",
+		"D:\\Code\\UE4\\SlAi\\SlAi\\Plugins\\Developer\\RiderLink\\Source\\RiderLink\\RiderLink.Build.cs",
+		"D:\\Code\\UE4\\SlAi\\SlAi\\Plugins\\Developer\\RiderLink\\Source\\RiderLoggingExtension\\RiderLoggingExtension.Build.cs",
 		"D:\\Code\\UE4\\SlAi\\SlAi\\Source\\SlAi.Target.cs",
 		"D:\\Code\\UE4\\SlAi\\SlAi\\Source\\SlAiEditor.Target.cs"
 	],

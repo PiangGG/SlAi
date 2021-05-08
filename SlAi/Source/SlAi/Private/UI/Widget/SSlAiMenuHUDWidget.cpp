@@ -44,8 +44,9 @@ void SSlAiMenuHUDWidget::Construct(const FArguments& InArgs)
 	            .HAlign(HAlign_Center)
 	            .VAlign(VAlign_Center)
 	            [
-	                SNew(SImage)
-	                .Image(&MenuStyle->MenuBackgroundBrush)
+	                //SNew(SImage)
+					SAssignNew(MenuWidget,SSlAiMenuWidget)
+	                //.Image(&MenuStyle->MenuBackgroundBrush)
 	            ]
 			]
 			//SNew(SButton).Text(FName("123"))
