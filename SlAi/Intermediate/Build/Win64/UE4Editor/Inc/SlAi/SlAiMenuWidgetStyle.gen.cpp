@@ -74,9 +74,21 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 #endif
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_TitleBorderBrush;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SlateFontInfo_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MenuItemBrush_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FStructPropertyParams NewProp_SlateFontInfo;
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_MenuItemBrush;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Font_60_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_Font_60;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Font_40_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_Font_40;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Font_30_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_Font_30;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UE4CodeGen_Private::FStructParams ReturnStructParams;
 	};
@@ -136,21 +148,47 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_TitleBorderBrush = { "TitleBorderBrush", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, TitleBorderBrush), Z_Construct_UScriptStruct_FSlateBrush, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_TitleBorderBrush_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_TitleBorderBrush_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemBrush_MetaData[] = {
 		{ "Category", "Menu" },
-		{ "Comment", "//\xe5\xad\x97\xe4\xbd\x93\n" },
+		{ "Comment", "/*\n\x09 * MenuItem\xe7\x9a\x84""Bursh\n\x09 */" },
 		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
-		{ "ToolTip", "\xe5\xad\x97\xe4\xbd\x93" },
+		{ "ToolTip", "* MenuItem\xe7\x9a\x84""Bursh" },
 	};
 #endif
-	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo = { "SlateFontInfo", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, SlateFontInfo), Z_Construct_UScriptStruct_FSlateFontInfo, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo_MetaData)) };
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemBrush = { "MenuItemBrush", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, MenuItemBrush), Z_Construct_UScriptStruct_FSlateBrush, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemBrush_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemBrush_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_60_MetaData[] = {
+		{ "Category", "Common" },
+		{ "Comment", "/*\n\x09 * \xe5\xad\x97\xe4\xbd\x93\n\x09 *///UPROPERTY(EditAnywhere,Category=Menu)\n//FSlateFontInfo SlateFontInfo;\n" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "* \xe5\xad\x97\xe4\xbd\x93\n//UPROPERTY(EditAnywhere,Category=Menu)\n//FSlateFontInfo SlateFontInfo;" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_60 = { "Font_60", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, Font_60), Z_Construct_UScriptStruct_FSlateFontInfo, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_60_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_60_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_40_MetaData[] = {
+		{ "Category", "Common" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_40 = { "Font_40", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, Font_40), Z_Construct_UScriptStruct_FSlateFontInfo, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_40_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_40_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_30_MetaData[] = {
+		{ "Category", "Common" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_30 = { "Font_30", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, Font_30), Z_Construct_UScriptStruct_FSlateFontInfo, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_30_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_30_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuHUDBackgroundBrush,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundBrush,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_LeftIconBruch,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_RightIconBruch,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_TitleBorderBrush,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SlateFontInfo,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemBrush,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_60,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_40,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_Font_30,
 	};
 	const UE4CodeGen_Private::FStructParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::ReturnStructParams = {
 		(UObject* (*)())Z_Construct_UPackage__Script_SlAi,
@@ -180,7 +218,7 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 890859523U; }
+	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 2527835467U; }
 	void USlAiMenuWidgetStyle::StaticRegisterNativesUSlAiMenuWidgetStyle()
 	{
 	}

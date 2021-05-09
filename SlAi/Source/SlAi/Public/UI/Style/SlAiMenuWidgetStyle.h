@@ -39,9 +39,24 @@ struct SLAI_API FSlAiMenuStyle : public FSlateWidgetStyle
 	//菜单标题图标Bursh
 	UPROPERTY(EditAnywhere,Category=Menu)
 	FSlateBrush TitleBorderBrush;
-	//字体
+	
+	/*
+	 * MenuItem的Bursh
+	 */
 	UPROPERTY(EditAnywhere,Category=Menu)
-	FSlateFontInfo SlateFontInfo;
+	FSlateBrush MenuItemBrush;
+
+	/*
+	 * 字体
+	 */
+    //UPROPERTY(EditAnywhere,Category=Menu)
+    //FSlateFontInfo SlateFontInfo;
+	UPROPERTY(EditAnywhere,Category=Common)
+	FSlateFontInfo Font_60;
+	UPROPERTY(EditAnywhere,Category=Common)
+	FSlateFontInfo Font_40;
+	UPROPERTY(EditAnywhere,Category=Common)
+	FSlateFontInfo Font_30;
 		
 };	
 

@@ -23,22 +23,23 @@ TSharedPtr<SlAiDataHandle> SlAiDataHandle::Create()
 {
 	//MakeShareable 可以用来创建共享指针和共享引用
 	TSharedPtr<SlAiDataHandle> DataRef = MakeShareable(new SlAiDataHandle());
+	return DataRef;
 }
 SlAiDataHandle::SlAiDataHandle()
 {
 }
 
 
-void SlAiDataHandle::ChangeLocalizationCultrue(ECultrueTeam Cultrue)
+void SlAiDataHandle::ChangeLocalizationCulture(ECultureTeam Cultrue)
 {
 	switch (Cultrue)
 	{
-		case ECultrueTeam::CH:
+		case ECultureTeam::CH:
 			{
 				FInternationalization::Get().SetCurrentCulture(TEXT("CH"));
 				break;
 			}
-		case ECultrueTeam::EN:
+		case ECultureTeam::EN:
 			{
 				FInternationalization::Get().SetCurrentCulture(TEXT("EN"));
 				break;

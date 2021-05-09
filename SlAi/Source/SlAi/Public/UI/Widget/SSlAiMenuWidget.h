@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "Data/SlAiTypes.h"
 #include "Widgets/SCompoundWidget.h"
 
 /**
@@ -19,12 +21,17 @@ public:
 
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
-
-	private:
+private:
+	//绑定到各个MenuItem的函数
+	void MenuItemOnclicked(EMenuItem::Type ItemType);	
+private:
 	//保存根节点
 	TSharedPtr<SBox> RootSizeBox;
 	//获取MenuStyle
 	const struct FSlAiMenuStyle *MenuStyle;
 	//标题文字
 	TSharedPtr<STextBlock> TitleText;
+
+	//垂直框|用来保存垂直列表
+	TSharedPtr<SVerticalBox>ContentBox;
 };

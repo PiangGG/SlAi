@@ -16,9 +16,9 @@ public:
 	static void Initialize();
 	static TSharedPtr<SlAiDataHandle> Get();
 	//修改中英文
-	void ChangeLocalizationCultrue(ECultrueTeam Cultrue);
+	void ChangeLocalizationCulture(ECultureTeam Cultrue);
 public:
-	ECultrueTeam CurrentCultrueTeam;
+	ECultureTeam CurrentCultrueTeam;
 private:
 	static TSharedPtr<SlAiDataHandle> Create();
 private:

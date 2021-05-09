@@ -3,9 +3,11 @@
 
 #include "UI/Widget/SSlAiMenuWidget.h"
 #include "SlateOptMacros.h"
+#include "Data/SlAiTypes.h"
 #include "UI/Style/SlAiMenuWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
 #include "Widgets/Images/SImage.h"
+#include "UI/Widget/SSlAiMenuItemWidget.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuWidget::Construct(const FArguments& InArgs)
@@ -62,13 +64,37 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 					]
 				]
 			]
+			+SOverlay::Slot()
+			.HAlign(HAlign_Center)
+			.VAlign(VAlign_Top)
+			.Padding(FMargin(0.0f,130.0f,0.0f,0.0f))
+			[
+				SAssignNew(ContentBox,SVerticalBox)
+				
+			]
 		]
 	];
 	RootSizeBox->SetWidthOverride(600.0f);
 	RootSizeBox->SetHeightOverride(510.f);
-	if (&MenuStyle->SlateFontInfo&&TitleText)
+	if (&MenuStyle->Font_60&&TitleText)
 	{
-		TitleText->SetFont(FSlateFontInfo(MenuStyle->SlateFontInfo));
+		TitleText->SetFont(FSlateFontInfo(MenuStyle->Font_60));
+	}
+	if (ContentBox)
+	{
+		ContentBox->AddSlot()
+		[
+			SNew(SSlAiMenuItemWidget)
+			.ItemText(NSLOCTEXT("SlAiMenu","StartGame","StartGame"))
+			.ItemType(EMenuItem::StartGame)
+			.OnClicked(this,&SSlAiMenuWidget::MenuItemOnclicked)
+		];
 	}
 }
+
+void SSlAiMenuWidget::MenuItemOnclicked(EMenuItem::Type ItemType)
+{
+	
+}
+
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
