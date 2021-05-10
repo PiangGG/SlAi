@@ -27,6 +27,8 @@ TSharedPtr<SlAiDataHandle> SlAiDataHandle::Create()
 }
 SlAiDataHandle::SlAiDataHandle()
 {
+	//初始化为中文
+	CurrentCultrueTeam=ECultureTeam::ZH;
 }
 
 
@@ -34,14 +36,16 @@ void SlAiDataHandle::ChangeLocalizationCulture(ECultureTeam Cultrue)
 {
 	switch (Cultrue)
 	{
-		case ECultureTeam::CH:
+		case ECultureTeam::ZH:
 			{
-				FInternationalization::Get().SetCurrentCulture(TEXT("CH"));
+				FInternationalization::Get().SetCurrentCulture(TEXT("zh"));
+				UE_LOG(LogTemp,Warning,TEXT("zh"));
 				break;
 			}
 		case ECultureTeam::EN:
 			{
-				FInternationalization::Get().SetCurrentCulture(TEXT("EN"));
+				FInternationalization::Get().SetCurrentCulture(TEXT("en"));
+				UE_LOG(LogTemp,Warning,TEXT("en"));
 				break;
 			}
 	}

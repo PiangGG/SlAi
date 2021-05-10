@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define FOREACH_ENUM_ECULTURETEAM(op) \
 	op(ECultureTeam::EN) \
-	op(ECultureTeam::CH) 
+	op(ECultureTeam::ZH) 
 
 enum class ECultureTeam : uint8;
 template<> SLAI_API UEnum* StaticEnum<ECultureTeam>();

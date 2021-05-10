@@ -47,7 +47,7 @@ struct SLAI_API FSlAiMenuStyle : public FSlateWidgetStyle
 	FSlateBrush MenuItemBrush;
 
 	/*
-	 * 字体
+	 * 字体,颜色
 	 */
     //UPROPERTY(EditAnywhere,Category=Menu)
     //FSlateFontInfo SlateFontInfo;
@@ -57,7 +57,21 @@ struct SLAI_API FSlAiMenuStyle : public FSlateWidgetStyle
 	FSlateFontInfo Font_40;
 	UPROPERTY(EditAnywhere,Category=Common)
 	FSlateFontInfo Font_30;
-		
+	UPROPERTY(EditAnywhere,Category=Common)
+	FLinearColor FontColor_white;
+	UPROPERTY(EditAnywhere,Category=Common)
+	FLinearColor FontColor_Black;
+	
+	UPROPERTY(EditAnywhere,Category=GameOption)
+	FSlateBrush GameOptionBGBrush;
+
+	/**
+	 * checkedBox的Bursh被选中与不被选中
+	 */
+	UPROPERTY(EditAnywhere,Category=GameOption)
+	FSlateBrush CheckedBoxBursh;
+	UPROPERTY(EditAnywhere,Category=GameOption)
+	FSlateBrush UnCheckedBoxBursh;
 };	
 
 /**

@@ -3,11 +3,13 @@
 
 #include "UI/Widget/SSlAiMenuWidget.h"
 #include "SlateOptMacros.h"
+#include "Common/SlAiHelper.h"
 #include "Data/SlAiTypes.h"
 #include "UI/Style/SlAiMenuWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
 #include "Widgets/Images/SImage.h"
 #include "UI/Widget/SSlAiMenuItemWidget.h"
+#include "UI/Widget/SSlAiGameOptionWidget.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuWidget::Construct(const FArguments& InArgs)
@@ -84,17 +86,15 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 	{
 		ContentBox->AddSlot()
 		[
-			SNew(SSlAiMenuItemWidget)
-			.ItemText(NSLOCTEXT("SlAiMenu","StartGame","StartGame"))
-			.ItemType(EMenuItem::StartGame)
-			.OnClicked(this,&SSlAiMenuWidget::MenuItemOnclicked)
+			SNew(SSlAiGameOptionWidget)
+			
 		];
 	}
 }
 
 void SSlAiMenuWidget::MenuItemOnclicked(EMenuItem::Type ItemType)
 {
-	
+	SlAiHelper::Debug("MenuItemOnclicked");
 }
 
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

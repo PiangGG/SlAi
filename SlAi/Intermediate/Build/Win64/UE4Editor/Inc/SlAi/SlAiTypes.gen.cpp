@@ -30,7 +30,7 @@ void EmptyLinkFunctionForGeneratedCodeSlAiTypes() {}
 		return ECultureTeam_StaticEnum();
 	}
 	static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_ECultureTeam(ECultureTeam_StaticEnum, TEXT("/Script/SlAi"), TEXT("ECultureTeam"), false, nullptr, nullptr);
-	uint32 Get_Z_Construct_UEnum_SlAi_ECultureTeam_Hash() { return 502879781U; }
+	uint32 Get_Z_Construct_UEnum_SlAi_ECultureTeam_Hash() { return 3767586934U; }
 	UEnum* Z_Construct_UEnum_SlAi_ECultureTeam()
 	{
 #if WITH_HOT_RELOAD
@@ -43,15 +43,15 @@ void EmptyLinkFunctionForGeneratedCodeSlAiTypes() {}
 		{
 			static const UE4CodeGen_Private::FEnumeratorParam Enumerators[] = {
 				{ "ECultureTeam::EN", (int64)ECultureTeam::EN },
-				{ "ECultureTeam::CH", (int64)ECultureTeam::CH },
+				{ "ECultureTeam::ZH", (int64)ECultureTeam::ZH },
 			};
 #if WITH_METADATA
 			const UE4CodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
-				{ "CH.Name", "ECultureTeam::CH" },
 				{ "Comment", "/**\n * \n *///\xe8\xaf\xad\xe8\xa8\x80\xe6\x9e\x9a\xe4\xb8\xbe\n" },
 				{ "EN.Name", "ECultureTeam::EN" },
 				{ "ModuleRelativePath", "Public/Data/SlAiTypes.h" },
 				{ "ToolTip", "//\xe8\xaf\xad\xe8\xa8\x80\xe6\x9e\x9a\xe4\xb8\xbe" },
+				{ "ZH.Name", "ECultureTeam::ZH" },
 			};
 #endif
 			static const UE4CodeGen_Private::FEnumParams EnumParams = {

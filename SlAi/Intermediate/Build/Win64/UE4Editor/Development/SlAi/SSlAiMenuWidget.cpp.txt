@@ -2,6 +2,7 @@ D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\Defini
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiMenuWidget.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiTypes.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\SlateOptMacros.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Common/SlAiHelper.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAiMenuWidgetStyle.h
 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiMenuWidgetStyle.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAIStyle.h
@@ -11,3 +12,4 @@ D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\SEditorV
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\SViewportToolBar.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Classes\Editor/UnrealEdTypes.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\UnrealEdTypes.generated.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiGameOptionWidget.h

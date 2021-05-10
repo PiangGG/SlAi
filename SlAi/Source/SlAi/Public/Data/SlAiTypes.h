@@ -12,7 +12,7 @@ UENUM()
 enum class ECultureTeam:uint8
 {
     EN=0,
-	CH=1
+	ZH
 };
 
 //Menu按钮类型

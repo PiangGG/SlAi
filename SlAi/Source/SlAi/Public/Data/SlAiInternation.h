@@ -32,7 +32,7 @@ SlAiInternation::Register(LOCTEXT("EnterRecord","EnterRecord"));
 SlAiInternation::Register(LOCTEXT("RepeatedNameHint","Input Record Name!"));
 SlAiInternation::Register(LOCTEXT("NameRepeatedHint","Record Name Repeated!"));
 
-SlAiInternation::Register(LOCTEXT("Chinese","Chines");
+SlAiInternation::Register(LOCTEXT("Chinese","Chinese");
 SlAiInternation::Register(LOCTEXT("English","English");
 SlAiInternation::Register(LOCTEXT("Music","Music");
 SlAiInternation::Register(LOCTEXT("Sound","Sound");

@@ -266,9 +266,9 @@
 /FI"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\SlAiEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
 /Yu"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\SlAiEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
 /Fp"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\SlAiEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
-"D:\Code\UE4\SlAi\SlAi\Source\SlAi\Private\UI\Style\SlAIStyle.cpp"
+"D:\Code\UE4\SlAi\SlAi\Source\SlAi\Private\UI\Style\SlAiStyle.cpp"
 /FI"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\Definitions.SlAi.h"
-/Fo"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAIStyle.cpp.obj"
+/Fo"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiStyle.cpp.obj"
 /TP
 /GR-
 /W4
