@@ -67,3 +67,25 @@ void SlAiDataHandle::ResetMenuVolume(float Musicval, float Soundval)
 	}
 }
 
+template <typename TEnum>
+FString SlAiDataHandle::GetEnumValueAsString(const FString& Name, TEnum value)
+{
+	const UEnum* EnumPtr=FindObject<UEnum>(ANY_PACKAGE,*Name,true);
+	if (!EnumPtr)
+	{
+		return FString("InValid");
+	}
+	return EnumPtr->GetEnumName((int32)value);
+}
+
+template <typename TEnum>
+TEnum SlAiDataHandle::GetEnumValueFromString(const FString& Name, FString Value)
+{
+	const UEnum* EnumPtr=FindObject<UEnum>(ANY_PACKAGE,*Name,true);
+
+	if (!EnumPtr)
+	{
+		return TEnum(0);
+	}
+	return (TEnum)EnumPtr->GetIndexByName(FName(*FString(Value)));
+}

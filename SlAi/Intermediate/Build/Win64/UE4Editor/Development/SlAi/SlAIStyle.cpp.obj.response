@@ -234,6 +234,8 @@
 /I D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi
 /I D:\Code\UE4\SlAi\SlAi\Source
 /I D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public
+/I ..\Intermediate\Build\Win64\UE4Editor\Inc\JsonUtilities
+/I Runtime\JsonUtilities\Public
 /I ThirdParty\PhysX3\PxShared\include
 /I ThirdParty\PhysX3\PxShared\include\cudamanager
 /I ThirdParty\PhysX3\PxShared\include\filebuf

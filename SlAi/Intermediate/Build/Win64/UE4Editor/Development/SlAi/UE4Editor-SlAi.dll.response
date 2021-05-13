@@ -34,7 +34,9 @@
 /NODEFAULTLIB:"LIBCPD"
 /FUNCTIONPADMIN
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\SlAiEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\JsonHandle.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiDataHandle.cpp.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiSingleton.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiMenuController.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAIMenuGameMode.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiMenuHUD.cpp.obj"
@@ -60,6 +62,8 @@
 "D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Development\Core\UE4Editor-Core.lib"
 "D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Development\CoreUObject\UE4Editor-CoreUObject.lib"
 "D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Development\InputCore\UE4Editor-InputCore.lib"
+"D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Development\Json\UE4Editor-Json.lib"
+"D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Development\JsonUtilities\UE4Editor-JsonUtilities.lib"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"

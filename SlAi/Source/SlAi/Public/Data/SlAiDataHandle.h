@@ -27,6 +27,13 @@ public:
 	float SoundVolume;
 private:
 	static TSharedPtr<SlAiDataHandle> Create();
+
+	//根据enum类型获取字符串
+	template<typename TEnum>
+	FString GetEnumValueAsString(const FString &Name,TEnum value);
+	//根据字符串获取TENum的值
+	template<typename TEnum>
+	TEnum GetEnumValueFromString(const FString& Name,FString Value );
 private:
 	static TSharedPtr<SlAiDataHandle> DataInstance;
 };
