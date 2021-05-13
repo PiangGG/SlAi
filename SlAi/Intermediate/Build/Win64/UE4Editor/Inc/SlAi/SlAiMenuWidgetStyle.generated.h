@@ -21,10 +21,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 template<> SLAI_API UScriptStruct* StaticStruct<struct FSlAiMenuStyle>();
 
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_SPARSE_DATA
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_RPC_WRAPPERS
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_RPC_WRAPPERS_NO_PURE_DECLS
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_INCLASS_NO_PURE_DECLS \
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_SPARSE_DATA
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_RPC_WRAPPERS
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_RPC_WRAPPERS_NO_PURE_DECLS
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSlAiMenuWidgetStyle(); \
 	friend struct Z_Construct_UClass_USlAiMenuWidgetStyle_Statics; \
@@ -33,7 +33,7 @@ public: \
 	DECLARE_SERIALIZER(USlAiMenuWidgetStyle)
 
 
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_INCLASS \
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_INCLASS \
 private: \
 	static void StaticRegisterNativesUSlAiMenuWidgetStyle(); \
 	friend struct Z_Construct_UClass_USlAiMenuWidgetStyle_Statics; \
@@ -42,7 +42,7 @@ public: \
 	DECLARE_SERIALIZER(USlAiMenuWidgetStyle)
 
 
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_STANDARD_CONSTRUCTORS \
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	SLAI_API USlAiMenuWidgetStyle(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USlAiMenuWidgetStyle) \
@@ -55,7 +55,7 @@ private: \
 public:
 
 
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_ENHANCED_CONSTRUCTORS \
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	SLAI_API USlAiMenuWidgetStyle(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -68,28 +68,28 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USlAiMenuWidgetStyle); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USlAiMenuWidgetStyle)
 
 
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_PRIVATE_PROPERTY_OFFSET
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_79_PROLOG
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_GENERATED_BODY_LEGACY \
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_PRIVATE_PROPERTY_OFFSET
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_87_PROLOG
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_PRIVATE_PROPERTY_OFFSET \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_SPARSE_DATA \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_RPC_WRAPPERS \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_INCLASS \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_STANDARD_CONSTRUCTORS \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_PRIVATE_PROPERTY_OFFSET \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_SPARSE_DATA \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_RPC_WRAPPERS \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_INCLASS \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_GENERATED_BODY \
+#define SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_PRIVATE_PROPERTY_OFFSET \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_SPARSE_DATA \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_RPC_WRAPPERS_NO_PURE_DECLS \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_INCLASS_NO_PURE_DECLS \
-	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_82_ENHANCED_CONSTRUCTORS \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_PRIVATE_PROPERTY_OFFSET \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_SPARSE_DATA \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_RPC_WRAPPERS_NO_PURE_DECLS \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_INCLASS_NO_PURE_DECLS \
+	SlAi_Source_SlAi_Public_UI_Style_SlAiMenuWidgetStyle_h_90_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

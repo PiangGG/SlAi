@@ -29,6 +29,9 @@ SlAiDataHandle::SlAiDataHandle()
 {
 	//初始化为中文
 	CurrentCultrueTeam=ECultureTeam::ZH;
+	//初始化音量
+	MusicVolume=0.5f;
+	SoundVolume=0.5f;
 }
 
 
@@ -50,5 +53,17 @@ void SlAiDataHandle::ChangeLocalizationCulture(ECultureTeam Cultrue)
 			}
 	}
 	CurrentCultrueTeam=Cultrue;
+}
+
+void SlAiDataHandle::ResetMenuVolume(float Musicval, float Soundval)
+{
+	if (MusicVolume>0)
+	{
+		MusicVolume=Musicval;
+	}
+	if (SoundVolume>0)
+	{
+		SoundVolume=Soundval;
+	}
 }
 

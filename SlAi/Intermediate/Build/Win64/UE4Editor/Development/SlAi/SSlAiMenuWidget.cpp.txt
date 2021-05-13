@@ -13,3 +13,4 @@ D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\SViewpor
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Classes\Editor/UnrealEdTypes.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\UnrealEdTypes.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiGameOptionWidget.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Input/SSlider.h

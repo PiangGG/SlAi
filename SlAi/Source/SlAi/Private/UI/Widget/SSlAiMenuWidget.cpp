@@ -4,6 +4,7 @@
 #include "UI/Widget/SSlAiMenuWidget.h"
 #include "SlateOptMacros.h"
 #include "Common/SlAiHelper.h"
+#include "Data/SlAiDataHandle.h"
 #include "Data/SlAiTypes.h"
 #include "UI/Style/SlAiMenuWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
@@ -87,7 +88,8 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 		ContentBox->AddSlot()
 		[
 			SNew(SSlAiGameOptionWidget)
-			
+			.ChangeCulture(this,&SSlAiMenuWidget::ChangeCulture)
+			.ChangeVolume(this,&SSlAiMenuWidget::ChangeVolume)
 		];
 	}
 }
@@ -95,6 +97,16 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 void SSlAiMenuWidget::MenuItemOnclicked(EMenuItem::Type ItemType)
 {
 	SlAiHelper::Debug("MenuItemOnclicked");
+}
+
+void SSlAiMenuWidget::ChangeCulture(ECultureTeam CultureTeam)
+{
+	SlAiDataHandle().Get()->ChangeLocalizationCulture(CultureTeam);
+}
+
+void SSlAiMenuWidget::ChangeVolume(const float MusicVolume, const float SoundVolume)
+{
+	SlAiDataHandle().Get()->ResetMenuVolume(MusicVolume,SoundVolume);
 }
 
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

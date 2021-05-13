@@ -19,6 +19,7 @@ void EmptyLinkFunctionForGeneratedCodeSlAiMenuWidgetStyle() {}
 	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSlateBrush();
 	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSlateFontInfo();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
+	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSliderStyle();
 	SLAI_API UClass* Z_Construct_UClass_USlAiMenuWidgetStyle_NoRegister();
 	SLAI_API UClass* Z_Construct_UClass_USlAiMenuWidgetStyle();
 	SLATECORE_API UClass* Z_Construct_UClass_USlateWidgetStyleContainerBase();
@@ -102,6 +103,14 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GameOptionBGBrush_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_GameOptionBGBrush;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SliderBarBrush_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_SliderBarBrush;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SliderStyle_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_SliderStyle;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CheckedBoxBursh_MetaData[];
 #endif
@@ -222,6 +231,24 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_GameOptionBGBrush = { "GameOptionBGBrush", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, GameOptionBGBrush), Z_Construct_UScriptStruct_FSlateBrush, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_GameOptionBGBrush_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_GameOptionBGBrush_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderBarBrush_MetaData[] = {
+		{ "Category", "GameOption" },
+		{ "Comment", "//Slider\xe8\x83\x8c\xe6\x99\xaf""Bursh\n" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "Slider\xe8\x83\x8c\xe6\x99\xaf""Bursh" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderBarBrush = { "SliderBarBrush", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, SliderBarBrush), Z_Construct_UScriptStruct_FSlateBrush, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderBarBrush_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderBarBrush_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderStyle_MetaData[] = {
+		{ "Category", "GameOption" },
+		{ "Comment", "//Slider\xe8\x83\x8c\xe6\x99\xaf""Bursh\n" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "Slider\xe8\x83\x8c\xe6\x99\xaf""Bursh" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderStyle = { "SliderStyle", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, SliderStyle), Z_Construct_UScriptStruct_FSliderStyle, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderStyle_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderStyle_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_CheckedBoxBursh_MetaData[] = {
 		{ "Category", "GameOption" },
 		{ "Comment", "/**\n\x09 * checkedBox\xe7\x9a\x84""Bursh\xe8\xa2\xab\xe9\x80\x89\xe4\xb8\xad\xe4\xb8\x8e\xe4\xb8\x8d\xe8\xa2\xab\xe9\x80\x89\xe4\xb8\xad\n\x09 */" },
@@ -250,6 +277,8 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_FontColor_white,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_FontColor_Black,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_GameOptionBGBrush,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderBarBrush,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderStyle,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_CheckedBoxBursh,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_UnCheckedBoxBursh,
 	};
@@ -281,7 +310,7 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 2427565171U; }
+	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 4165612926U; }
 	void USlAiMenuWidgetStyle::StaticRegisterNativesUSlAiMenuWidgetStyle()
 	{
 	}

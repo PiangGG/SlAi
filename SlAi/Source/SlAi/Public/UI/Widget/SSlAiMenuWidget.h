@@ -7,6 +7,7 @@
 #include "Data/SlAiTypes.h"
 #include "Widgets/SCompoundWidget.h"
 
+
 /**
  * 
  */
@@ -18,12 +19,18 @@ public:
 	SLATE_BEGIN_ARGS(SSlAiMenuWidget)
 	{}
 	SLATE_END_ARGS()
-
+		
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
 private:
 	//绑定到各个MenuItem的函数
-	void MenuItemOnclicked(EMenuItem::Type ItemType);	
+	void MenuItemOnclicked(EMenuItem::Type ItemType);
+
+	//修改语言
+	void ChangeCulture(ECultureTeam CultureTeam);
+	//修改音量|声音
+	void ChangeVolume(const float MusicVolume,const float SoundVolume);
+	
 private:
 	//保存根节点
 	TSharedPtr<SBox> RootSizeBox;

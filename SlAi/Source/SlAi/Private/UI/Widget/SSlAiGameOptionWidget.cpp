@@ -12,6 +12,10 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiGameOptionWidget::Construct(const FArguments& InArgs)
 {
 	MenuStyle=&SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");
+
+	//获取委托
+	ChangeCulture=InArgs._ChangeCulture;
+	ChangeVolume=InArgs._ChangeVolume;
 	ChildSlot
 	[
 		// Populate the widget
@@ -70,19 +74,109 @@ void SSlAiGameOptionWidget::Construct(const FArguments& InArgs)
 						]
 					]
 				]
+				//2
 				+SVerticalBox::Slot()
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
 				.FillHeight(1.0f)
 				[
 					SNew(SOverlay)
+					+SOverlay::Slot()
+					.HAlign(HAlign_Left)
+					.VAlign(VAlign_Center)
+					[
+						SNew(STextBlock)
+						.Font(MenuStyle->Font_40)
+						.ColorAndOpacity(MenuStyle->FontColor_Black)
+						.Text(NSLOCTEXT("SlAiMenu","Music","Music"))
+					]
+					+SOverlay::Slot()
+					.HAlign(HAlign_Center)
+					.VAlign(VAlign_Center)
+					[
+						SNew(SBox)
+						.WidthOverride(240.f)
+						[
+							SNew(SOverlay)
+							+SOverlay::Slot()
+							.HAlign(HAlign_Fill)
+							.VAlign(VAlign_Center)
+							.Padding(30.0f,0.0f)
+							[
+								SNew(SImage)
+								.Image(&MenuStyle->SliderBarBrush)
+							]
+							+SOverlay::Slot()
+							.HAlign(HAlign_Fill)
+							.VAlign(VAlign_Center)
+							[
+								SAssignNew(MuSlider,SSlider)
+								.Style(&MenuStyle->SliderStyle)
+								.OnValueChanged(this,&SSlAiGameOptionWidget::MusicSliderChanged)
+							]
+						]
+					]
+					+SOverlay::Slot()
+					.HAlign(HAlign_Right)
+					.VAlign(VAlign_Center)
+					[
+						SAssignNew(MuTextBlock,STextBlock)
+						.Font(MenuStyle->Font_40)
+						.ColorAndOpacity(MenuStyle->FontColor_Black)
+						
+					]
 				]
+				//3
 				+SVerticalBox::Slot()
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
 				.FillHeight(1.0f)
 				[
 					SNew(SOverlay)
+					+SOverlay::Slot()
+					.HAlign(HAlign_Left)
+					.VAlign(VAlign_Center)
+					[
+						SNew(STextBlock)
+						.Font(MenuStyle->Font_40)
+						.ColorAndOpacity(MenuStyle->FontColor_Black)
+						.Text(NSLOCTEXT("SlAiMenu","Sound","Sound"))
+					]
+					+SOverlay::Slot()
+					.HAlign(HAlign_Center)
+					.VAlign(VAlign_Center)
+					[
+						SNew(SBox)
+						.WidthOverride(240.f)
+						[
+							SNew(SOverlay)
+							+SOverlay::Slot()
+							.HAlign(HAlign_Fill)
+							.VAlign(VAlign_Center)
+							.Padding(30.0f,0.0f)
+							[
+								SNew(SImage)
+								.Image(&MenuStyle->SliderBarBrush)
+							]
+							+SOverlay::Slot()
+							.HAlign(HAlign_Fill)
+							.VAlign(VAlign_Center)
+							[
+								SAssignNew(SoSlider,SSlider)
+								.Style(&MenuStyle->SliderStyle)
+								.OnValueChanged(this,&SSlAiGameOptionWidget::SoundSliderChanged)
+							]
+						]
+					]
+					+SOverlay::Slot()
+					.HAlign(HAlign_Right)
+					.VAlign(VAlign_Center)
+					[
+						SAssignNew(SoTextBlock,STextBlock)
+						.Font(MenuStyle->Font_40)
+						.ColorAndOpacity(MenuStyle->FontColor_Black)
+							
+					]
 				]
 			]
 		]
@@ -125,6 +219,11 @@ void SSlAiGameOptionWidget::StyleInitialized()
 				break;
 			}	
 	}
+	MuSlider->SetValue(SlAiDataHandle::Get()->MusicVolume);
+	SoSlider->SetValue(SlAiDataHandle::Get()->SoundVolume);
+
+	MusicSliderChanged(SlAiDataHandle::Get()->MusicVolume);
+	SoundSliderChanged(SlAiDataHandle::Get()->SoundVolume);
 }
 
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
@@ -136,6 +235,7 @@ void SSlAiGameOptionWidget::ZhCheckBoxStateChanged(ECheckBoxState NewState)
 	EnCheckBox->SetIsChecked(ECheckBoxState::Unchecked);
 	//告诉数据控制类转换为中文
 	SlAiDataHandle::Get()->ChangeLocalizationCulture(ECultureTeam::ZH);
+	ChangeCulture.ExecuteIfBound(ECultureTeam::ZH);
 }
 
 void SSlAiGameOptionWidget::EnCheckBoxStateChanged(ECheckBoxState NewState)
@@ -144,5 +244,21 @@ void SSlAiGameOptionWidget::EnCheckBoxStateChanged(ECheckBoxState NewState)
 	ZhCheckBox->SetIsChecked(ECheckBoxState::Unchecked);
 	EnCheckBox->SetIsChecked(ECheckBoxState::Checked);
 	//告诉数据控制类转换为英文
-	SlAiDataHandle::Get()->ChangeLocalizationCulture(ECultureTeam::EN);
+	//SlAiDataHandle::Get()->ChangeLocalizationCulture(ECultureTeam::EN);
+	ChangeCulture.ExecuteIfBound(ECultureTeam::EN);
+}
+
+void SSlAiGameOptionWidget::MusicSliderChanged(float value)
+{
+	//显示百分比
+	MuTextBlock->SetText(FText::FromString(FString::FromInt(FMath::RoundToInt(value*100))+FString("%")));
+	//SlAiDataHandle::Get()->ResetMenuVolume(value,-1);
+	ChangeVolume.ExecuteIfBound(value,-1);
+}
+
+void SSlAiGameOptionWidget::SoundSliderChanged(float value)
+{
+	SoTextBlock->SetText(FText::FromString(FString::FromInt(FMath::RoundToInt(value*100))+FString("%")));
+	//SlAiDataHandle::Get()->ResetMenuVolume(-1,value);
+	ChangeVolume.ExecuteIfBound(-1,value);
 }

@@ -65,6 +65,14 @@ struct SLAI_API FSlAiMenuStyle : public FSlateWidgetStyle
 	UPROPERTY(EditAnywhere,Category=GameOption)
 	FSlateBrush GameOptionBGBrush;
 
+	//Slider背景Bursh
+	UPROPERTY(EditAnywhere,Category=GameOption)
+	FSlateBrush SliderBarBrush;
+
+	//Slider背景Bursh
+	UPROPERTY(EditAnywhere,Category=GameOption)
+	FSliderStyle SliderStyle;
+
 	/**
 	 * checkedBox的Bursh被选中与不被选中
 	 */
