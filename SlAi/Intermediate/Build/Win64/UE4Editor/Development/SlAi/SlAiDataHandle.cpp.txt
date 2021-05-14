@@ -1,3 +1,70 @@
 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\Definitions.SlAi.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiDataHandle.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data\SlAiTypes.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Common/SlAiHelper.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiJsonHandle.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Json\Public\Json.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MonolithicHeaderBoilerplate.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Core.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MonolithicHeaderBoilerplate.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\GenericPlatform/GenericPlatformNamedPipe.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\HAL/PlatformNamedPipe.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Windows/WindowsPlatformNamedPipe.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\GenericPlatform/GenericPlatformCriticalSection.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\HAL/PlatformFile.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Windows/WindowsPlatformFile.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\HAL/PlatformIncludes.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MonolithicHeaderBoilerplate.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MessageDialog.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\ProfilingDebugging/ScopedDebugInfo.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\ProfilingDebugging/ExternalProfiler.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/StringUtility.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Serialization/NameAsStringProxyArchive.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Containers/MRUArray.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Containers/TransArray.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Containers/ArrayBuilder.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/SingleThreadEvent.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\HAL/ThreadManager.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Containers/StaticBitArray.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Containers/MapBuilder.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\HAL/ThreadingBase.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Internationalization/TextLocalizationManagerGlobals.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Internationalization/Culture.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Logging/LogSuppressionInterface.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\HAL/OutputDevices.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Logging/LogScopedVerbosityOverride.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceNull.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceMemory.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceFile.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceDebug.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceArchiveWrapper.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceAnsiError.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/TimeGuard.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Serialization/LargeMemoryWriter.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Serialization/LargeMemoryData.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Serialization/LargeMemoryReader.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Serialization/BufferArchive.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Serialization/ArrayReader.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Serialization/ArrayWriter.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Serialization/BufferWriter.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/WildcardString.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Containers/CircularQueue.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceHelper.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/ScopedSlowTask.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/CallbackDevice.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/LocalTimestampDirectoryVisitor.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/BlueprintsObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/BuildObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/CoreObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/EditorObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/FrameworkObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/MobileObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/NetworkingObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/OnlineObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/PhysicsObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/PlatformObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/SequencerObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/VRObjectVersion.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceConsole.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MonitoredProcess.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiSingleton.h

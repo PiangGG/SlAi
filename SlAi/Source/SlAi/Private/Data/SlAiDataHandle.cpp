@@ -3,6 +3,10 @@
 
 #include "Data/SlAiDataHandle.h"
 
+#include "Common/SlAiHelper.h"
+#include "Data/SlAiJsonHandle.h"
+#include "Data/SlAiSingleton.h"
+
 TSharedPtr<SlAiDataHandle> SlAiDataHandle::DataInstance=NULL;
 
 void SlAiDataHandle::Initialize()
@@ -25,13 +29,30 @@ TSharedPtr<SlAiDataHandle> SlAiDataHandle::Create()
 	TSharedPtr<SlAiDataHandle> DataRef = MakeShareable(new SlAiDataHandle());
 	return DataRef;
 }
+
+void SlAiDataHandle::InitRecordData()
+{
+	//获取语言
+	FString Culture;
+	//读取存档数据
+	SlAiSingleton<SlAiJsonHandle>::Get()->RecordDataJsonRead(Culture,MusicVolume,SoundVolume,RecordDataList);
+	
+	//初始化语言
+	ChangeLocalizationCulture(GetEnumValueFromString<ECultureTeam>(FString("ECultureTeam"),Culture));
+
+	//初始化声音
+	//ResetMenuVolume(MusicVolume,SoundVolume);
+	//循环读取RecordDataList
+	for (TArray<FString>::TIterator It(RecordDataList);It;++It)
+	{
+		
+	}
+}
+
 SlAiDataHandle::SlAiDataHandle()
 {
-	//初始化为中文
-	CurrentCultrueTeam=ECultureTeam::ZH;
-	//初始化音量
-	MusicVolume=0.5f;
-	SoundVolume=0.5f;
+	//SlAiHelper::Debug(FString("initing"));
+	InitRecordData();
 }
 
 
@@ -53,18 +74,29 @@ void SlAiDataHandle::ChangeLocalizationCulture(ECultureTeam Cultrue)
 			}
 	}
 	CurrentCultrueTeam=Cultrue;
+	SlAiSingleton<SlAiJsonHandle>::Get()->UpdataRecordData(
+		GetEnumValueAsString<ECultureTeam>(FString("ECultureTeam"),CurrentCultrueTeam),
+		MusicVolume,
+		SoundVolume,
+		&RecordDataList);
 }
 
 void SlAiDataHandle::ResetMenuVolume(float Musicval, float Soundval)
 {
-	if (MusicVolume>0)
+	if (Musicval>0)
 	{
 		MusicVolume=Musicval;
 	}
-	if (SoundVolume>0)
+	
+	if (Soundval>0)
 	{
 		SoundVolume=Soundval;
 	}
+	SlAiSingleton<SlAiJsonHandle>::Get()->UpdataRecordData(
+		GetEnumValueAsString<ECultureTeam>(FString("ECultureTeam"),CurrentCultrueTeam),
+		MusicVolume,
+		SoundVolume,
+		&RecordDataList);
 }
 
 template <typename TEnum>

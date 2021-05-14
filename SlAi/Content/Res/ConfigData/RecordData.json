@@ -3,28 +3,12 @@
 			"Culture": "ZH"
 		},
 		{
-			"MusicVolume": 0.28097230195999146
+			"MusicVolume": 0.27902451157569885
 		},
 		{
-			"SoundVolume": 0.20132675766944885
+			"SoundVolume": 0.53489226102828979
 		},
 		{
-			"RecordData": [
-				{
-					"0": "Default"
-				},
-				{
-					"1": "RecordOne"
-				},
-				{
-					"2": "RecordTwo"
-				},
-				{
-					"3": "RecordThree"
-				},
-				{
-					"4": "123"
-				}
-			]
+			"RecordData": []
 		}
 	]

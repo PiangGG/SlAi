@@ -3,6 +3,7 @@
 
 #include "UI/Widget/SSlAiGameOptionWidget.h"
 #include "SlateOptMacros.h"
+#include "Common/SlAiHelper.h"
 #include "Data/SlAiDataHandle.h"
 #include "UI/Style/SlAiMenuWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
@@ -174,8 +175,7 @@ void SSlAiGameOptionWidget::Construct(const FArguments& InArgs)
 					[
 						SAssignNew(SoTextBlock,STextBlock)
 						.Font(MenuStyle->Font_40)
-						.ColorAndOpacity(MenuStyle->FontColor_Black)
-							
+						.ColorAndOpacity(MenuStyle->FontColor_Black)	
 					]
 				]
 			]
@@ -221,7 +221,7 @@ void SSlAiGameOptionWidget::StyleInitialized()
 	}
 	MuSlider->SetValue(SlAiDataHandle::Get()->MusicVolume);
 	SoSlider->SetValue(SlAiDataHandle::Get()->SoundVolume);
-
+	
 	MusicSliderChanged(SlAiDataHandle::Get()->MusicVolume);
 	SoundSliderChanged(SlAiDataHandle::Get()->SoundVolume);
 }
@@ -234,7 +234,7 @@ void SSlAiGameOptionWidget::ZhCheckBoxStateChanged(ECheckBoxState NewState)
 	ZhCheckBox->SetIsChecked(ECheckBoxState::Checked);
 	EnCheckBox->SetIsChecked(ECheckBoxState::Unchecked);
 	//告诉数据控制类转换为中文
-	SlAiDataHandle::Get()->ChangeLocalizationCulture(ECultureTeam::ZH);
+	//SlAiDataHandle::Get()->ChangeLocalizationCulture(ECultureTeam::ZH);
 	ChangeCulture.ExecuteIfBound(ECultureTeam::ZH);
 }
 
@@ -252,13 +252,12 @@ void SSlAiGameOptionWidget::MusicSliderChanged(float value)
 {
 	//显示百分比
 	MuTextBlock->SetText(FText::FromString(FString::FromInt(FMath::RoundToInt(value*100))+FString("%")));
-	//SlAiDataHandle::Get()->ResetMenuVolume(value,-1);
-	ChangeVolume.ExecuteIfBound(value,-1);
+	ChangeVolume.ExecuteIfBound(value,-1.0f);
 }
 
 void SSlAiGameOptionWidget::SoundSliderChanged(float value)
 {
 	SoTextBlock->SetText(FText::FromString(FString::FromInt(FMath::RoundToInt(value*100))+FString("%")));
 	//SlAiDataHandle::Get()->ResetMenuVolume(-1,value);
-	ChangeVolume.ExecuteIfBound(-1,value);
+	ChangeVolume.ExecuteIfBound(-1.0,value);
 }

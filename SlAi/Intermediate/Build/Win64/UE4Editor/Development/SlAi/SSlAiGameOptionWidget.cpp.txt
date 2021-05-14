@@ -3,6 +3,7 @@ D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiGameOptionWidget.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiTypes.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Input/SSlider.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\SlateOptMacros.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Common/SlAiHelper.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiDataHandle.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAiMenuWidgetStyle.h
 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiMenuWidgetStyle.generated.h
