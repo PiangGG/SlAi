@@ -32,6 +32,8 @@ TSharedPtr<SlAiDataHandle> SlAiDataHandle::Create()
 
 void SlAiDataHandle::InitRecordData()
 {
+	//初始化存档名
+	RecordName=FString("");
 	//获取语言
 	FString Culture;
 	//读取存档数据

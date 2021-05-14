@@ -27,6 +27,9 @@ public:
 	float SoundVolume;
 	//存档数据
 	TArray<FString> RecordDataList;
+
+	//存档名
+	FString RecordName;
 private:
 	static TSharedPtr<SlAiDataHandle> Create();
 

@@ -8,9 +8,11 @@
 #include "Data/SlAiTypes.h"
 #include "UI/Style/SlAiMenuWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
+#include "UI/Widget/SSlAiChooseRecordWidget.h"
 #include "Widgets/Images/SImage.h"
 #include "UI/Widget/SSlAiMenuItemWidget.h"
 #include "UI/Widget/SSlAiGameOptionWidget.h"
+#include "UI/Widget/SSlAiNewGameWidget.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuWidget::Construct(const FArguments& InArgs)
@@ -87,9 +89,10 @@ void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 	{
 		ContentBox->AddSlot()
 		[
-			SNew(SSlAiGameOptionWidget)
-			.ChangeCulture(this,&SSlAiMenuWidget::ChangeCulture)
-			.ChangeVolume(this,&SSlAiMenuWidget::ChangeVolume)
+			SNew(SSlAiChooseRecordWidget)
+			//SNew(SSlAiGameOptionWidget)
+			//.ChangeCulture(this,&SSlAiMenuWidget::ChangeCulture)
+			//.ChangeVolume(this,&SSlAiMenuWidget::ChangeVolume)
 		];
 	}
 }
