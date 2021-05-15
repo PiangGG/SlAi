@@ -22,6 +22,7 @@ namespace EMenuItem
 	{
 		None,
 		StartGame,
+		GameOption,
 		QuitGame,
 		NewGame,
 		LoadRecord,
@@ -31,5 +32,20 @@ namespace EMenuItem
 		ChooseRecordGoBack,
 		EnterGame,
 		EnterRecord
+	};
+}
+/*
+ * Menu界面類型
+ */
+namespace EMenuType
+{
+	enum Type
+	{
+		None,
+		MainMenu,
+		StartGame,
+		GameOption,
+		NewGame,
+		ChooseRecord
 	};
 }

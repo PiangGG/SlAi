@@ -10,4 +10,8 @@ D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAiMenuWidgetStyle.h
 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiMenuWidgetStyle.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAIStyle.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiMenuWidget.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI\Widget\SSlAiChooseRecordWidget.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI\Widget\SSlAiGameOptionWidget.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Input/SSlider.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI\Widget\SSlAiNewGameWidget.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Widgets/Images/SImage.h

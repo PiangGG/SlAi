@@ -8,7 +8,11 @@ D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc
 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiMenuHUD.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiMenuHUDWidget.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Widget/SSlAiMenuWidget.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI\Widget\SSlAiChooseRecordWidget.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI\Widget\SSlAiGameOptionWidget.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiTypes.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Input/SSlider.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI\Widget\SSlAiNewGameWidget.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\SlateBasics.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MonolithicHeaderBoilerplate.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Core.h
@@ -194,5 +198,4 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\INCLUDE\cwchar
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\INCLUDE\cstdio
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\INCLUDE\isa_availability.h
-D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Input/SSlider.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Framework/Docking/LayoutService.h
