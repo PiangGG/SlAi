@@ -8,6 +8,17 @@ D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI\Widget\SSlAiNewGameWidget.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\SlateOptMacros.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Common/SlAiHelper.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiDataHandle.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/CollisionProfile.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CollisionProfile.generated.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\KismetSystemLibrary.generated.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Sound/DialogueTypes.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DialogueTypes.generated.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAiMenuWidgetStyle.h
 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiMenuWidgetStyle.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAIStyle.h
