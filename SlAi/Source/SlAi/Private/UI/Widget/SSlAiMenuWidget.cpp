@@ -126,6 +126,7 @@ void SSlAiMenuWidget::Tick(const FGeometry& AllottedGeometry, const double InCur
 			AnimState=EMenuAnim::Open;
 			//开始播放打开动画
 			MenuAnimation.Play(this->AsShared());
+			//
 		}
 		break;
 	case EMenuAnim::Open:
