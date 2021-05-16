@@ -192,12 +192,23 @@ void SSlAiMenuWidget::MenuItemOnclicked(EMenuItem::Type ItemType)
 			PlayClose(EMenuType::StartGame);
 			break;
 		case EMenuItem::EnterGame:
-			SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld,0)->GetWorld(),MenuStyle->StartGameSound,
+			//检测是否可以进入游戏
+			if (NewGameWidget->AllowEnterGame())
+			{
+				SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld,0)->GetWorld(),MenuStyle->StartGameSound,
 						this,&SSlAiMenuWidget::EnterGame);
+
+			}else
+			{
+				ControlLocked = false;
+			}
 			break;
 		case EMenuItem::EnterRecord:
-
-			ControlLocked=false;
+			//告诉存档更新存档名
+			ChooseRecordWidget->UpdataRecordName();
+			SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld,0)->GetWorld(),MenuStyle->StartGameSound,
+				this,&SSlAiMenuWidget::EnterGame);
+			//ControlLocked=false;
 			break;
 	}
 }
@@ -369,8 +380,8 @@ void SSlAiMenuWidget::QuitGame()
 
 void SSlAiMenuWidget::EnterGame()
 {
-	SlAiHelper::Debug(FString("EnterGame"),10.0f);
-	ControlLocked=false;
+	UGameplayStatics::OpenLevel(UGameplayStatics::GetPlayerController(GWorld,0)->GetWorld(),FName("GameMap"));
+	SlAiHelper::Debug(FString("EnterGame"));
 }
 
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

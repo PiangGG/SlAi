@@ -17,5 +17,6 @@ class SLAI_API ASlAIMenuGameMode : public AGameModeBase
 public:
 
 	ASlAIMenuGameMode();
-	
+protected:
+	virtual void BeginPlay() override;
 };

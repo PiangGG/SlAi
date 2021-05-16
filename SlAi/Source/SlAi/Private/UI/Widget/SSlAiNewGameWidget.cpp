@@ -65,7 +65,7 @@ bool SSlAiNewGameWidget::AllowEnterGame()
 	//获取新存档名
 	FText InputText=EditTextBox->GetText();
 	//判断文字是否为空
-	if (!InputText.ToString().IsEmpty())return false;
+	if (InputText.ToString().IsEmpty())return false;
 	//查询是否存在相同存档
 	for(TArray<FString>::TIterator It(SlAiDataHandle::Get()->RecordDataList);It;++It)
 	{
