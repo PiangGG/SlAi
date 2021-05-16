@@ -47,6 +47,10 @@ private:
 	void InitializedAnimation();
 	//播放关闭动画
 	void PlayClose(EMenuType::Type NewType);
+	//结束游戏
+	void QuitGame();
+	//进入游戏
+	void EnterGame();
 private:
 	//保存根节点
 	TSharedPtr<SBox> RootSizeBox;

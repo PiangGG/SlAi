@@ -8,6 +8,12 @@ D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI\Widget\SSlAiNewGameWidget.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\SlateOptMacros.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Common/SlAiHelper.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiDataHandle.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Sound/SoundCue.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Sound/SoundNode.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\SoundNode.generated.h
+D:\ComputerApps\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\SoundCue.generated.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\GamePlay/SlAiMenuController.h
+D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiMenuController.generated.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h

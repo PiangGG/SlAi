@@ -1,13 +1,15 @@
 .vs/
 .svn/
 .idea/
+Intermediate/
+Saved/
 
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
-
+*.log
 
 # Precompiled Headers
 *.gch

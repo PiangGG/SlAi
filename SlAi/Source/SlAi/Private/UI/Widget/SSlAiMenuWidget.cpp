@@ -6,6 +6,7 @@
 #include "Common/SlAiHelper.h"
 #include "Data/SlAiDataHandle.h"
 #include "Data/SlAiTypes.h"
+#include "GamePlay/SlAiMenuController.h"
 #include "Kismet/GameplayStatics.h"
 #include "UI/Style/SlAiMenuWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
@@ -41,7 +42,8 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiMenuWidget::Construct(const FArguments& InArgs)
 {
 	MenuStyle=&SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");
-
+	//播放背景音乐
+	FSlateApplication::Get().PlaySound(MenuStyle->MenuBackgroundMusic);
 	ChildSlot
 	[
 		// Populate the widget
@@ -126,7 +128,6 @@ void SSlAiMenuWidget::Tick(const FGeometry& AllottedGeometry, const double InCur
 			AnimState=EMenuAnim::Open;
 			//开始播放打开动画
 			MenuAnimation.Play(this->AsShared());
-			//
 		}
 		break;
 	case EMenuAnim::Open:
@@ -168,8 +169,9 @@ void SSlAiMenuWidget::MenuItemOnclicked(EMenuItem::Type ItemType)
 			PlayClose(EMenuType::GameOption);
 			break;
 		case EMenuItem::QuitGame:
-
-			ControlLocked=false;
+			//退出游戏
+			SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld,0)->GetWorld(),MenuStyle->ExitGameSound,
+				this,&SSlAiMenuWidget::QuitGame);
 			break;
 		case EMenuItem::NewGame:
 			PlayClose(EMenuType::NewGame);
@@ -178,23 +180,20 @@ void SSlAiMenuWidget::MenuItemOnclicked(EMenuItem::Type ItemType)
 			PlayClose(EMenuType::ChooseRecord);
 			break;
 		case EMenuItem::StartGameGoBack:
-			SlAiHelper::Debug(FString("StartGameGoBack"));
 			PlayClose(EMenuType::MainMenu);
 			break;
 		case EMenuItem::GameOptionGoBack:
 			PlayClose(EMenuType::MainMenu);
-			SlAiHelper::Debug(FString("GameOptionGoBack"));
 			break;
 		case EMenuItem::NewGameGoBack:
 			PlayClose(EMenuType::StartGame);
-			SlAiHelper::Debug(FString("NewGameGoBack"));
 			break;
 		case EMenuItem::ChooseRecordGoBack:
 			PlayClose(EMenuType::StartGame);
 			break;
 		case EMenuItem::EnterGame:
-
-			ControlLocked=false;
+			SlAiHelper::PlayerSoundAndCall(UGameplayStatics::GetPlayerController(GWorld,0)->GetWorld(),MenuStyle->StartGameSound,
+						this,&SSlAiMenuWidget::EnterGame);
 			break;
 		case EMenuItem::EnterRecord:
 
@@ -358,7 +357,20 @@ void SSlAiMenuWidget::PlayClose(EMenuType::Type NewType)
 	AnimState=EMenuAnim::Close;
 	//播放反向动画
 	MenuAnimation.PlayReverse(this->AsShared());
-	//
+	//播放切换菜单的音乐
+	FSlateApplication::Get().PlaySound(MenuStyle->MenuItemChangeSound);
+}
+
+void SSlAiMenuWidget::QuitGame()
+{
+	Cast<ASlAiMenuController>(UGameplayStatics::GetPlayerController(GWorld,0))->ConsoleCommand("quit");
+	//ControlLocked=false;
+}
+
+void SSlAiMenuWidget::EnterGame()
+{
+	SlAiHelper::Debug(FString("EnterGame"),10.0f);
+	ControlLocked=false;
 }
 
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

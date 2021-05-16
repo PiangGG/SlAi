@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeSlAiMenuWidgetStyle() {}
 	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSlateFontInfo();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
 	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSliderStyle();
+	SLATECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSlateSound();
 	SLAI_API UClass* Z_Construct_UClass_USlAiMenuWidgetStyle_NoRegister();
 	SLAI_API UClass* Z_Construct_UClass_USlAiMenuWidgetStyle();
 	SLATECORE_API UClass* Z_Construct_UClass_USlateWidgetStyleContainerBase();
@@ -119,6 +120,22 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_UnCheckedBoxBursh_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_UnCheckedBoxBursh;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_StartGameSound_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_StartGameSound;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ExitGameSound_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_ExitGameSound;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MenuItemChangeSound_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_MenuItemChangeSound;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MenuBackgroundMusic_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_MenuBackgroundMusic;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UE4CodeGen_Private::FStructParams ReturnStructParams;
 	};
@@ -264,6 +281,42 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 	};
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_UnCheckedBoxBursh = { "UnCheckedBoxBursh", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, UnCheckedBoxBursh), Z_Construct_UScriptStruct_FSlateBrush, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_UnCheckedBoxBursh_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_UnCheckedBoxBursh_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_StartGameSound_MetaData[] = {
+		{ "Category", "Sound" },
+		{ "Comment", "/*\n\x09 * \xe5\xbc\x80\xe5\xa7\x8b\xe6\xb8\xb8\xe6\x88\x8f\xe5\xa3\xb0\xe9\x9f\xb3\n\x09 */" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "* \xe5\xbc\x80\xe5\xa7\x8b\xe6\xb8\xb8\xe6\x88\x8f\xe5\xa3\xb0\xe9\x9f\xb3" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_StartGameSound = { "StartGameSound", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, StartGameSound), Z_Construct_UScriptStruct_FSlateSound, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_StartGameSound_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_StartGameSound_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_ExitGameSound_MetaData[] = {
+		{ "Category", "Sound" },
+		{ "Comment", "/*\n\x09 * \xe7\xbb\x93\xe6\x9d\x9f\xe6\xb8\xb8\xe6\x88\x8f\xe5\xa3\xb0\xe9\x9f\xb3\n\x09 */" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "* \xe7\xbb\x93\xe6\x9d\x9f\xe6\xb8\xb8\xe6\x88\x8f\xe5\xa3\xb0\xe9\x9f\xb3" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_ExitGameSound = { "ExitGameSound", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, ExitGameSound), Z_Construct_UScriptStruct_FSlateSound, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_ExitGameSound_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_ExitGameSound_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemChangeSound_MetaData[] = {
+		{ "Category", "Sound" },
+		{ "Comment", "/*\n\x09 * \xe8\xbd\xac\xe6\x8d\xa2\xe6\x8c\x89\xe9\x92\xae\xe5\xa3\xb0\xe9\x9f\xb3\n\x09 */" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "* \xe8\xbd\xac\xe6\x8d\xa2\xe6\x8c\x89\xe9\x92\xae\xe5\xa3\xb0\xe9\x9f\xb3" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemChangeSound = { "MenuItemChangeSound", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, MenuItemChangeSound), Z_Construct_UScriptStruct_FSlateSound, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemChangeSound_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemChangeSound_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundMusic_MetaData[] = {
+		{ "Category", "Sound" },
+		{ "Comment", "/*\n\x09 * Menu\xe8\x83\x8c\xe6\x99\xaf\xe5\xa3\xb0\xe9\x9f\xb3\n\x09 */" },
+		{ "ModuleRelativePath", "Public/UI/Style/SlAiMenuWidgetStyle.h" },
+		{ "ToolTip", "* Menu\xe8\x83\x8c\xe6\x99\xaf\xe5\xa3\xb0\xe9\x9f\xb3" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundMusic = { "MenuBackgroundMusic", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FSlAiMenuStyle, MenuBackgroundMusic), Z_Construct_UScriptStruct_FSlateSound, METADATA_PARAMS(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundMusic_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundMusic_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuHUDBackgroundBrush,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundBrush,
@@ -281,6 +334,10 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_SliderStyle,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_CheckedBoxBursh,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_UnCheckedBoxBursh,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_StartGameSound,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_ExitGameSound,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuItemChangeSound,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::NewProp_MenuBackgroundMusic,
 	};
 	const UE4CodeGen_Private::FStructParams Z_Construct_UScriptStruct_FSlAiMenuStyle_Statics::ReturnStructParams = {
 		(UObject* (*)())Z_Construct_UPackage__Script_SlAi,
@@ -310,7 +367,7 @@ static struct FScriptStruct_SlAi_StaticRegisterNativesFSlAiMenuStyle
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 4165612926U; }
+	uint32 Get_Z_Construct_UScriptStruct_FSlAiMenuStyle_Hash() { return 422178949U; }
 	void USlAiMenuWidgetStyle::StaticRegisterNativesUSlAiMenuWidgetStyle()
 	{
 	}

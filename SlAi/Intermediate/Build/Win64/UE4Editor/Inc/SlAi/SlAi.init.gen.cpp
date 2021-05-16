@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeSlAi_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xFC9C5C3B,
+				0xB6FCB86D,
 				0x8E3C7FAC,
 				METADATA_PARAMS(nullptr, 0)
 			};

@@ -6,6 +6,8 @@
 #include "Common/SlAiHelper.h"
 #include "Data/SlAiJsonHandle.h"
 #include "Data/SlAiSingleton.h"
+#include "UI/Style/SlAiMenuWidgetStyle.h"
+#include "UI/Style/SlAIStyle.h"
 
 TSharedPtr<SlAiDataHandle> SlAiDataHandle::DataInstance=NULL;
 
@@ -51,10 +53,32 @@ void SlAiDataHandle::InitRecordData()
 	}
 }
 
+void SlAiDataHandle::InitializedMenuAudio()
+{
+	//获取MenuStyle
+	MenuStyle=&SlAiStyle::Get().GetWidgetStyle<FSlAiMenuStyle>("BPSlAiMenuStyle");
+
+	//添加资源文件到资源列表
+	TArray<USoundCue*> MusicList;
+	MusicList.Add(Cast<USoundCue>(MenuStyle->MenuBackgroundMusic.GetResourceObject()));
+	TArray<USoundCue*> SoundList;
+	SoundList.Add(Cast<USoundCue>(MenuStyle->StartGameSound.GetResourceObject()));
+	SoundList.Add(Cast<USoundCue>(MenuStyle->ExitGameSound.GetResourceObject()));
+	SoundList.Add(Cast<USoundCue>(MenuStyle->MenuItemChangeSound.GetResourceObject()));
+
+	//添加资源到Map
+	MenuAudioResource.Add(FString("Music"),MusicList);
+	MenuAudioResource.Add(FString("Sound"),SoundList);
+
+	//重置一下声音
+	ResetMenuVolume(MusicVolume,SoundVolume);
+}
+
 SlAiDataHandle::SlAiDataHandle()
 {
 	//SlAiHelper::Debug(FString("initing"));
 	InitRecordData();
+	InitializedMenuAudio();
 }
 
 
@@ -88,11 +112,20 @@ void SlAiDataHandle::ResetMenuVolume(float Musicval, float Soundval)
 	if (Musicval>0)
 	{
 		MusicVolume=Musicval;
+		//循环设置背景音量
+		for (TArray<USoundCue*>::TIterator It(MenuAudioResource.Find(FString("Music"))->CreateIterator());It;++It)
+		{
+			(*It)->VolumeMultiplier = MusicVolume;
+		}
 	}
 	
 	if (Soundval>0)
 	{
 		SoundVolume=Soundval;
+		for (TArray<USoundCue*>::TIterator It(MenuAudioResource.Find(FString("Sound"))->CreateIterator());It;++It)
+		{
+			(*It)->VolumeMultiplier = SoundVolume;
+		}
 	}
 	SlAiSingleton<SlAiJsonHandle>::Get()->UpdataRecordData(
 		GetEnumValueAsString<ECultureTeam>(FString("ECultureTeam"),CurrentCultrueTeam),
