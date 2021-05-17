@@ -33,6 +33,17 @@ public:
 	class UCameraComponent* ThirdCamera;
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class UCameraComponent* FirstCamera;
+
+private:
+	void MoveForward(float value);
+	void MoveRight(float value);
+	void LookUpAtRate(float value);
+	void Turn(float value);
+	void TurnAtRoate(float value);
+	void OnStartJump();
+	void OnStopJump();
+	void OnStartRun();
+	void OnStopRun();
 private:
 	//第一人称骨骼模型
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
