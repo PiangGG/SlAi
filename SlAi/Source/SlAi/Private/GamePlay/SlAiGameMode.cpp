@@ -31,6 +31,5 @@ void ASlAiGameMode::Tick(float DeltaSeconds)
 
 void ASlAiGameMode::BeginPlay()
 {
-	SlAiHelper::Debug(FString("DataHnadle:"+SlAiDataHandle::Get()->RecordName,30));
-	SlAiHelper::Debug(FString("GameInstance:"+Cast<USlAiGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()))->GameName,30));
+	
 }

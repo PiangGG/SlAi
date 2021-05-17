@@ -26,4 +26,15 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+public:
+	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
+	class USpringArmComponent* CameraBoom;
+	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
+	class UCameraComponent* ThirdCamera;
+	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
+	class UCameraComponent* FirstCamera;
+private:
+	//第一人称骨骼模型
+	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
+	USkeletalMeshComponent* MeshFirst;
 };
