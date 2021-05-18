@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "Data/SlAiTypes.h"
 #include "GameFramework/PlayerController.h"
 #include "SlAiPlayerController.generated.h"
 
@@ -32,5 +34,10 @@ private:
 
 	void RightEventStart();
 	void RightEventEnd();
-	
+private:
+	//左键预动作
+	EUpperBody::Type LeftUpperType;
+	//右键预动作
+	EUpperBody::Type RightUpperType;
+
 };

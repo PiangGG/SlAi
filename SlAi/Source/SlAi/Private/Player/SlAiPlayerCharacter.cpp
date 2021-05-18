@@ -83,6 +83,10 @@ ASlAiPlayerCharacter::ASlAiPlayerCharacter()
 
 	//初始为第三人称
 	GameView=EGameViewMode::Third;
+	//上半身动作无
+	upperType= EUpperBody::None;
+	
+	IsAllowSwitch=true;
 }
 
 // Called when the game starts or when spawned

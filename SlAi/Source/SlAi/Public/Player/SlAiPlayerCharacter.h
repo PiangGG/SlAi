@@ -40,6 +40,11 @@ public:
 
 	//当前视角模式
 	EGameViewMode::Type GameView;
+
+	//上半身动画状态
+	EUpperBody::Type upperType;
+	//是否允许切换视角
+	bool IsAllowSwitch;
 private:
 	void MoveForward(float value);
 	void MoveRight(float value);

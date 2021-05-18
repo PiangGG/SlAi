@@ -15,4 +15,6 @@ USlAiFirstPlayerAnim::USlAiFirstPlayerAnim()
 	PlayerPunchMontage=PlayerPunchMon.Object;
 	static ConstructorHelpers::FObjectFinder<UAnimMontage> PlayerPickUpMon(TEXT("AnimMontage'/Game/Res/PolygonAdventure/Mannequin/FirstPlayer/Animation/UpperBody/FirstPlayerPickUpMontage.FirstPlayerPickUpMontage'"));
 	PlayerPickUpMontage=PlayerPickUpMon.Object;
+	//
+	GameView=EGameViewMode::First;
 }

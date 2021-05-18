@@ -21,6 +21,7 @@ USlAiThirdPlayerAnim::USlAiThirdPlayerAnim()
 	PlayerPickUpMontage=PlayerPickUpMon.Object;
 	IsInAir=false;
 	Direction= 0.0f;
+	GameView=EGameViewMode::Third;
 }
 
 void USlAiThirdPlayerAnim::UpdateParameter()
