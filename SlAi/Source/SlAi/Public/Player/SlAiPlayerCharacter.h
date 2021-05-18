@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "Data/SlAiTypes.h"
 #include "GameFramework/Character.h"
 #include "SlAiPlayerCharacter.generated.h"
 
@@ -26,6 +28,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	//修改视角
+	void ChangeView(EGameViewMode::Type NewGameView);
 public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class USpringArmComponent* CameraBoom;
@@ -34,6 +38,8 @@ public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class UCameraComponent* FirstCamera;
 
+	//当前视角模式
+	EGameViewMode::Type GameView;
 private:
 	void MoveForward(float value);
 	void MoveRight(float value);

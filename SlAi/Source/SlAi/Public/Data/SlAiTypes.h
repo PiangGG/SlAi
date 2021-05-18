@@ -59,3 +59,13 @@ namespace EMenuAnim
 		Open
 	};
 }
+//视角模式
+namespace EGameViewMode
+{
+	enum Type
+	{
+		First,
+		Third
+	};
+	
+}

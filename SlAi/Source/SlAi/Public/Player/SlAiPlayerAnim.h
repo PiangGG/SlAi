@@ -9,6 +9,7 @@
 /**
  * 
  */
+class UAnimMontage;
 UCLASS()
 class SLAI_API USlAiPlayerAnim : public UAnimInstance
 {
@@ -28,8 +29,15 @@ protected:
 	void InitSPCharacter();
 	//更新属性
 	virtual  void UpdateParameter();
+	//更新动作
+	virtual void UpdateMontage();
 protected:
 	//
 	class ASlAiPlayerCharacter* SPCharacter;
-	
+	//上半身的蒙太奇
+	UAnimMontage* PlayerHitMentage;
+	UAnimMontage* PlayerFightMontage;
+	UAnimMontage* PlayerPunchMontage;
+	UAnimMontage* PlayerEatMontage;
+	UAnimMontage* PlayerPickUpMontage;
 };
