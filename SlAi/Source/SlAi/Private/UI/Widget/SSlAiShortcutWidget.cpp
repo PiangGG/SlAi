@@ -65,18 +65,18 @@ void SSlAiShortcutWidget::InitializeContainer()
 
 		SAssignNew(ContainerBorder,SBorder)
 		.Padding(10.0f)
-		.BorderImage(&GameStyle->NormalContainerBrush)
+		//.BorderImage(&GameStyle->NormalContainerBrush)
 		[
 			SAssignNew(ObjectImage,SBorder)
 			.HAlign(HAlign_Right)
 			.VAlign(VAlign_Bottom)
-			.BorderImage(&GameStyle->EmptyBrush)
+			//.BorderImage(&GameStyle->EmptyBrush)
 			.Padding(FMargin(0.0f,0.0f,5.0f,0.0f))
 			[
 				SAssignNew(ObjectNumText,STextBlock)
 				.Font(GameStyle->Font_Outline_20)
 				.ColorAndOpacity(GameStyle->FontColor_Black)
-				.Text(FText::FromString("12"))
+				//.Text(FText::FromString("1211111"))
 			]
 		];
 		GaidPanel->AddSlot(i,0)

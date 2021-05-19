@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Json.h"
+#include "SlAiTypes.h"
 
 /**
  * 
@@ -17,6 +18,9 @@ public:
 	void RecordDataJsonRead(FString& Culture,float& MusicVolume,float &SoundVolume,TArray<FString>& RecordDataList);
 	//修改存档
 	void UpdataRecordData(FString Culture,float MusicVolume,float SoundVolume,TArray<FString>* RecordDataList);
+
+	//解析物品属性
+	void ObjectAttrJsonRead(TMap<int,TSharedPtr<ObjectAttribute>>& ObjectAttrMap);
 private:
 	//读取Json文件到字符串
 	bool LoadStringFromFile(const FString& FileName,const FString& RelaPath,FString& ResultString);
@@ -26,10 +30,15 @@ private:
 	
 	//保存字符串到文件
 	bool WriteFileWithJsonData(const FString& JsonStr,const FString& RelaPath,const FString& FileName);
+
+	//定义一个从string转换到ObjectType的函数
+	EObjectType::Type StringToObject(const FString ArgStr);
 private:
 	//存档文件名
 	FString RecordDataFileName;
-
+	//物品属性文件名
+	FString ObjectAttrFileName;
+	
 	//相对路径
 	FString RelativePath;
 };

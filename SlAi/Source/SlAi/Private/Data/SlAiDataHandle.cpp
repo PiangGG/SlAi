@@ -134,6 +134,18 @@ void SlAiDataHandle::ResetMenuVolume(float Musicval, float Soundval)
 		&RecordDataList);
 }
 
+void SlAiDataHandle::InitialzeGameData()
+{
+	//初始化物品属性图
+	InitObjectAttr();	
+}
+
+void SlAiDataHandle::InitObjectAttr()
+{
+	SlAiSingleton<SlAiJsonHandle>::Get()->ObjectAttrJsonRead(ObjectAttrMap);
+	
+}
+
 template <typename TEnum>
 FString SlAiDataHandle::GetEnumValueAsString(const FString& Name, TEnum value)
 {

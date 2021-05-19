@@ -7,8 +7,8 @@
 SlAiJsonHandle::SlAiJsonHandle()
 {
 	RecordDataFileName=FString("RecordData.json");
+	ObjectAttrFileName = FString("ObjectAttribute.json");
 	RelativePath = FString("Res/ConfigData/");
-	
 }
 
 void SlAiJsonHandle::RecordDataJsonRead(FString& Culture, float& MusicVolume, float& SoundVolume,
@@ -96,6 +96,37 @@ void SlAiJsonHandle::UpdataRecordData(FString Culture, float MusicVolume, float 
 	WriteFileWithJsonData(JsonStr,RelativePath,RecordDataFileName);
 }
 
+void SlAiJsonHandle::ObjectAttrJsonRead(TMap<int, TSharedPtr<ObjectAttribute>>& ObjectAttrMap)
+{
+	FString JsonValue;
+	LoadStringFromFile(ObjectAttrFileName,RelativePath,JsonValue);
+	TArray<TSharedPtr<FJsonValue>> JsonParsed;
+	TSharedRef<TJsonReader<TCHAR>> JsonReader=TJsonReaderFactory<TCHAR>::Create(JsonValue);
+
+	if (FJsonSerializer::Deserialize(JsonReader,JsonParsed))
+	{
+		for (int i= 0;i<JsonParsed.Num();++i)
+		{
+			TArray<TSharedPtr<FJsonValue>> ObjectAttr=JsonParsed[i]->AsObject()->GetArrayField(FString::FromInt(i));
+			FText EN=FText::FromString(ObjectAttr[0]->AsObject()->GetStringField("EN"));
+			FText ZH=FText::FromString(ObjectAttr[1]->AsObject()->GetStringField("ZH"));
+			FString ObjectTypeStr=ObjectAttr[2]->AsObject()->GetStringField("ObjectType");
+			int PlantAttack=ObjectAttr[3]->AsObject()->GetNumberField("PlantAttack");
+			int MetalAttack=ObjectAttr[4]->AsObject()->GetNumberField("MetalAttack");
+			int AnimalAttack=ObjectAttr[5]->AsObject()->GetNumberField("AnimalAttack");
+			int AffectAttack=ObjectAttr[6]->AsObject()->GetNumberField("AffectAttack");
+			FString TexPath=ObjectAttr[7]->AsObject()->GetStringField("PlantAttack");
+			EObjectType::Type ObjectType=StringToObject(ObjectTypeStr);
+			TSharedPtr<ObjectAttribute> ObjectAttrPtr=MakeShareable(new ObjectAttribute(
+				EN,ZH,ObjectType,PlantAttack,MetalAttack,AnimalAttack,AffectAttack,TexPath));
+			ObjectAttrMap.Add(i,ObjectAttrPtr);
+		}	
+	}else
+	{
+		SlAiHelper::Debug(FString("解析失败!"));
+	}
+}
+
 bool SlAiJsonHandle::LoadStringFromFile(const FString& FileName, const FString& RelaPath, FString& ResultString)
 {
 	if (!FileName.IsEmpty())
@@ -152,4 +183,13 @@ bool SlAiJsonHandle::WriteFileWithJsonData(const FString& JsonStr, const FString
 		}	
 	}
 	return  false;
+}
+
+EObjectType::Type SlAiJsonHandle::StringToObject(const FString ArgStr)
+{
+	if (ArgStr.Equals(FString("Normal")))return EObjectType::Normal;
+	if (ArgStr.Equals(FString("Food")))return EObjectType::Food;
+	if (ArgStr.Equals(FString("Tool")))return EObjectType::Tool;
+	if (ArgStr.Equals(FString("Weapon")))return EObjectType::Weapon;
+	return EObjectType::Normal;
 }
