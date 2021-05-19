@@ -29,8 +29,18 @@ void ASlAiGameMode::Tick(float DeltaSeconds)
 	//Super()
 }
 
+void ASlAiGameMode::InitGamePlayModule()
+{
+	//添加引用
+	SPController=Cast<ASlAiPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(),0));
+	SPCharacter=Cast<ASlAiPlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(),0));
+	SPState=Cast<ASlAiPlayerState>(SPController->PlayerState);
+	
+}
+
 void ASlAiGameMode::BeginPlay()
 {
 	//初始化游戏数据
 	SlAiDataHandle::Get()->InitObjectAttr();
+	if (!SPController)	InitGamePlayModule();
 }

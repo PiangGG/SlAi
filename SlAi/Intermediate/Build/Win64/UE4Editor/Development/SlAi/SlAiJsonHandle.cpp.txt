@@ -64,4 +64,5 @@ D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/Seq
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/VRObjectVersion.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceConsole.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MonitoredProcess.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data\SlAiTypes.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Common/SlAiHelper.h

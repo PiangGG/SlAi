@@ -72,6 +72,8 @@ D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\UObject/VRO
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/OutputDeviceConsole.h
 D:\ComputerApps\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Misc/MonitoredProcess.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\Data/SlAiSingleton.h
+D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAiGameWidgetStyle.h
+D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiGameWidgetStyle.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAiMenuWidgetStyle.h
 D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Inc\SlAi\SlAiMenuWidgetStyle.generated.h
 D:\Code\UE4\SlAi\SlAi\Source\SlAi\Public\UI/Style/SlAIStyle.h

@@ -14,8 +14,14 @@ class SLAI_API ASlAiGameHUD : public AHUD
 {
 	GENERATED_BODY()
 
+
 public:
 	ASlAiGameHUD();
+	//保存GameMode指针
+	class ASlAiGameMode * GM;
+protected:
+	virtual void BeginPlay() override;
 private:
-	TSharedPtr<class SSlAiGameHUDWidget> GameHUDWidget;	
+	TSharedPtr<class SSlAiGameHUDWidget> GameHUDWidget;
+	
 };

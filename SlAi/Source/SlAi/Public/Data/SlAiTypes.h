@@ -135,12 +135,12 @@ struct ShortcutContainer
 		TSharedPtr<STextBlock> ONT,const FSlateBrush* NCB,const FSlateBrush* CCB,
 		TArray<const FSlateBrush*>* OBL)
 	{
-		CB=ContainerBorder;
-		OI=ObjectImage;
-		ONT=ObjectNumText;
-		NCB=NormalContainerBrush;
-		CCB=ChoosedContainerBrush;
-		OBL=ObjectBrushList;
+		ContainerBorder=CB;
+		ObjectImage=OI;
+		ObjectNumText=ONT;
+		NormalContainerBrush=NCB;
+		ChoosedContainerBrush=CCB;
+		ObjectBrushList=OBL;
 		//初始化显示设置
 		ObjectIndex=0;
 		ObjectNum=0;
@@ -174,10 +174,10 @@ struct ShortcutContainer
 		//如果数量为零，不显示数量
 		if (ObjectNum==0||ObjectNum==1)
 		{
-			ObjectNumText->SetText(FString(""));
+			ObjectNumText->SetText(FText::FromString(""));
 		}else
 		{
-			ObjectNumText->SetText(FString::FromInt(ObjectNum));
+			ObjectNumText->SetText(FText::FromString(FString::FromInt(ObjectNum)));
 		}
 		return this;
 	}

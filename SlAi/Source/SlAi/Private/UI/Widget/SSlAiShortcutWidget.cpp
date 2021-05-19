@@ -4,6 +4,8 @@
 #include "UI/Widget/SSlAiShortcutWidget.h"
 #include "SlateOptMacros.h"
 #include "Common/SlAiHelper.h"
+#include "Data/SlAiDataHandle.h"
+#include "Data/SlAiTypes.h"
 #include "UI/Style/SlAiGameWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
 #include "Widgets/Layout/SUniformGridPanel.h"
@@ -54,6 +56,7 @@ void SSlAiShortcutWidget::Tick(const FGeometry& AllottedGeometry, const double I
 
 void SSlAiShortcutWidget::InitializeContainer()
 {
+	TArray<TSharedPtr<ShortcutContainer>> ContainerList;
 	
 	for (int i=0;i<9;++i)
 	{
@@ -83,7 +86,15 @@ void SSlAiShortcutWidget::InitializeContainer()
 		[
 			ContainerBorder->AsShared()
 		];
+		//实例化一个容器结构体
+		TSharedPtr<ShortcutContainer> Container = MakeShareable(new ShortcutContainer
+			(ContainerBorder,ObjectImage,ObjectNumText,&GameStyle->NormalContainerBrush,
+				&GameStyle->ChoosedContainerBrush,&SlAiDataHandle::Get()->ObjectBrushList));
+		if (i==0)Container->SetChoosed(true);
+		ContainerList.Add(Container);
 	}
+	//将实例化的结构体注册进PlayerState的容器数组
+	RegisterShortCutContainer.ExecuteIfBound(&ContainerList,ShorcutInfoTextBlock);
 }
 
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

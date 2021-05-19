@@ -6,6 +6,7 @@
 #include "Common/SlAiHelper.h"
 #include "Data/SlAiJsonHandle.h"
 #include "Data/SlAiSingleton.h"
+#include "UI/Style/SlAiGameWidgetStyle.h"
 #include "UI/Style/SlAiMenuWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
 
@@ -143,7 +144,18 @@ void SlAiDataHandle::InitialzeGameData()
 void SlAiDataHandle::InitObjectAttr()
 {
 	SlAiSingleton<SlAiJsonHandle>::Get()->ObjectAttrJsonRead(ObjectAttrMap);
-	
+
+	//获取GameStyle
+	GameStyle=&SlAiStyle::Get().GetWidgetStyle<FSlAiGameStyle>("BPSlAiGameStyle");
+	//填充笔刷数组
+	ObjectBrushList.Add(&GameStyle->EmptyBrush);
+	ObjectBrushList.Add(&GameStyle->ObjectBrush_1);
+	ObjectBrushList.Add(&GameStyle->ObjectBrush_2);
+	ObjectBrushList.Add(&GameStyle->ObjectBrush_3);
+	ObjectBrushList.Add(&GameStyle->ObjectBrush_4);
+	ObjectBrushList.Add(&GameStyle->ObjectBrush_5);
+	ObjectBrushList.Add(&GameStyle->ObjectBrush_6);
+	ObjectBrushList.Add(&GameStyle->ObjectBrush_7);
 }
 
 template <typename TEnum>

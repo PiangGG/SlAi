@@ -24,7 +24,8 @@ public:
 	void InitialzeGameData();
 	//初始化物品属性
 	void InitObjectAttr();
-	//
+	//物品贴图资源数组
+	TArray<const FSlateBrush*> ObjectBrushList;
 public:
 	//语言
 	ECultureTeam CurrentCultrueTeam;
@@ -58,4 +59,6 @@ private:
 
 	//获取MenuStyle
 	const struct FSlAiMenuStyle *MenuStyle;
+	//获取GameStyle
+	const struct FSlAiGameStyle *GameStyle;
 };

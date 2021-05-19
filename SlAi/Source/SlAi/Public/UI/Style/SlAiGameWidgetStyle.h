@@ -26,14 +26,30 @@ struct SLAI_API FSlAiGameStyle : public FSlateWidgetStyle
 	static const FSlAiGameStyle& GetDefault();
 
 	//指定快捷栏容器图标
-	UPROPERTY(EditAnywhere,Category=Common)
+	UPROPERTY(EditAnywhere,Category=Package)
 	FSlateBrush NormalContainerBrush;
 	//指定被选择容器的Brush
-	UPROPERTY(EditAnywhere,Category=Common)
+	UPROPERTY(EditAnywhere,Category=Package)
 	FSlateBrush ChoosedContainerBrush;
 	//指定没有颜色的Bursh
-	UPROPERTY(EditAnywhere,Category=Common)
-	FSlateBrush EmptyBrush; 
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush EmptyBrush;
+
+	//物品Brush
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush ObjectBrush_1;
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush ObjectBrush_2;
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush ObjectBrush_3;
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush ObjectBrush_4;
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush ObjectBrush_5;
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush ObjectBrush_6;
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush ObjectBrush_7;
 	/*
 	 * 60号字体
 	 */
