@@ -23,6 +23,7 @@ class SLAI_API ASlAiPlayerController : public APlayerController
 public:
 	//获取玩家角色
 	class ASlAiPlayerCharacter* SPCharacter;
+	class ASlAiPlayerState* SPState;
 protected:
 	virtual  void BeginPlay() override;
 private:
@@ -34,10 +35,15 @@ private:
 
 	void RightEventStart();
 	void RightEventEnd();
+	//滑轮滚动
+	void ScrollUpEvent();
+	void ScrollDownEvent();
 private:
 	//左键预动作
 	EUpperBody::Type LeftUpperType;
 	//右键预动作
 	EUpperBody::Type RightUpperType;
-
+	//是否按着鼠标左右键
+	bool IsLeftButtonDown;
+	bool IsRightButtonDonw;
 };

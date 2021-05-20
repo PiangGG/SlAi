@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Hand/SlAiHandObject.h"
 
 // Sets default values
 ASlAiPlayerCharacter::ASlAiPlayerCharacter()
@@ -75,6 +76,8 @@ ASlAiPlayerCharacter::ASlAiPlayerCharacter()
 	//不显示第一人称模型
 	GetMesh()->SetOwnerNoSee(false);
 	MeshFirst->SetOwnerNoSee(true);
+
+	HandObject=CreateDefaultSubobject<UChildActorComponent>(TEXT("HandObject"));
 	
 	//初始化参数
 	BaseTurnRate = 45.0f;
@@ -93,7 +96,11 @@ ASlAiPlayerCharacter::ASlAiPlayerCharacter()
 void ASlAiPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	//把手持物品组件绑定到第三人称模型右手上
+	HandObject->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetNotIncludingScale,FName("RHSocket"));
+	//添加actor到hand组件
+	HandObject->SetChildActorClass(ASlAiHandObject::StaticClass());
 }
 
 // Called every frame

@@ -3,8 +3,12 @@
 
 #include "Player/SlAiPlayerState.h"
 
+#include "Data/SlAiDataHandle.h"
+
 ASlAiPlayerState::ASlAiPlayerState()
 {
+	//当前选中的快捷栏
+	CurrentShortcutInfoIndex = 0;
 }
 
 void ASlAiPlayerState::RegisterShortcutContainer(TArray<TSharedPtr<ShortcutContainer>>* ContainerList,
@@ -26,7 +30,39 @@ void ASlAiPlayerState::RegisterShortcutContainer(TArray<TSharedPtr<ShortcutConta
 	ShortcutContainerList[3]->SetObject(3)->SetObjectNum(3);
 }
 
+void ASlAiPlayerState::ChoosedShortcut(bool isPre)
+{
+	//下一个被选择容器的下标
+	int NextIndex = 0;
+	if (isPre)
+	{
+		NextIndex =CurrentShortcutInfoIndex-1<0?8:CurrentShortcutInfoIndex-1;
+	}else
+	{
+		NextIndex = CurrentShortcutInfoIndex+1>8?0:CurrentShortcutInfoIndex+1;
+	}
+	ShortcutContainerList[CurrentShortcutInfoIndex]->SetChoosed(false);
+	ShortcutContainerList[NextIndex] ->SetChoosed(true);
+	CurrentShortcutInfoIndex=NextIndex;
+}
+
+int ASlAiPlayerState::GetCurrentHandObjectIndex() const
+{
+	if (ShortcutContainerList.Num()==0)return  0;
+	
+	return ShortcutContainerList[CurrentShortcutInfoIndex]->ObjectIndex;
+}
+
 FText ASlAiPlayerState::GetShortcutInfoText() const
 {
-	return FText::FromString("ASlAiPlayerState::GetShortcutInfoText");
+	TSharedPtr<ObjectAttribute> ObjectAttr;
+	ObjectAttr = *SlAiDataHandle::Get()->ObjectAttrMap.Find(GetCurrentHandObjectIndex());
+
+	switch (SlAiDataHandle::Get()->CurrentCultrueTeam)
+	{
+	case ECultureTeam::EN: return ObjectAttr->EN;
+	case ECultureTeam::ZH: return ObjectAttr->ZH;
+	}
+	return ObjectAttr->EN;
 }
+
