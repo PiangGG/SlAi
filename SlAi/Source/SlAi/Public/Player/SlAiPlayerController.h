@@ -20,6 +20,9 @@ class SLAI_API ASlAiPlayerController : public APlayerController
 	ASlAiPlayerController();
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupInputComponent() override;
+
+	//对Charactor的手持物品进行更改，这个函数在PlayerState内会调用
+	void ChangeHandObject();
 public:
 	//获取玩家角色
 	class ASlAiPlayerCharacter* SPCharacter;
@@ -38,6 +41,9 @@ private:
 	//滑轮滚动
 	void ScrollUpEvent();
 	void ScrollDownEvent();
+
+	//修改预动作
+	void ChangePreUpperType(EUpperBody::Type RightType);
 private:
 	//左键预动作
 	EUpperBody::Type LeftUpperType;

@@ -14,7 +14,8 @@ class SLAI_API ASlAiHandObject : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ASlAiHandObject();
-
+	//根据物品ID返回物品的工厂方法
+	static TSubclassOf<AActor> SpawnHandObject(int ObjectID);
 public:
 	int ObjectIndex;
 protected:

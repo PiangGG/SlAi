@@ -9,10 +9,16 @@
 			"SlAiGameMode.cpp.obj",
 			"SlAiMenuController.cpp.obj",
 			"SlAIMenuGameMode.cpp.obj",
+			"SlAiHandApple.cpp.obj",
+			"SlAiHandAxe.cpp.obj",
+			"SlAiHandHammer.cpp.obj",
+			"SlAiHandMeat.cpp.obj",
+			"SlAiHandNone.cpp.obj",
+			"SlAiHandStone.cpp.obj",
+			"SlAiHandSword.cpp.obj",
+			"SlAiHandWood.cpp.obj",
 			"SlAiFirstPlayerAnim.cpp.obj",
 			"SlAiPlayerAnim.cpp.obj",
-			"SlAiPlayerController.cpp.obj",
-			"SlAiPlayerState.cpp.obj",
 			"SlAiThirdPlayerAnim.cpp.obj",
 			"SlAiGameHUD.cpp.obj",
 			"SlAiMenuHUD.cpp.obj",
@@ -29,18 +35,13 @@
 			"SSlAiShortcutWidget.cpp.obj",
 			"SlAi.cpp.obj",
 			"SlAiGameModeBase.cpp.obj",
-			"SlAiHandApple.cpp.obj",
-			"SlAiHandAxe.cpp.obj",
-			"SlAiHandHammer.cpp.obj",
-			"SlAiHandMeat.cpp.obj",
-			"SlAiHandNone.cpp.obj",
 			"SlAiHandObject.cpp.obj",
-			"SlAiHandStone.cpp.obj",
-			"SlAiHandSword.cpp.obj",
-			"SlAiHandWood.cpp.obj",
-			"SlAiPlayerCharacter.cpp.obj"
+			"SlAiPlayerCharacter.cpp.obj",
+			"SlAiPlayerController.cpp.obj",
+			"SlAiPlayerState.cpp.obj"
 		],
 		"Module.SlAi.gen.cpp.obj": [
+			"SlAi.init.gen.cpp.obj",
 			"SlAiFirstPlayerAnim.gen.cpp.obj",
 			"SlAiGameHUD.gen.cpp.obj",
 			"SlAiGameInstance.gen.cpp.obj",
@@ -65,8 +66,7 @@
 			"SlAiPlayerController.gen.cpp.obj",
 			"SlAiPlayerState.gen.cpp.obj",
 			"SlAiThirdPlayerAnim.gen.cpp.obj",
-			"SlAiTypes.gen.cpp.obj",
-			"SlAi.init.gen.cpp.obj"
+			"SlAiTypes.gen.cpp.obj"
 		]
 	}
 }

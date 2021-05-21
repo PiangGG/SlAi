@@ -28,6 +28,7 @@ void ASlAiPlayerState::RegisterShortcutContainer(TArray<TSharedPtr<ShortcutConta
 	ShortcutContainerList[1]->SetObject(1)->SetObjectNum(5);
 	ShortcutContainerList[2]->SetObject(2)->SetObjectNum(4);
 	ShortcutContainerList[3]->SetObject(3)->SetObjectNum(3);
+	ShortcutContainerList[7]->SetObject(7)->SetObjectNum(1);
 }
 
 void ASlAiPlayerState::ChoosedShortcut(bool isPre)
@@ -51,6 +52,13 @@ int ASlAiPlayerState::GetCurrentHandObjectIndex() const
 	if (ShortcutContainerList.Num()==0)return  0;
 	
 	return ShortcutContainerList[CurrentShortcutInfoIndex]->ObjectIndex;
+}
+
+EObjectType::Type ASlAiPlayerState::GetCurrentObjectType()
+{
+	TSharedPtr<ObjectAttribute> ObjectAttr;
+	ObjectAttr = *SlAiDataHandle::Get()->ObjectAttrMap.Find(GetCurrentHandObjectIndex());
+	return ObjectAttr->ObjectType;
 }
 
 FText ASlAiPlayerState::GetShortcutInfoText() const

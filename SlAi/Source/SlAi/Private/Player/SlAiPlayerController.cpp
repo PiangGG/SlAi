@@ -4,6 +4,7 @@
 #include "Player/SlAiPlayerController.h"
 
 #include "Common/SlAiHelper.h"
+#include "Hand/SlAiHandObject.h"
 #include "Player/SlAiPlayerCharacter.h"
 #include "Player/SlAiPlayerState.h"
 
@@ -16,6 +17,8 @@ ASlAiPlayerController::ASlAiPlayerController()
 void ASlAiPlayerController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	//临时
+	ChangePreUpperType(EUpperBody::None);
 }
 
 void ASlAiPlayerController::SetupInputComponent()
@@ -31,6 +34,12 @@ void ASlAiPlayerController::SetupInputComponent()
 
 	InputComponent->BindAction("ScrollUp",IE_Pressed,this,&ASlAiPlayerController::ScrollUpEvent);
 	InputComponent->BindAction("ScrollDown",IE_Pressed,this,&ASlAiPlayerController::ScrollDownEvent);
+}
+
+void ASlAiPlayerController::ChangeHandObject()
+{
+	//生成手持物品
+	SPCharacter->ChangeHandObject(ASlAiHandObject::SpawnHandObject(SPState->GetCurrentHandObjectIndex()));
 }
 
 void ASlAiPlayerController::BeginPlay()
@@ -96,6 +105,8 @@ void ASlAiPlayerController::ScrollUpEvent()
 	if(IsLeftButtonDown||IsRightButtonDonw)return;
 	//告诉状态类切换
 	SPState->ChoosedShortcut(true);
+	
+	ChangeHandObject();
 }
 
 void ASlAiPlayerController::ScrollDownEvent()
@@ -107,6 +118,32 @@ void ASlAiPlayerController::ScrollDownEvent()
 	if(IsLeftButtonDown||IsRightButtonDonw)return;
 	//告诉状态类切换
 	SPState->ChoosedShortcut(false);
+	
+	ChangeHandObject();
+}
+
+void ASlAiPlayerController::ChangePreUpperType(EUpperBody::Type RightType = EUpperBody::None)
+{
+	//根据当前手持物品修改预动作
+	switch (SPState->GetCurrentObjectType())
+	{
+		case EObjectType::Normal:
+			LeftUpperType = EUpperBody::Punch;
+			RightUpperType = RightType;
+			break;
+		case EObjectType::Food:
+			LeftUpperType = EUpperBody::Punch;
+			RightUpperType = RightType==EUpperBody::None?EUpperBody::Eat:RightType;
+			break;
+		case EObjectType::Tool:
+			LeftUpperType = EUpperBody::Hit;
+			RightUpperType = RightType;
+			break;
+		case EObjectType::Weapon:
+			LeftUpperType = EUpperBody::Fight;
+			RightUpperType = RightType;
+			break;
+	}
 }
 
 void ASlAiPlayerController::LeftEventStart()

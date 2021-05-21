@@ -25,6 +25,8 @@ public:
 	void ChoosedShortcut(bool isPre);
 	//获取容器物品内容的Index
 	int GetCurrentHandObjectIndex()const;
+	//获取当前手持物品的物品类型
+	EObjectType::Type GetCurrentObjectType();
 public:
 	//当被选中的快捷栏序号
 	int CurrentShortcutInfoIndex;

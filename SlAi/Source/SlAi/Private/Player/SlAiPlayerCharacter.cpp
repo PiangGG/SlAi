@@ -100,7 +100,7 @@ void ASlAiPlayerCharacter::BeginPlay()
 	//把手持物品组件绑定到第三人称模型右手上
 	HandObject->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetNotIncludingScale,FName("RHSocket"));
 	//添加actor到hand组件
-	//HandObject->SetChildActorClass(ASlAiHandObject::StaticClass());
+	HandObject->SetChildActorClass(ASlAiHandObject::SpawnHandObject(0));
 }
 
 // Called every frame
@@ -138,14 +138,29 @@ void ASlAiPlayerCharacter::ChangeView(EGameViewMode::Type NewGameView)
 		ThirdCamera->SetActive(false);
 		MeshFirst->SetOwnerNoSee(false);
 		GetMesh()->SetOwnerNoSee(true);
+		//修改HandObject绑定的位置
+		HandObject->AttachToComponent(MeshFirst,FAttachmentTransformRules::SnapToTargetNotIncludingScale,FName("RHSocket"));
 		break;
 	case EGameViewMode::Third:
 		FirstCamera->SetActive(false);
 		ThirdCamera->SetActive(true);
 		MeshFirst->SetOwnerNoSee(true);
 		GetMesh()->SetOwnerNoSee(false);
+		//修改HandObject绑定的位置
+		HandObject->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetNotIncludingScale,FName("RHSocket"));
 		break;
 	}
+}
+
+void ASlAiPlayerCharacter::ChangeHandObject(TSubclassOf<AActor> HandObjectClass = nullptr)
+{
+	//如果不存在输入,销毁物品
+	if(!HandObjectClass)
+	{
+		HandObject->DestroyChildActor();
+	}
+	//设置物品到HandObject
+	HandObject->SetChildActorClass(HandObjectClass);
 }
 
 void ASlAiPlayerCharacter::MoveForward(float value)
