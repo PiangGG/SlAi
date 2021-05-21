@@ -13,5 +13,8 @@ UCLASS()
 class SLAI_API ASlAiHandSword : public ASlAiHandObject
 {
 	GENERATED_BODY()
-	
+	public:
+	ASlAiHandSword();
+	protected:
+	virtual void BeginPlay() override;
 };

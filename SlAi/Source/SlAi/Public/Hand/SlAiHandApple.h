@@ -13,5 +13,9 @@ UCLASS()
 class SLAI_API ASlAiHandApple : public ASlAiHandObject
 {
 	GENERATED_BODY()
-	
+
+public:
+	ASlAiHandApple();
+protected:
+	virtual void BeginPlay() override;
 };

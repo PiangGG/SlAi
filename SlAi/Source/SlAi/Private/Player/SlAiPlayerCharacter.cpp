@@ -100,7 +100,7 @@ void ASlAiPlayerCharacter::BeginPlay()
 	//把手持物品组件绑定到第三人称模型右手上
 	HandObject->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetNotIncludingScale,FName("RHSocket"));
 	//添加actor到hand组件
-	HandObject->SetChildActorClass(ASlAiHandObject::StaticClass());
+	//HandObject->SetChildActorClass(ASlAiHandObject::StaticClass());
 }
 
 // Called every frame

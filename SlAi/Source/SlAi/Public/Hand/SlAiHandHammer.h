@@ -13,5 +13,11 @@ UCLASS()
 class SLAI_API ASlAiHandHammer : public ASlAiHandObject
 {
 	GENERATED_BODY()
-	
+	public:
+	ASlAiHandHammer();
+	protected:
+	virtual void BeginPlay() override;
+
+	protected:
+	UStaticMeshComponent* ExtendMesh;
 };
