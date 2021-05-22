@@ -3,6 +3,7 @@
 #include "UI/Widget/SSlAiGameHUDWidget.h"
 
 #include "SlateOptMacros.h"
+#include "UI/Widget/SSlAIRayInfoWidget.h"
 #include "UI/Widget/SSlAiShortcutWidget.h"
 #include "Widgets/Layout/SDPIScaler.h"
 
@@ -17,11 +18,17 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 		.DPIScale(UIScaler)
 		[
 			SNew(SOverlay)
-			+SOverlay::Slot()
+			+SOverlay::Slot()//快捷栏
 			.HAlign(HAlign_Center)
 			.VAlign(VAlign_Bottom)
 			[
 				SAssignNew(ShortcutWidget,SSlAiShortcutWidget)
+			]
+			+SOverlay::Slot()//射线信息
+			.HAlign(HAlign_Center)
+			.VAlign(VAlign_Top)
+			[
+				SAssignNew(RayInfoWidget,SSlAiRayInfoWidget)
 			]
 		]
 	];

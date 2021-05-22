@@ -20,6 +20,8 @@ public:
 public:
 	//快捷栏指针
 	TSharedPtr<class SSlAiShortcutWidget> ShortcutWidget;
+	//射线信息框指针
+	TSharedPtr<class SSlAiRayInfoWidget> RayInfoWidget;
 	//绑定到UIScaler
 	float GetUIScaler()const;
 private:

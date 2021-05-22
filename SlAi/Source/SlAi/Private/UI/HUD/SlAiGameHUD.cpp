@@ -9,6 +9,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Player/SlAiPlayerState.h"
 #include "UI/Widget/SSlAiGameHUDWidget.h"
+#include "UI/Widget/SSlAiRayInfoWidget.h"
 #include "UI/Widget/SSlAiShortcutWidget.h"
 #include "Widgets/SWeakWidget.h"
 
@@ -33,5 +34,6 @@ void ASlAiGameHUD::BeginPlay()
 	GameHUDWidget->ShortcutWidget->RegisterShortCutContainer.
 	BindUObject(GM->SPState,&ASlAiPlayerState::RegisterShortcutContainer);
 	
-	
+	//绑定注册信息绑定文本事件
+	GameHUDWidget->RayInfoWidget->RegisterRayInfoEvent.BindUObject(GM->SPState,&ASlAiPlayerState::RegisterRayInfoEvent);
 }

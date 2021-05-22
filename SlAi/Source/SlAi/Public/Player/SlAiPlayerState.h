@@ -27,17 +27,22 @@ public:
 	int GetCurrentHandObjectIndex()const;
 	//获取当前手持物品的物品类型
 	EObjectType::Type GetCurrentObjectType();
+	//提供给RayInfoWidget的射线注册信息事件
+	void RegisterRayInfoEvent(TSharedPtr<STextBlock> RayInfoTextBlock);
 public:
 	//当被选中的快捷栏序号
 	int CurrentShortcutInfoIndex;
 private:
 	//获取快捷栏物品信息
 	FText GetShortcutInfoText()const;
+	//获取射线检测信息
+	FText GetRayInfoText()const;
 private:
 	//快捷栏序列
 	TArray<TSharedPtr<ShortcutContainer>> ShortcutContainerList;
 
 	//快捷栏信息参数
 	TAttribute<FText> ShortcutInfoTextAttr;
-	
+	//射线信息参数
+	TAttribute<FText> RayInfoTexAttr;
 };
