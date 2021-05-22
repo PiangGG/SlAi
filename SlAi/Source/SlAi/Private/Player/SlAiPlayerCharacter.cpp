@@ -152,15 +152,17 @@ void ASlAiPlayerCharacter::ChangeView(EGameViewMode::Type NewGameView)
 	}
 }
 
-void ASlAiPlayerCharacter::ChangeHandObject(TSubclassOf<AActor> HandObjectClass = nullptr)
-{
-	//如果不存在输入,销毁物品
-	if(!HandObjectClass)
-	{
-		HandObject->DestroyChildActor();
-	}
+void ASlAiPlayerCharacter::ChangeHandObject(TSubclassOf<AActor> HandObjectClass)
+{	
 	//设置物品到HandObject
 	HandObject->SetChildActorClass(HandObjectClass);
+}
+
+void ASlAiPlayerCharacter::ChangeHandObjectDetect(bool IsOpen)
+{
+	//获取手上物品
+	ASlAiHandObject* HandObjectClass=Cast<ASlAiHandObject>(HandObject->GetChildActor());
+	if (HandObjectClass)HandObjectClass->ChangeOverlayDetect(IsOpen);
 }
 
 void ASlAiPlayerCharacter::MoveForward(float value)

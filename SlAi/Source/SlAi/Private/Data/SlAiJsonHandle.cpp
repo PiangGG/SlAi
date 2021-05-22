@@ -8,6 +8,7 @@ SlAiJsonHandle::SlAiJsonHandle()
 {
 	RecordDataFileName=FString("RecordData.json");
 	ObjectAttrFileName = FString("ObjectAttribute.json");
+	ResourceAttrFileName = FString("ResourceAttribute.json");
 	RelativePath = FString("Res/ConfigData/");
 }
 
@@ -127,6 +128,55 @@ void SlAiJsonHandle::ObjectAttrJsonRead(TMap<int, TSharedPtr<ObjectAttribute>>& 
 	}
 }
 
+void SlAiJsonHandle::ResourceAttrJsonRead(TMap<int, TSharedPtr<ResourceAttribute>>& ResourceAttrMap)
+{
+	FString JsonValue;
+	LoadStringFromFile(ResourceAttrFileName,RelativePath,JsonValue);
+	TArray<TSharedPtr<FJsonValue>> JsonParsed;
+	TSharedRef<TJsonReader<TCHAR>> JsonReader=TJsonReaderFactory<TCHAR>::Create(JsonValue);
+
+	if (FJsonSerializer::Deserialize(JsonReader,JsonParsed))
+	{
+		for (int i=0;i<ResourceAttrMap.Num();++i)
+		{
+			//资源没有序号0
+			TArray<TSharedPtr<FJsonValue>> ResourceAttr = JsonParsed[i]->AsObject()->GetArrayField(FString::FromInt(i+1));
+			FText EN =FText::FromString(ResourceAttr[0]->AsObject()->GetStringField("EN"));
+			FText ZH =FText::FromString(ResourceAttr[1]->AsObject()->GetStringField("ZH"));
+			EResourceType::Type ResourceType = StringToResourceType(ResourceAttr[2]->AsObject()->GetStringField("ResourceType"));
+			int HP = ResourceAttr[3]->AsObject()->GetNumberField("HP");
+
+			TArray<TArray<int>> FlobObjectInfoArray;
+			TArray<TSharedPtr<FJsonValue>> FlobObjectInfo = ResourceAttr[4]->AsObject()->GetArrayField(FString("FlobObjectInfo"));
+			for (int j=0;j<FlobObjectInfo.Num();++j)
+			{
+				FString FlobObjectInfoItem = FlobObjectInfo[j]->AsObject()->GetStringField(FString::FromInt(j));
+				FString ObjectIndexStr;
+				FString RangeStr;
+				FString RangeMinStr;
+				FString RangeMaxStr;
+				FlobObjectInfoItem.Split(FString("_"),&ObjectIndexStr,&RangeStr);
+				RangeStr.Split(FString(","),&RangeMinStr,&RangeMaxStr);
+
+				TArray<int> FlobObjectInfoList;
+				FlobObjectInfoList.Add(FCString::Atoi(*ObjectIndexStr));
+				FlobObjectInfoList.Add(FCString::Atoi(*RangeStr));
+				FlobObjectInfoList.Add(FCString::Atoi(*RangeMaxStr));
+
+				FlobObjectInfoArray.Add(FlobObjectInfoList);
+			}
+			TSharedPtr<ResourceAttribute> ResourceAttrPtr = MakeShareable(new ResourceAttribute(EN,ZH,ResourceType,
+				HP,&FlobObjectInfoArray));
+			ResourceAttrMap.Add(i+1,ResourceAttrPtr);
+		}
+		
+	}else
+	{
+		SlAiHelper::Debug(FString("ResourceAttrFileName解析失败"));
+	}
+
+}
+
 bool SlAiJsonHandle::LoadStringFromFile(const FString& FileName, const FString& RelaPath, FString& ResultString)
 {
 	if (!FileName.IsEmpty())
@@ -192,4 +242,12 @@ EObjectType::Type SlAiJsonHandle::StringToObject(const FString ArgStr)
 	if (ArgStr.Equals(FString("Tool")))return EObjectType::Tool;
 	if (ArgStr.Equals(FString("Weapon")))return EObjectType::Weapon;
 	return EObjectType::Normal;
+}
+
+EResourceType::Type SlAiJsonHandle::StringToResourceType(const FString ArgStr)
+{
+	if (ArgStr.Equals(FString("Plant")))return EResourceType::Plant;
+	if (ArgStr.Equals(FString("Metal")))return EResourceType::Metal;
+	if (ArgStr.Equals(FString("Animl")))return EResourceType::Animl;
+	return EResourceType::Plant;
 }

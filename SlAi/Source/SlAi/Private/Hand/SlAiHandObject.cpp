@@ -32,7 +32,7 @@ ASlAiHandObject::ASlAiHandObject()
 	AffectCollision->SetCollisionProfileName(FName("ToolProfile"));
 
 	//初始时关闭Overlay检测
-	AffectCollision->SetGenerateOverlapEvents(true);
+	AffectCollision->SetGenerateOverlapEvents(false);
 
 	//绑定检测方法到碰撞体
 	FScriptDelegate OverlayBegin;
@@ -67,6 +67,11 @@ TSubclassOf<AActor> ASlAiHandObject::SpawnHandObject(int ObjectID)
 		default:
 			return ASlAiHandNone::StaticClass();
 	}
+}
+
+void ASlAiHandObject::ChangeOverlayDetect(bool IsOpen)
+{
+	AffectCollision->SetGenerateOverlapEvents(IsOpen);
 }
 
 // Called when the game starts or when spawned

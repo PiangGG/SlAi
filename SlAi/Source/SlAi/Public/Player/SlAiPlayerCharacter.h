@@ -32,6 +32,8 @@ public:
 	void ChangeView(EGameViewMode::Type NewGameView);
 	//修改当前的手持物品
 	void ChangeHandObject(TSubclassOf<class AActor> HandObjectClass);
+	//修改手持物品碰撞检测是否开启
+	void ChangeHandObjectDetect(bool IsOpen);
 public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class USpringArmComponent* CameraBoom;

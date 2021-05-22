@@ -138,7 +138,8 @@ void SlAiDataHandle::ResetMenuVolume(float Musicval, float Soundval)
 void SlAiDataHandle::InitialzeGameData()
 {
 	//初始化物品属性图
-	InitObjectAttr();	
+	InitObjectAttr();
+	InitResourceAttrMap();
 }
 
 void SlAiDataHandle::InitObjectAttr()
@@ -156,6 +157,11 @@ void SlAiDataHandle::InitObjectAttr()
 	ObjectBrushList.Add(&GameStyle->ObjectBrush_5);
 	ObjectBrushList.Add(&GameStyle->ObjectBrush_6);
 	ObjectBrushList.Add(&GameStyle->ObjectBrush_7);
+}
+
+void SlAiDataHandle::InitResourceAttrMap()
+{
+	SlAiSingleton<SlAiJsonHandle>::Get()->ResourceAttrJsonRead(ResourceAttrMap);
 }
 
 template <typename TEnum>
