@@ -54,6 +54,8 @@ struct SLAI_API FSlAiGameStyle : public FSlateWidgetStyle
 	//射线检测信息背板
 	UPROPERTY(EditAnywhere,Category=Info)
 	FSlateBrush RayInfoBursh;
+	UPROPERTY(EditAnywhere,Category=Info)
+	FSlateBrush PointerBursh;
 	/*
 	 * 60号字体
 	 */

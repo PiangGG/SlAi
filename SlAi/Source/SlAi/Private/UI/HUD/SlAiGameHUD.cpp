@@ -7,8 +7,10 @@
 
 #include "GamePlay/SlAiGameMode.h"
 #include "Kismet/GameplayStatics.h"
+#include "Player/SlAiPlayerController.h"
 #include "Player/SlAiPlayerState.h"
 #include "UI/Widget/SSlAiGameHUDWidget.h"
+#include "UI/Widget/SSlAiPointerWidget.h"
 #include "UI/Widget/SSlAiRayInfoWidget.h"
 #include "UI/Widget/SSlAiShortcutWidget.h"
 #include "Widgets/SWeakWidget.h"
@@ -36,4 +38,7 @@ void ASlAiGameHUD::BeginPlay()
 	
 	//绑定注册信息绑定文本事件
 	GameHUDWidget->RayInfoWidget->RegisterRayInfoEvent.BindUObject(GM->SPState,&ASlAiPlayerState::RegisterRayInfoEvent);
+
+	//绑定修改准心委托
+	GM->SPController->UpdatePointer.BindRaw(GameHUDWidget->PointerWidget.Get(),&SSlAiPointerWidget::UpdatePointer);
 }
