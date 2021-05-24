@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "Data/SlAiTypes.h"
 #include "GameFramework/Actor.h"
 #include "SlAiResourceObject.generated.h"
 
@@ -16,6 +18,17 @@ public:
 	ASlAiResourceObject();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	//获取物品信息
+	FText GetInfoText()const;
+	//获取资源类型
+	EResourceType::Type	GetResourceType();
+
+	//获取血量百分比
+	float GetHPRange();
+
+	//获取伤害
+	ASlAiResourceObject* TakeObjectDamage(int Damge);
 public:
 	//资源ID
 	int ResourceIndex;
@@ -32,4 +45,8 @@ protected:
 	UStaticMeshComponent* BaseMesh; 
 	//保存地址资源，用于随机刷资源
 	TArray<FString> ResourcePath;
+	//血量
+	int HP;
+	//基础血量
+	int BaseHP;
 };

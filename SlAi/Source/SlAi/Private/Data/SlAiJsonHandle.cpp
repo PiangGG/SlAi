@@ -100,51 +100,55 @@ void SlAiJsonHandle::UpdataRecordData(FString Culture, float MusicVolume, float 
 void SlAiJsonHandle::ObjectAttrJsonRead(TMap<int, TSharedPtr<ObjectAttribute>>& ObjectAttrMap)
 {
 	FString JsonValue;
-	LoadStringFromFile(ObjectAttrFileName,RelativePath,JsonValue);
-	TArray<TSharedPtr<FJsonValue>> JsonParsed;
-	TSharedRef<TJsonReader<TCHAR>> JsonReader=TJsonReaderFactory<TCHAR>::Create(JsonValue);
+	//½«ÎÄ¼þÖÐJSON×ª»¯³ÉFString
+	LoadStringFromFile(ObjectAttrFileName, RelativePath, JsonValue);
 
+	TArray<TSharedPtr<FJsonValue>> JsonParsed;
+	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonValue);
+	//½âÎö
 	if (FJsonSerializer::Deserialize(JsonReader,JsonParsed))
 	{
-		for (int i= 0;i<JsonParsed.Num();++i)
+		for (int i = 0; i < JsonParsed.Num(); ++i)
 		{
-			TArray<TSharedPtr<FJsonValue>> ObjectAttr=JsonParsed[i]->AsObject()->GetArrayField(FString::FromInt(i));
-			FText EN=FText::FromString(ObjectAttr[0]->AsObject()->GetStringField("EN"));
-			FText ZH=FText::FromString(ObjectAttr[1]->AsObject()->GetStringField("ZH"));
-			FString ObjectTypeStr=ObjectAttr[2]->AsObject()->GetStringField("ObjectType");
-			int PlantAttack=ObjectAttr[3]->AsObject()->GetNumberField("PlantAttack");
-			int MetalAttack=ObjectAttr[4]->AsObject()->GetNumberField("MetalAttack");
-			int AnimalAttack=ObjectAttr[5]->AsObject()->GetNumberField("AnimalAttack");
-			int AffectAttack=ObjectAttr[6]->AsObject()->GetNumberField("AffectAttack");
-			FString TexPath=ObjectAttr[7]->AsObject()->GetStringField("PlantAttack");
-			EObjectType::Type ObjectType=StringToObject(ObjectTypeStr);
-			TSharedPtr<ObjectAttribute> ObjectAttrPtr=MakeShareable(new ObjectAttribute(
-				EN,ZH,ObjectType,PlantAttack,MetalAttack,AnimalAttack,AffectAttack,TexPath));
-			ObjectAttrMap.Add(i,ObjectAttrPtr);
-		}	
-	}else
-	{
-		SlAiHelper::Debug(FString("解析失败!"));
+			TArray<TSharedPtr<FJsonValue>> ObjectAttr = JsonParsed[i]->AsObject()->GetArrayField(FString::FromInt(i));
+			FText EN = FText::FromString(ObjectAttr[0]->AsObject()->GetStringField("EN"));
+			FText ZH = FText::FromString(ObjectAttr[1]->AsObject()->GetStringField("ZH"));
+			FString ObjectTypeStr = ObjectAttr[2]->AsObject()->GetStringField("ObjectType");
+			int PlantAttack = ObjectAttr[3]->AsObject()->GetIntegerField("PlantAttack");
+			int MetalAttcck = ObjectAttr[4]->AsObject()->GetIntegerField("MetalAttcck");
+			int AnimalAttack = ObjectAttr[5]->AsObject()->GetIntegerField("AnimalAttack");
+			int AffectRange = ObjectAttr[6]->AsObject()->GetIntegerField("AffectRange");
+			FString TexPath = ObjectAttr[7]->AsObject()->GetStringField("TexPath");
+
+			//
+			EObjectType::Type ObjectType = StringToObject(ObjectTypeStr);
+			TSharedPtr<ObjectAttribute> ObjectAttrPtr = MakeShareable(new ObjectAttribute(EN, ZH, ObjectType, PlantAttack, MetalAttcck, AnimalAttack, AffectRange, TexPath));
+
+			ObjectAttrMap.Add(i, ObjectAttrPtr);
+		}
+	}//½âÎö²»³É¹¦
+	else {
+		SlAiHelper::Debug(FString("Deserialize Failed"));
 	}
 }
 
 void SlAiJsonHandle::ResourceAttrJsonRead(TMap<int, TSharedPtr<ResourceAttribute>>& ResourceAttrMap)
 {
-	FString JsonValue;
+	/*FString JsonValue;
 	LoadStringFromFile(ResourceAttrFileName,RelativePath,JsonValue);
 	TArray<TSharedPtr<FJsonValue>> JsonParsed;
 	TSharedRef<TJsonReader<TCHAR>> JsonReader=TJsonReaderFactory<TCHAR>::Create(JsonValue);
 
 	if (FJsonSerializer::Deserialize(JsonReader,JsonParsed))
 	{
-		for (int i=0;i<ResourceAttrMap.Num();++i)
+		for (int i=0;i<JsonParsed.Num();++i)
 		{
 			//资源没有序号0
 			TArray<TSharedPtr<FJsonValue>> ResourceAttr = JsonParsed[i]->AsObject()->GetArrayField(FString::FromInt(i+1));
 			FText EN =FText::FromString(ResourceAttr[0]->AsObject()->GetStringField("EN"));
 			FText ZH =FText::FromString(ResourceAttr[1]->AsObject()->GetStringField("ZH"));
 			EResourceType::Type ResourceType = StringToResourceType(ResourceAttr[2]->AsObject()->GetStringField("ResourceType"));
-			int HP = ResourceAttr[3]->AsObject()->GetNumberField("HP");
+			int HP = ResourceAttr[3]->AsObject()->GetIntegerField("HP");
 
 			TArray<TArray<int>> FlobObjectInfoArray;
 			TArray<TSharedPtr<FJsonValue>> FlobObjectInfo = ResourceAttr[4]->AsObject()->GetArrayField(FString("FlobObjectInfo"));
@@ -160,7 +164,7 @@ void SlAiJsonHandle::ResourceAttrJsonRead(TMap<int, TSharedPtr<ResourceAttribute
 
 				TArray<int> FlobObjectInfoList;
 				FlobObjectInfoList.Add(FCString::Atoi(*ObjectIndexStr));
-				FlobObjectInfoList.Add(FCString::Atoi(*RangeStr));
+				FlobObjectInfoList.Add(FCString::Atoi(*RangeMinStr));
 				FlobObjectInfoList.Add(FCString::Atoi(*RangeMaxStr));
 
 				FlobObjectInfoArray.Add(FlobObjectInfoList);
@@ -174,7 +178,56 @@ void SlAiJsonHandle::ResourceAttrJsonRead(TMap<int, TSharedPtr<ResourceAttribute
 	{
 		SlAiHelper::Debug(FString("ResourceAttrFileName解析失败"));
 	}
+*/
 
+	FString JsonValue;
+	LoadStringFromFile(ResourceAttrFileName, RelativePath, JsonValue);
+	TArray<TSharedPtr<FJsonValue>> JsonParsed;
+	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonValue);
+
+	if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
+	{
+		for (int i = 0; i < JsonParsed.Num(); ++i) {
+			//×ÊÔ´Ã»ÓÐÐòºÅ0,´Ó1¿ªÊ¼
+			TArray<TSharedPtr<FJsonValue>> ResourceAttr = JsonParsed[i]->AsObject()->GetArrayField(FString::FromInt(i + 1));
+			FText EN = FText::FromString(ResourceAttr[0]->AsObject()->GetStringField("EN"));
+			FText ZH = FText::FromString(ResourceAttr[1]->AsObject()->GetStringField("ZH"));
+			EResourceType::Type ResourceType = StringToResourceType(ResourceAttr[2]->AsObject()->GetStringField("ResourceType"));
+			int HP = ResourceAttr[3]->AsObject()->GetIntegerField("HP");
+
+			TArray<TArray<int>> FlobObjectInfoArray;
+
+			TArray<TSharedPtr<FJsonValue>> FlobObjectInfo = ResourceAttr[4]->AsObject()->GetArrayField(FString("FlobObjectInfo"));
+
+			for (int j = 0; j < FlobObjectInfo.Num(); ++j) {
+
+				FString FlobObjectInfoItem = FlobObjectInfo[j]->AsObject()->GetStringField(FString::FromInt(j));
+				FString ObjectIndexStr;
+				FString RangeStr;
+				FString RangeMinStr;
+				FString RangeMaxStr;
+				//
+				FlobObjectInfoItem.Split(FString("_"), &ObjectIndexStr, &RangeStr);
+				RangeStr.Split(FString(","), &RangeMinStr, &RangeMaxStr);
+
+				TArray<int> FlobObjectInfoList;
+
+				FlobObjectInfoList.Add(FCString::Atoi(*ObjectIndexStr));
+				FlobObjectInfoList.Add(FCString::Atoi(*RangeMinStr));
+				FlobObjectInfoList.Add(FCString::Atoi(*RangeMaxStr));
+
+				FlobObjectInfoArray.Add(FlobObjectInfoList);
+			}
+
+			TSharedPtr<ResourceAttribute> ResourceAttrPtr = MakeShareable(new ResourceAttribute(EN, ZH, ResourceType, HP, &FlobObjectInfoArray));
+
+			ResourceAttrMap.Add(i + 1, ResourceAttrPtr);
+		}
+	}
+	else
+	{
+		SlAiHelper::Debug(FString("Deserialize Failed"), 10.f);
+	}
 }
 
 bool SlAiJsonHandle::LoadStringFromFile(const FString& FileName, const FString& RelaPath, FString& ResultString)

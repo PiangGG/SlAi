@@ -222,4 +222,18 @@ struct ResourceAttribute
 			FlobObjectInfo.Add(*It);
 		}
 	}
+	//debug the json data ÁÙÊ±´úÂë
+	FString ToString() {
+		FString InfoStr;
+		for (TArray<TArray<int>>::TIterator It(FlobObjectInfo); It; ++It) {
+			for (TArray<int>::TIterator Ih(*It); Ih; ++Ih)
+			{
+				InfoStr += FString::FromInt(*Ih) + FString(". ");
+			}
+			InfoStr += FString("__");
+		}
+		return EN.ToString() + FString("--") + ZH.ToString() + FString("--") \
+			+ FString::FromInt((int)ResourceType) + FString("--")\
+			+ FString::FromInt(HP) + FString("--") + InfoStr;
+	}
 };

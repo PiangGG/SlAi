@@ -29,6 +29,8 @@ void ASlAiPlayerState::RegisterShortcutContainer(TArray<TSharedPtr<ShortcutConta
 	ShortcutContainerList[2]->SetObject(2)->SetObjectNum(4);
 	ShortcutContainerList[3]->SetObject(3)->SetObjectNum(3);
 	ShortcutContainerList[7]->SetObject(7)->SetObjectNum(1);
+	ShortcutContainerList[4]->SetObject(6)->SetObjectNum(1);
+	ShortcutContainerList[5]->SetObject(5)->SetObjectNum(1);
 }
 
 void ASlAiPlayerState::ChoosedShortcut(bool isPre)
@@ -67,6 +69,31 @@ void ASlAiPlayerState::RegisterRayInfoEvent(TSharedPtr<STextBlock> RayInfoTextBl
 	RayInfoTextBlock->SetText(RayInfoTexAttr);
 }
 
+int ASlAiPlayerState::GetAffectRange()
+{
+	TSharedPtr<ObjectAttribute> ObjectAttr;
+	ObjectAttr = *SlAiDataHandle::Get()->ObjectAttrMap.Find(GetCurrentHandObjectIndex());
+	//获取当前手上物品的作用范围
+	return ObjectAttr->AffectRange;
+}
+
+int ASlAiPlayerState::GetDamageValue(EResourceType::Type ResourceType)
+{
+	TSharedPtr<ObjectAttribute> ObjectAttr;
+	ObjectAttr = *SlAiDataHandle::Get()->ObjectAttrMap.Find(GetCurrentHandObjectIndex());
+	
+	switch (ResourceType)
+	{
+		case EResourceType::Plant: 
+			return ObjectAttr->PlantAttck;
+		case EResourceType::Metal: 
+			return ObjectAttr->MetalAttck;
+		case EResourceType::Animl:
+			return ObjectAttr->AnimalAttck;
+	}
+	return ObjectAttr->PlantAttck;
+}
+
 FText ASlAiPlayerState::GetShortcutInfoText() const
 {
 	TSharedPtr<ObjectAttribute> ObjectAttr;
@@ -82,6 +109,6 @@ FText ASlAiPlayerState::GetShortcutInfoText() const
 
 FText ASlAiPlayerState::GetRayInfoText() const
 {
-	return FText::FromString("HHH");
+	return RayInfoText;
 }
 

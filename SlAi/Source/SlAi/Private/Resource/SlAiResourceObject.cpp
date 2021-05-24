@@ -3,6 +3,10 @@
 
 #include "Resource/SlAiResourceObject.h"
 
+#include "Common/SlAiHelper.h"
+#include "Data/SlAiDataHandle.h"
+#include "Data/SlAiTypes.h"
+
 // Sets default values
 ASlAiResourceObject::ASlAiResourceObject()
 {
@@ -25,7 +29,8 @@ ASlAiResourceObject::ASlAiResourceObject()
 void ASlAiResourceObject::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	//TSharedPtr<ResourceAttribute> ResourceAttr=*SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
+	HP=BaseHP=2000;//ResourceAttr->HP;
 }
 
 // Called every frame
@@ -33,5 +38,39 @@ void ASlAiResourceObject::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+FText ASlAiResourceObject::GetInfoText() const
+{
+	TSharedPtr<ResourceAttribute> ResourceAttr=*SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
+	switch (SlAiDataHandle::Get()->CurrentCultrueTeam)
+	{
+		case ECultureTeam::EN: return ResourceAttr->EN;
+		case ECultureTeam::ZH: return ResourceAttr->ZH;
+	}
+	return ResourceAttr->ZH;
+}
+
+EResourceType::Type ASlAiResourceObject::GetResourceType()
+{
+	TSharedPtr<ResourceAttribute> ResourceAttr=*SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
+	return ResourceAttr->ResourceType;
+}
+
+float ASlAiResourceObject::GetHPRange()
+{
+	return FMath::Clamp<float>((float)HP/(float)BaseHP,0.0f,1.0f);
+}
+
+ASlAiResourceObject* ASlAiResourceObject::TakeObjectDamage(int Damge)
+{
+	HP = FMath::Clamp<int>(HP-Damge,0,BaseHP);
+	//如果小于0
+	if (HP<=0)
+	{
+		BaseMesh->SetCollisionResponseToChannels(ECR_Ignore);
+		GetWorld()->DestroyActor(this);
+	}
+	return this;
 }
 

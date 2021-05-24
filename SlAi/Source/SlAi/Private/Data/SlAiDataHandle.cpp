@@ -90,13 +90,13 @@ void SlAiDataHandle::ChangeLocalizationCulture(ECultureTeam Cultrue)
 		case ECultureTeam::ZH:
 			{
 				FInternationalization::Get().SetCurrentCulture(TEXT("zh"));
-				UE_LOG(LogTemp,Warning,TEXT("zh"));
+				//UE_LOG(LogTemp,Warning,TEXT("zh"));
 				break;
 			}
 		case ECultureTeam::EN:
 			{
 				FInternationalization::Get().SetCurrentCulture(TEXT("en"));
-				UE_LOG(LogTemp,Warning,TEXT("en"));
+				//UE_LOG(LogTemp,Warning,TEXT("en"));
 				break;
 			}
 	}
@@ -135,10 +135,11 @@ void SlAiDataHandle::ResetMenuVolume(float Musicval, float Soundval)
 		&RecordDataList);
 }
 
-void SlAiDataHandle::InitialzeGameData()
+void SlAiDataHandle::InitializeGameData()
 {
 	//初始化物品属性图
 	InitObjectAttr();
+	
 	InitResourceAttrMap();
 }
 
@@ -162,6 +163,11 @@ void SlAiDataHandle::InitObjectAttr()
 void SlAiDataHandle::InitResourceAttrMap()
 {
 	SlAiSingleton<SlAiJsonHandle>::Get()->ResourceAttrJsonRead(ResourceAttrMap);
+	
+	/*for (TMap<int, TSharedPtr<ResourceAttribute>>::TIterator It(ResourceAttrMap); It; ++It)
+	{
+		SlAiHelper::Debug((It->Value)->ToString(), 120.f);
+	}*/
 }
 
 template <typename TEnum>

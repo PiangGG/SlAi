@@ -21,7 +21,7 @@ public:
 	//修改菜单音量
 	void ResetMenuVolume(float Musicval,float Soundvalue);
 	//游戏数据初始化
-	void InitialzeGameData();
+	void InitializeGameData();
 	//初始化物品属性
 	void InitObjectAttr();
 	//初始化资源属性图

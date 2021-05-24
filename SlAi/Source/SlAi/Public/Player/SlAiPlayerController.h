@@ -46,10 +46,16 @@ private:
 	//滑轮滚动
 	void ScrollUpEvent();
 	void ScrollDownEvent();
-
 	//修改预动作
 	void ChangePreUpperType(EUpperBody::Type RightType);
-	
+	//射线检测结果
+	FHitResult RayGetHitResult(FVector TraceStart,FVector TraceEnd);
+	//绘制射线
+	void DrawRayLine(FVector StartPos,FVector EndPos,float Duration);
+	//进行射线检测
+	void RunRayCast();
+	//行为状态机
+	void StateMachine();
 private:
 	//左键预动作
 	EUpperBody::Type LeftUpperType;
@@ -58,4 +64,7 @@ private:
 	//是否按着鼠标左右键
 	bool IsLeftButtonDown;
 	bool IsRightButtonDonw;
+
+	//检测到的资源
+	AActor * RayActor;
 };

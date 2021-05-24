@@ -41,6 +41,8 @@ void ASlAiGameMode::InitGamePlayModule()
 void ASlAiGameMode::BeginPlay()
 {
 	//初始化游戏数据
-	SlAiDataHandle::Get()->InitObjectAttr();
+	//初始化游戏数据
+	SlAiDataHandle::Get()->InitializeGameData();
 	if (!SPController)	InitGamePlayModule();
+	
 }

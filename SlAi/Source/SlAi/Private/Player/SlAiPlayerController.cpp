@@ -3,10 +3,15 @@
 
 #include "Player/SlAiPlayerController.h"
 
+#include "Camera/CameraComponent.h"
 #include "Common/SlAiHelper.h"
+#include "Components/LineBatchComponent.h"
+#include "Data/SlAiDataHandle.h"
 #include "Hand/SlAiHandObject.h"
+#include "PickUp/SlAiPickUpObject.h"
 #include "Player/SlAiPlayerCharacter.h"
 #include "Player/SlAiPlayerState.h"
+#include "Resource/SlAiResourceObject.h"
 
 ASlAiPlayerController::ASlAiPlayerController()
 {
@@ -17,12 +22,10 @@ ASlAiPlayerController::ASlAiPlayerController()
 void ASlAiPlayerController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	//临时
-	ChangePreUpperType(EUpperBody::None);
-
-	static float TestPointer=1.0f;
-	TestPointer=FMath::FInterpTo(TestPointer,0,DeltaSeconds,1.0f);
-	UpdatePointer.ExecuteIfBound(true,FMath::Clamp(TestPointer,0.0f,1.0f));
+	
+	RunRayCast();
+	//处理动作状态
+	StateMachine();
 }
 
 void ASlAiPlayerController::SetupInputComponent()
@@ -147,6 +150,114 @@ void ASlAiPlayerController::ChangePreUpperType(EUpperBody::Type RightType = EUpp
 			LeftUpperType = EUpperBody::Fight;
 			RightUpperType = RightType;
 			break;
+	}
+}
+
+FHitResult ASlAiPlayerController::RayGetHitResult(FVector TraceStart, FVector TraceEnd)
+{
+	FCollisionQueryParams TraceParams(true);
+	TraceParams.AddIgnoredActor(SPCharacter);
+	//TraceParams.bTraceAsyncScene=true;
+	TraceParams.bReturnPhysicalMaterial = false;
+	TraceParams.bTraceComplex = true;
+	FHitResult Hit(ForceInit);
+	if (GetWorld()->LineTraceSingleByChannel(Hit,TraceStart,TraceEnd,ECC_GameTraceChannel1,TraceParams))
+	{
+		DrawRayLine(TraceStart,TraceEnd,5.0f);		
+	}
+	return Hit;
+}
+
+void ASlAiPlayerController::DrawRayLine(FVector StartPos, FVector EndPos, float Duration)
+{
+	ULineBatchComponent* const LineBatcher=GetWorld()->PersistentLineBatcher;
+	if (LineBatcher!=nullptr)
+	{
+		float LineDuration = (Duration>0.0f)?Duration:LineBatcher->DefaultLifeTime;
+		//LineBatcher->DrawLine(StartPos,EndPos,FLinearColor::Red,10.0f,LineDuration);
+	}
+}
+
+void ASlAiPlayerController::RunRayCast()
+{
+	FVector StartPos(0.0f);
+	FVector EndPos(0.0f);
+	switch (SPCharacter->GameView)
+	{
+		case EGameViewMode::First:
+			StartPos=SPCharacter->FirstCamera->GetComponentLocation();
+			//StartPos=SPCharacter->FirstCamera->K2_GetComponentLocation();
+			EndPos=StartPos+SPCharacter->FirstCamera->GetForwardVector()*2000.f;
+			break;
+		case EGameViewMode::Third:
+			StartPos=SPCharacter->ThirdCamera->GetComponentLocation();
+			StartPos=StartPos+SPCharacter->ThirdCamera->GetForwardVector()*300.f;
+			EndPos=StartPos+SPCharacter->ThirdCamera->GetForwardVector()*2000.f;
+			break;
+	}
+	//是否检测到物品
+	bool IsDetected = false;
+	FHitResult Hit = RayGetHitResult(StartPos,EndPos);
+
+	RayActor = Hit.GetActor();
+	
+	if (Cast<ASlAiPickUpObject>(RayActor))
+	{
+		IsDetected=true;
+		SPState->RayInfoText = Cast<ASlAiPickUpObject>(RayActor)->GetInfoText();
+	}
+	if (Cast<ASlAiResourceObject>(RayActor))
+	{
+		IsDetected=true;
+		SPState->RayInfoText = Cast<ASlAiResourceObject>(RayActor)->GetInfoText();
+	}
+	if (!IsDetected)
+	{
+		SPState->RayInfoText = FText();
+	}
+}
+
+void ASlAiPlayerController::StateMachine()
+{
+	//临时
+	ChangePreUpperType(EUpperBody::None);
+	if (!Cast<ASlAiResourceObject>(RayActor)&&!Cast<ASlAiPickUpObject>(RayActor))
+	{
+		//准心显示白色未锁定
+		UpdatePointer.ExecuteIfBound(false,1.0f);
+	}
+	//如果检测到资源
+	if (Cast<ASlAiResourceObject>(RayActor))
+	{
+		//SlAiHelper::Debug(FString(RayActor->GetName()));
+		if (!IsLeftButtonDown)
+		{
+			//准心显示白色锁定
+			UpdatePointer.ExecuteIfBound(false,0.0f);
+		}
+		if (IsLeftButtonDown&&FVector::Distance(RayActor->GetActorLocation(),SPCharacter->GetActorLocation())<SPState->GetAffectRange())
+		{
+			//获取实际伤害
+			int Damage= SPState->GetDamageValue(Cast<ASlAiResourceObject>(RayActor)->GetResourceType());
+			//让资源受伤并获取剩余血量百分比
+			float Range =Cast<ASlAiResourceObject>(RayActor)->TakeObjectDamage(Damage)->GetHPRange();
+			//更新准心
+			UpdatePointer.ExecuteIfBound(true,Range);
+		}
+	}
+	//如果检测到可拾取物品，并且两者的距离小于300
+	if (Cast<ASlAiPickUpObject>(RayActor)&&FVector::Distance(RayActor->GetActorLocation(),SPCharacter->GetActorLocation())<300.0f)
+	{
+		//改变右手预状态为拾取
+		ChangePreUpperType(EUpperBody::PickUp);
+		//修改准心锁定模式
+		UpdatePointer.ExecuteIfBound(false,0);
+		//如果右键按下
+		if (IsRightButtonDonw)
+		{
+			//吧物品捡起来
+			Cast<ASlAiPickUpObject>(RayActor)->TakePickUp();
+		}
 	}
 }
 
