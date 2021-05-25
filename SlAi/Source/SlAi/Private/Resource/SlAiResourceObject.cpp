@@ -6,6 +6,7 @@
 #include "Common/SlAiHelper.h"
 #include "Data/SlAiDataHandle.h"
 #include "Data/SlAiTypes.h"
+#include "Flob/SlAiFlobObject.h"
 
 // Sets default values
 ASlAiResourceObject::ASlAiResourceObject()
@@ -31,6 +32,29 @@ void ASlAiResourceObject::BeginPlay()
 	Super::BeginPlay();
 	//TSharedPtr<ResourceAttribute> ResourceAttr=*SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
 	HP=BaseHP=2000;//ResourceAttr->HP;
+}
+
+void ASlAiResourceObject::CreateFlobObject()
+{
+	TSharedPtr<ResourceAttribute> ResourceAttr = *SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
+	//遍历生成掉落物
+	for (TArray<TArray<int>>::TIterator It(ResourceAttr->FlobObjectInfo);It;++It)
+	{
+		//随机生成的数量
+		FRandomStream Stream;
+		Stream.GenerateNewSeed();
+		//生成数量
+		int Num = Stream.RandRange((*It)[1],(*It)[2]);
+		if (GetWorld())
+		{
+			for (int i = 0;i<Num;++i)
+			{
+				//生成掉落物
+				ASlAiFlobObject* FlobObject = GetWorld()->SpawnActor<ASlAiFlobObject>(GetActorLocation(),FRotator::ZeroRotator);
+				FlobObject->CreateFlobObject((*It)[0]);
+			}
+		}
+	}
 }
 
 // Called every frame
@@ -69,6 +93,9 @@ ASlAiResourceObject* ASlAiResourceObject::TakeObjectDamage(int Damge)
 	if (HP<=0)
 	{
 		BaseMesh->SetCollisionResponseToChannels(ECR_Ignore);
+		//创建掉落物
+		CreateFlobObject();
+		
 		GetWorld()->DestroyActor(this);
 	}
 	return this;

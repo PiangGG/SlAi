@@ -165,6 +165,14 @@ void ASlAiPlayerCharacter::ChangeHandObjectDetect(bool IsOpen)
 	if (HandObjectClass)HandObjectClass->ChangeOverlayDetect(IsOpen);
 }
 
+void ASlAiPlayerCharacter::RenderHandObject(bool IsRender)
+{
+	//如果手上物品没有
+	if (!HandObject->GetChildActor())return;
+	//如果有物品
+	HandObject->GetChildActor()->SetActorHiddenInGame(!IsRender);
+}
+
 void ASlAiPlayerCharacter::MoveForward(float value)
 {
 	if (value!=0&&Controller)

@@ -24,7 +24,9 @@ public:
 	//开启和关闭手上物品的交互检测
 	UFUNCTION(BlueprintCallable,Category=SlAi)
 	void ChangeDetection(bool IsOpen);
-	
+	//开启和关闭手上物品的交互检测
+	UFUNCTION(BlueprintCallable,Category=SlAi)
+	void RenderHandObject(bool isRender);
 public:
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category=PlayAnim)
 	float Speed;

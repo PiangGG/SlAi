@@ -28,6 +28,12 @@ void USlAiPlayerAnim::ChangeDetection(bool IsOpen)
 	SPCharacter->ChangeHandObjectDetect(IsOpen);
 }
 
+void USlAiPlayerAnim::RenderHandObject(bool isRender)
+{
+	if (!SPCharacter)return;
+	SPCharacter->RenderHandObject(isRender);
+}
+
 void USlAiPlayerAnim::InitSPCharacter()
 {
 	if (!SPCharacter)SPCharacter=Cast<ASlAiPlayerCharacter>(TryGetPawnOwner());

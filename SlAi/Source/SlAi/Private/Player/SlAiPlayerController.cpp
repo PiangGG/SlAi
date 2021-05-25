@@ -105,7 +105,7 @@ void ASlAiPlayerController::RightEventEnd()
 
 void ASlAiPlayerController::ScrollUpEvent()
 {
-	SlAiHelper::Debug(FString("ScrollUpEvent"));
+	//SlAiHelper::Debug(FString("ScrollUpEvent"));
 	//如果不允许切换直接返回
 	if (!SPCharacter->IsAllowSwitch)return;
 	//如果左右键按下就不准跳转
@@ -118,7 +118,7 @@ void ASlAiPlayerController::ScrollUpEvent()
 
 void ASlAiPlayerController::ScrollDownEvent()
 {
-	SlAiHelper::Debug(FString("ScrollDownEvent"));
+	//SlAiHelper::Debug(FString("ScrollDownEvent"));
 	//如果不允许切换直接返回
 	if (!SPCharacter->IsAllowSwitch)return;
 	//如果左右键按下就不准跳转
@@ -221,6 +221,7 @@ void ASlAiPlayerController::StateMachine()
 {
 	//临时
 	ChangePreUpperType(EUpperBody::None);
+	
 	if (!Cast<ASlAiResourceObject>(RayActor)&&!Cast<ASlAiPickUpObject>(RayActor))
 	{
 		//准心显示白色未锁定
@@ -248,6 +249,7 @@ void ASlAiPlayerController::StateMachine()
 	//如果检测到可拾取物品，并且两者的距离小于300
 	if (Cast<ASlAiPickUpObject>(RayActor)&&FVector::Distance(RayActor->GetActorLocation(),SPCharacter->GetActorLocation())<300.0f)
 	{
+		//SlAiHelper::Debug(FString("123"));
 		//改变右手预状态为拾取
 		ChangePreUpperType(EUpperBody::PickUp);
 		//修改准心锁定模式

@@ -34,6 +34,8 @@ public:
 	void ChangeHandObject(TSubclassOf<class AActor> HandObjectClass);
 	//修改手持物品碰撞检测是否开启
 	void ChangeHandObjectDetect(bool IsOpen);
+	//是否渲染手上物品
+	void RenderHandObject(bool IsRender);
 public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class USpringArmComponent* CameraBoom;

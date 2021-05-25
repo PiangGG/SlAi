@@ -100,12 +100,12 @@ void SlAiJsonHandle::UpdataRecordData(FString Culture, float MusicVolume, float 
 void SlAiJsonHandle::ObjectAttrJsonRead(TMap<int, TSharedPtr<ObjectAttribute>>& ObjectAttrMap)
 {
 	FString JsonValue;
-	//½«ÎÄ¼þÖÐJSON×ª»¯³ÉFString
+	//
 	LoadStringFromFile(ObjectAttrFileName, RelativePath, JsonValue);
 
 	TArray<TSharedPtr<FJsonValue>> JsonParsed;
 	TSharedRef<TJsonReader<TCHAR>> JsonReader = TJsonReaderFactory<TCHAR>::Create(JsonValue);
-	//½âÎö
+	//
 	if (FJsonSerializer::Deserialize(JsonReader,JsonParsed))
 	{
 		for (int i = 0; i < JsonParsed.Num(); ++i)
@@ -119,14 +119,13 @@ void SlAiJsonHandle::ObjectAttrJsonRead(TMap<int, TSharedPtr<ObjectAttribute>>& 
 			int AnimalAttack = ObjectAttr[5]->AsObject()->GetIntegerField("AnimalAttack");
 			int AffectRange = ObjectAttr[6]->AsObject()->GetIntegerField("AffectRange");
 			FString TexPath = ObjectAttr[7]->AsObject()->GetStringField("TexPath");
-
 			//
 			EObjectType::Type ObjectType = StringToObject(ObjectTypeStr);
 			TSharedPtr<ObjectAttribute> ObjectAttrPtr = MakeShareable(new ObjectAttribute(EN, ZH, ObjectType, PlantAttack, MetalAttcck, AnimalAttack, AffectRange, TexPath));
 
 			ObjectAttrMap.Add(i, ObjectAttrPtr);
 		}
-	}//½âÎö²»³É¹¦
+	}//
 	else {
 		SlAiHelper::Debug(FString("Deserialize Failed"));
 	}
