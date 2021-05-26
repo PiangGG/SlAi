@@ -50,7 +50,7 @@ void ASlAiResourceObject::CreateFlobObject()
 			for (int i = 0;i<Num;++i)
 			{
 				//生成掉落物
-				ASlAiFlobObject* FlobObject = GetWorld()->SpawnActor<ASlAiFlobObject>(GetActorLocation(),FRotator::ZeroRotator);
+				ASlAiFlobObject* FlobObject = GetWorld()->SpawnActor<ASlAiFlobObject>(GetActorLocation()+FVector(0.0f,0.0f,20.0f),FRotator::ZeroRotator);
 				FlobObject->CreateFlobObject((*It)[0]);
 			}
 		}

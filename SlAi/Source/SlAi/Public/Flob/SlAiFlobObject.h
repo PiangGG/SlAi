@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Player/SlAiPlayerCharacter.h"
+
 #include "SlAiFlobObject.generated.h"
 
 UCLASS()
@@ -25,7 +27,11 @@ protected:
 
 private:
 	//渲染贴图
-	void RenderTexture();  
+	void RenderTexture();
+	//动态检测事件
+	void DetectPlayer();
+	//销毁事件
+	void DestroyEvent();
 private:
 	class UBoxComponent* BoxCollison;
 	class UStaticMeshComponent* BaseMesh;
@@ -36,4 +42,12 @@ private:
 
 	class UMaterialInstanceDynamic *ObjectIconDynamic;
 
+	//玩家指针
+	class ASlAiPlayerCharacter* SPCharacter;
+
+	//动态检测Timer
+	FTimerHandle DeterctTimer;
+
+	//销毁Timer
+	FTimerHandle DestroyTimer;
 };
