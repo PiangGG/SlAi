@@ -56,6 +56,18 @@ struct SLAI_API FSlAiGameStyle : public FSlateWidgetStyle
 	FSlateBrush RayInfoBursh;
 	UPROPERTY(EditAnywhere,Category=Info)
 	FSlateBrush PointerBursh;
+	
+	UPROPERTY(EditAnywhere,Category=PlayerState)
+	FSlateBrush PlayerStateBGBrush;
+	UPROPERTY(EditAnywhere,Category=PlayerState)
+	FSlateBrush PlayerHeadBrush;
+	UPROPERTY(EditAnywhere,Category=PlayerState)
+	FSlateBrush PlayerHeadBGBrush;
+	UPROPERTY(EditAnywhere,Category=PlayerState)
+	FSlateBrush HPBrush;
+	UPROPERTY(EditAnywhere,Category=PlayerState)
+	FSlateBrush HungerBrush;
+	
 	/*
 	 * 60号字体
 	 */

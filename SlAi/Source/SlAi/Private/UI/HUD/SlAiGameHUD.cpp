@@ -10,6 +10,7 @@
 #include "Player/SlAiPlayerController.h"
 #include "Player/SlAiPlayerState.h"
 #include "UI/Widget/SSlAiGameHUDWidget.h"
+#include "UI/Widget/SSlAiPlayerStateWidget.h"
 #include "UI/Widget/SSlAiPointerWidget.h"
 #include "UI/Widget/SSlAiRayInfoWidget.h"
 #include "UI/Widget/SSlAiShortcutWidget.h"
@@ -41,4 +42,6 @@ void ASlAiGameHUD::BeginPlay()
 
 	//绑定修改准心委托
 	GM->SPController->UpdatePointer.BindRaw(GameHUDWidget->PointerWidget.Get(),&SSlAiPointerWidget::UpdatePointer);
+	//绑定更新玩家状态委托
+	GM->SPState->UpdateStateWidget.BindRaw(GameHUDWidget->PlayerStateWidget.Get(),&SSlAiPlayerStateWidget::UpdateStateWidget);
 }

@@ -7,8 +7,31 @@
 
 ASlAiPlayerState::ASlAiPlayerState()
 {
+	//允许每帧运行
+	PrimaryActorTick.bCanEverTick = true;
 	//当前选中的快捷栏
 	CurrentShortcutInfoIndex = 0;
+	HP = 500.0f;
+	Hunger = 600.0f;
+}
+
+void ASlAiPlayerState::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	//如果饥饿值为0，持续减血
+	if(Hunger<=0)
+	{
+		 HP-=DeltaSeconds*2;
+	}else
+	{
+		Hunger-=DeltaSeconds*2;
+		HP+=DeltaSeconds*1;
+	}
+	//设定范围
+	HP = FMath::Clamp<float>(HP,0,500.0f);
+	Hunger = FMath::Clamp<float>(Hunger,0,600.0f);
+	//执行修改玩家状态UI的委托
+	UpdateStateWidget.ExecuteIfBound(HP/500.0f,Hunger/600.0f);
 }
 
 void ASlAiPlayerState::RegisterShortcutContainer(TArray<TSharedPtr<ShortcutContainer>>* ContainerList,

@@ -3,6 +3,7 @@
 #include "UI/Widget/SSlAiGameHUDWidget.h"
 
 #include "SlateOptMacros.h"
+#include "UI/Widget/SSlAiPlayerStateWidget.h"
 #include "UI/Widget/SSlAiPointerWidget.h"
 #include "UI/Widget/SSlAIRayInfoWidget.h"
 #include "UI/Widget/SSlAiShortcutWidget.h"
@@ -36,6 +37,12 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
             .VAlign(VAlign_Center)
             [
             	SAssignNew(PointerWidget,SSlAiPointerWidget)
+            ]
+            +SOverlay::Slot()//玩家状态PlayerStateWidget
+            .HAlign(HAlign_Left)
+            .VAlign(VAlign_Top)
+            [
+				SAssignNew(PlayerStateWidget,SSlAiPlayerStateWidget)
             ]
 		]
 	];

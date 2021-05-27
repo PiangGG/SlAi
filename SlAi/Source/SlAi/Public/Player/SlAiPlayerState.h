@@ -11,6 +11,8 @@
 /**
  * 
  */
+//更新玩家状态UI委托
+DECLARE_DELEGATE_TwoParams(FUpdateStateWidget,float,float)
 UCLASS()
 class SLAI_API ASlAiPlayerState : public APlayerState
 {
@@ -19,6 +21,7 @@ class SLAI_API ASlAiPlayerState : public APlayerState
 public:
 	ASlAiPlayerState();
 
+	virtual  void Tick(float DeltaSeconds) override;
 	//提供给ShortcutWidget的添加快捷栏容器委托
 	void RegisterShortcutContainer(TArray<TSharedPtr<ShortcutContainer>>* ContainerList,TSharedPtr<STextBlock>ShortcutInfoTextBlock);
 	//切换快捷栏
@@ -39,6 +42,8 @@ public:
 	int CurrentShortcutInfoIndex;
 	//射线检测信息TEXT,由PlayerController更新
 	FText RayInfoText;
+	//更新玩家状态UI,绑定的方法是PlayerStateWidget的UpdateStateWidget
+	FUpdateStateWidget UpdateStateWidget;
 private:
 	//获取快捷栏物品信息
 	FText GetShortcutInfoText()const;
@@ -52,4 +57,7 @@ private:
 	TAttribute<FText> ShortcutInfoTextAttr;
 	//射线信息参数
 	TAttribute<FText> RayInfoTexAttr;
+	//血值|饥饿度
+	float HP;
+	float Hunger;
 };
