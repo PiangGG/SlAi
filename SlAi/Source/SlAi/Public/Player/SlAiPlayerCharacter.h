@@ -51,6 +51,9 @@ public:
 	EUpperBody::Type upperType;
 	//是否允许切换视角
 	bool IsAllowSwitch;
+
+	//是否锁住输入
+	bool IsInputLocaked;
 private:
 	void MoveForward(float value);
 	void MoveRight(float value);

@@ -90,6 +90,8 @@ ASlAiPlayerCharacter::ASlAiPlayerCharacter()
 	upperType= EUpperBody::None;
 	
 	IsAllowSwitch=true;
+
+	IsInputLocaked=false;
 }
 
 // Called when the game starts or when spawned
@@ -175,6 +177,8 @@ void ASlAiPlayerCharacter::RenderHandObject(bool IsRender)
 
 void ASlAiPlayerCharacter::MoveForward(float value)
 {
+	if (IsInputLocaked)return;
+	
 	if (value!=0&&Controller)
 	{
 		const FRotator Rotation = Controller->GetDesiredRotation();
@@ -185,6 +189,7 @@ void ASlAiPlayerCharacter::MoveForward(float value)
 
 void ASlAiPlayerCharacter::MoveRight(float value)
 {
+	if (IsInputLocaked)return;
 	if (value!=0)
 	{
 		const FQuat Rotation = GetActorQuat();
@@ -196,37 +201,44 @@ void ASlAiPlayerCharacter::MoveRight(float value)
 
 void ASlAiPlayerCharacter::LookUpAtRate(float value)
 {
+	if (IsInputLocaked)return;
 	AddControllerPitchInput(value* BaseLookUpRate *GetWorld()->GetDeltaSeconds());
 }
 
 void ASlAiPlayerCharacter::Turn(float value)
 {
+	if (IsInputLocaked)return;
 	AddControllerYawInput(value);
 }
 
 void ASlAiPlayerCharacter::TurnAtRoate(float value)
 {
+	if (IsInputLocaked)return;
 	AddControllerYawInput(value* BaseTurnRate *GetWorld()->GetDeltaSeconds());
 }
 
 void ASlAiPlayerCharacter::OnStartJump()
 {
+	if (IsInputLocaked)return;
 	bPressedJump=true;
 }
 
 void ASlAiPlayerCharacter::OnStopJump()
 {
+	if (IsInputLocaked)return;
 	bPressedJump=false;
 	StopJumping();
 }
 
 void ASlAiPlayerCharacter::OnStartRun()
 {
+	if (IsInputLocaked)return;
 	GetCharacterMovement()->MaxWalkSpeed = 375.0f;
 }
 
 void ASlAiPlayerCharacter::OnStopRun()
 {
+	if (IsInputLocaked)return;
 	GetCharacterMovement()->MaxWalkSpeed = 150.0f;
 }
 

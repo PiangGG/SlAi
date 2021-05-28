@@ -78,6 +78,7 @@ void ASlAiPlayerController::BeginPlay()
 
 void ASlAiPlayerController::ChangeView()
 {
+	if (SPCharacter->IsInputLocaked)return;
 	//如果不允许切换直接返回
 	if (!SPCharacter->IsAllowSwitch)return;
 	switch (SPCharacter->GameView)
@@ -93,12 +94,14 @@ void ASlAiPlayerController::ChangeView()
 
 void ASlAiPlayerController::LeftEventEnd()
 {
+	if (SPCharacter->IsInputLocaked)return;
 	SPCharacter->upperType=EUpperBody::None;
 	IsLeftButtonDown = false;
 }
 
 void ASlAiPlayerController::RightEventStart()
 {
+	if (SPCharacter->IsInputLocaked)return;
 	SPCharacter->upperType=RightUpperType;
 	IsRightButtonDonw= true;
 }
@@ -111,6 +114,7 @@ void ASlAiPlayerController::RightEventEnd()
 
 void ASlAiPlayerController::ScrollUpEvent()
 {
+	if (SPCharacter->IsInputLocaked)return;
 	//SlAiHelper::Debug(FString("ScrollUpEvent"));
 	//如果不允许切换直接返回
 	if (!SPCharacter->IsAllowSwitch)return;
@@ -124,6 +128,7 @@ void ASlAiPlayerController::ScrollUpEvent()
 
 void ASlAiPlayerController::ScrollDownEvent()
 {
+	if (SPCharacter->IsInputLocaked)return;
 	//SlAiHelper::Debug(FString("ScrollDownEvent"));
 	//如果不允许切换直接返回
 	if (!SPCharacter->IsAllowSwitch)return;
@@ -282,6 +287,7 @@ void ASlAiPlayerController::EscEvent()
 		ShowGameUI.ExecuteIfBound(CurrentUIType,EGameUIType::Pause);
 		//更新当前UI
 		CurrentUIType=EGameUIType::Pause;
+		LockedInput(true);
 		break;
 	case EGameUIType::Pause: ;
 	case EGameUIType::Package: ;
@@ -289,17 +295,50 @@ void ASlAiPlayerController::EscEvent()
 		SetPause(false);
 		SwitchInputMode(true);
 		ShowGameUI.ExecuteIfBound(CurrentUIType,EGameUIType::Game);
-		CurrentUIType=EGameUIType::Pause;
+		CurrentUIType=EGameUIType::Game;
+		LockedInput(false);
 		break;
 	}
 }
 
 void ASlAiPlayerController::PackageEvent()
 {
+	switch (CurrentUIType)
+	{
+	case EGameUIType::Game:
+		SwitchInputMode(false);
+		ShowGameUI.ExecuteIfBound(CurrentUIType,EGameUIType::Package);
+		CurrentUIType=EGameUIType::Package;
+		LockedInput(true);
+		break;
+	case EGameUIType::Package:
+		SwitchInputMode(true);
+		ShowGameUI.ExecuteIfBound(CurrentUIType,EGameUIType::Game);
+		CurrentUIType=EGameUIType::Game;
+		LockedInput(false);
+		break;
+
+	}
 }
 
 void ASlAiPlayerController::ChatRoomEvent()
 {
+	switch (CurrentUIType)
+	{
+	case EGameUIType::Game:
+		SwitchInputMode(false);
+		ShowGameUI.ExecuteIfBound(CurrentUIType,EGameUIType::ChatRoom);
+		CurrentUIType=EGameUIType::ChatRoom;
+		LockedInput(true);
+		break;
+	case EGameUIType::ChatRoom:
+		SwitchInputMode(true);
+		ShowGameUI.ExecuteIfBound(CurrentUIType,EGameUIType::Game);
+		CurrentUIType=EGameUIType::Game;
+		LockedInput(false);
+		break;
+	default: ;
+	}
 }
 
 void ASlAiPlayerController::SwitchInputMode(bool IsGameOnly)
@@ -320,8 +359,15 @@ void ASlAiPlayerController::SwitchInputMode(bool IsGameOnly)
 	}
 }
 
+void ASlAiPlayerController::LockedInput(bool IsLocked)
+{
+	SPCharacter->IsInputLocaked = IsLocked;
+}
+
 void ASlAiPlayerController::LeftEventStart()
 {
+	if (SPCharacter->IsInputLocaked)return;
+	
 	SPCharacter->upperType=LeftUpperType;
 	IsLeftButtonDown = true;
 }

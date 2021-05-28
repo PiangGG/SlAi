@@ -69,6 +69,9 @@ private:
 	void ChatRoomEvent();
 	//切换输入模式，true为游戏模式，false 为混合模式
 	void SwitchInputMode(bool IsGameOnly);
+
+	//设置锁住输入
+	void LockedInput(bool IsLocked);
 private:
 	//左键预动作
 	EUpperBody::Type LeftUpperType;

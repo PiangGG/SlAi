@@ -95,6 +95,24 @@ float SSlAiGameHUDWidget::GetUIScaler() const
 
 void SSlAiGameHUDWidget::ShowGameUI(EGameUIType::Type PreUI, EGameUIType::Type NextUI)
 {
+	//如果前一模式是Game,说明要显示黑板
+	if (PreUI==EGameUIType::Game)
+	{
+		BlackShade->SetVisibility(EVisibility::Visible);
+	}else
+	{
+		//隐藏当前显示的UI
+		UIMap.Find(PreUI)->Get()->SetVisibility(EVisibility::Hidden);
+	}
+	//如果下一模式是Game,隐藏黑板
+	if (NextUI==EGameUIType::Game)
+	{
+		BlackShade->SetVisibility(EVisibility::Hidden);
+	}else
+	{
+		//显示现在状态对应的UI
+		UIMap.Find(NextUI)->Get()->SetVisibility(EVisibility::Visible);
+	}
 }
 
 FVector2D SSlAiGameHUDWidget::GetViewporSize() const
