@@ -41,6 +41,10 @@ void ASlAiPlayerController::SetupInputComponent()
 
 	InputComponent->BindAction("ScrollUp",IE_Pressed,this,&ASlAiPlayerController::ScrollUpEvent);
 	InputComponent->BindAction("ScrollDown",IE_Pressed,this,&ASlAiPlayerController::ScrollDownEvent);
+
+	InputComponent->BindAction("EscEvent",IE_Pressed,this,&ASlAiPlayerController::EscEvent).bExecuteWhenPaused = true;
+	InputComponent->BindAction("PackageEvent",IE_Pressed,this,&ASlAiPlayerController::PackageEvent);
+	InputComponent->BindAction("ChatRoomEvent",IE_Pressed,this,&ASlAiPlayerController::ChatRoomEvent);
 }
 
 void ASlAiPlayerController::ChangeHandObject()
@@ -68,6 +72,8 @@ void ASlAiPlayerController::BeginPlay()
 
 	IsRightButtonDonw = false;
 	IsLeftButtonDown = false;
+
+	CurrentUIType = EGameUIType::Game;
 }
 
 void ASlAiPlayerController::ChangeView()
@@ -260,6 +266,57 @@ void ASlAiPlayerController::StateMachine()
 			//吧物品捡起来
 			Cast<ASlAiPickUpObject>(RayActor)->TakePickUp();
 		}
+	}
+}
+
+void ASlAiPlayerController::EscEvent()
+{
+	switch (CurrentUIType)
+	{
+	case EGameUIType::Game:
+		//设置游戏暂停
+		SetPause(true);
+		//设置输入模式为GameAndUI
+		SwitchInputMode(false);
+		//更新界面
+		ShowGameUI.ExecuteIfBound(CurrentUIType,EGameUIType::Pause);
+		//更新当前UI
+		CurrentUIType=EGameUIType::Pause;
+		break;
+	case EGameUIType::Pause: ;
+	case EGameUIType::Package: ;
+	case EGameUIType::ChatRoom:
+		SetPause(false);
+		SwitchInputMode(true);
+		ShowGameUI.ExecuteIfBound(CurrentUIType,EGameUIType::Game);
+		CurrentUIType=EGameUIType::Pause;
+		break;
+	}
+}
+
+void ASlAiPlayerController::PackageEvent()
+{
+}
+
+void ASlAiPlayerController::ChatRoomEvent()
+{
+}
+
+void ASlAiPlayerController::SwitchInputMode(bool IsGameOnly)
+{
+	if (IsGameOnly)
+	{
+		bShowMouseCursor = false;
+		FInputModeGameOnly InputMode;
+		InputMode.SetConsumeCaptureMouseDown(true);
+		SetInputMode(InputMode);
+	}else
+	{
+		bShowMouseCursor = true;
+		FInputModeGameAndUI InputMode;
+		InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::LockAlways);
+		InputMode.SetHideCursorDuringCapture(false);
+		SetInputMode(InputMode);
 	}
 }
 

@@ -10,6 +10,8 @@
 
 //修改准心委托
 DECLARE_DELEGATE_TwoParams(FUpdatePointer,bool,float)
+//显示UI委托
+DECLARE_DELEGATE_TwoParams(FShowGameUI,EGameUIType::Type,EGameUIType::Type)
 /**
  * 
  */
@@ -32,6 +34,8 @@ public:
 
 	//实时修改准心的委托,注册的函数是PointerWidget的UpdatePointer
 	FUpdatePointer UpdatePointer;
+
+	FShowGameUI ShowGameUI;
 protected:
 	virtual  void BeginPlay() override;
 private:
@@ -56,6 +60,15 @@ private:
 	void RunRayCast();
 	//行为状态机
 	void StateMachine();
+
+	//ESC按下事件
+	void EscEvent();
+	//E键背包
+	void PackageEvent();
+	//T键聊天室
+	void ChatRoomEvent();
+	//切换输入模式，true为游戏模式，false 为混合模式
+	void SwitchInputMode(bool IsGameOnly);
 private:
 	//左键预动作
 	EUpperBody::Type LeftUpperType;
@@ -67,4 +80,7 @@ private:
 
 	//检测到的资源
 	AActor * RayActor;
+
+	//保存当前UI状态
+	EGameUIType::Type CurrentUIType;
 };

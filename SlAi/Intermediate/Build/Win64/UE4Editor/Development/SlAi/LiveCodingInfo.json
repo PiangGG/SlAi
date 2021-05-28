@@ -25,7 +25,7 @@
 			"SlAiFirstPlayerAnim.cpp.obj",
 			"SlAiPlayerAnim.cpp.obj",
 			"SlAiPlayerCharacter.cpp.obj",
-			"SlAiPlayerController.cpp.obj",
+			"SlAiPlayerState.cpp.obj",
 			"SlAiThirdPlayerAnim.cpp.obj",
 			"SlAiResourceObject.cpp.obj",
 			"SlAiResourceRock.cpp.obj",
@@ -45,12 +45,16 @@
 			"SSlAiShortcutWidget.cpp.obj",
 			"SlAi.cpp.obj",
 			"SlAiGameModeBase.cpp.obj",
-			"SlAiPlayerState.cpp.obj",
+			"SlAiPlayerController.cpp.obj",
 			"SlAiGameHUD.cpp.obj",
+			"SSlAiPackageWidget.cpp.obj",
+			"SSlAiChatRoomWidget.cpp.obj",
 			"SSlAiGameHUDWidget.cpp.obj",
+			"SSlAiGameMenuWidget.cpp.obj",
 			"SSlAiPlayerStateWidget.cpp.obj"
 		],
 		"Module.SlAi.gen.cpp.obj": [
+			"SlAi.init.gen.cpp.obj",
 			"SlAiFirstPlayerAnim.gen.cpp.obj",
 			"SlAiFlobObject.gen.cpp.obj",
 			"SlAiGameHUD.gen.cpp.obj",
@@ -82,8 +86,7 @@
 			"SlAiResourceRock.gen.cpp.obj",
 			"SlAiResourceTree.gen.cpp.obj",
 			"SlAiThirdPlayerAnim.gen.cpp.obj",
-			"SlAiTypes.gen.cpp.obj",
-			"SlAi.init.gen.cpp.obj"
+			"SlAiTypes.gen.cpp.obj"
 		]
 	}
 }

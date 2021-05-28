@@ -89,7 +89,5 @@ END_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiPlayerStateWidget::UpdateStateWidget(float HPValue, float HungerValue)
 {
 	if (HPValue>0)HPBar->SetPercent(FMath::Clamp<float>(HPValue,0.0f,1.0f));
-	if (HPValue>0)HungerBar->SetPercent(FMath::Clamp<float>(HungerValue,0.0f,1.0f));
-
-		
+	if (HPValue>0)HungerBar->SetPercent(FMath::Clamp<float>(HungerValue,0.0f,1.0f));	
 }

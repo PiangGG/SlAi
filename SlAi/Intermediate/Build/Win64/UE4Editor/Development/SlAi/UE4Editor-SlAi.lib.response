@@ -7,12 +7,14 @@
 /IGNORE:4221
 /NODEFAULTLIB
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\SlAiEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
-"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiPlayerState.cpp.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiPlayerController.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAiGameHUD.cpp.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SSlAiPackageWidget.cpp.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SSlAiChatRoomWidget.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SSlAiGameHUDWidget.cpp.obj"
+"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SSlAiGameMenuWidget.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SSlAiPlayerStateWidget.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\Module.SlAi.cpp.obj"
-"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\SlAi.init.gen.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\Module.SlAi.gen.cpp.obj"
 "D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\Default.rc2.res"
 /OUT:"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\UE4Editor-SlAi.lib"

@@ -237,3 +237,17 @@ struct ResourceAttribute
 			+ FString::FromInt(HP) + FString("--") + InfoStr;
 	}
 };
+
+//游戏界面分类
+namespace EGameUIType
+{
+	enum Type
+	{
+		Game,//游戏模式UI
+		Pause,//暂停
+		Lose,//死亡
+		Package,//背包
+		ChatRoom//聊天室
+		
+	};
+}
