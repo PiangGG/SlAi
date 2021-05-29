@@ -21,12 +21,15 @@ ASlAiGameMode::ASlAiGameMode()
 	PlayerControllerClass=ASlAiPlayerController::StaticClass();
 	DefaultPawnClass = ASlAiPlayerCharacter::StaticClass();
 	PlayerStateClass = ASlAiPlayerState::StaticClass();
+
+	IsInitPackage=false;
 	
 }
 
 void ASlAiGameMode::Tick(float DeltaSeconds)
 {
 	//Super()
+	InitializePackage();
 }
 
 void ASlAiGameMode::InitGamePlayModule()
@@ -45,4 +48,11 @@ void ASlAiGameMode::BeginPlay()
 	SlAiDataHandle::Get()->InitializeGameData();
 	if (!SPController)	InitGamePlayModule();
 	
+}
+
+void ASlAiGameMode::InitializePackage()
+{
+	if (IsInitPackage)return;
+	InitPackageManager.ExecuteIfBound();
+	IsInitPackage=true;
 }

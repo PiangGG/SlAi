@@ -251,3 +251,14 @@ namespace EGameUIType
 		
 	};
 }
+//背包容器类型
+namespace EContainerType
+{
+	enum Type
+	{
+		Output,//合成表输出
+		Input,//合成表输入
+		Normal,//普通容器
+		Shortcut,//快捷容器栏
+	};
+}

@@ -9,11 +9,12 @@
 /**
  * 
  */
-class SLAI_API SSlAiContainerShortcutWidget : public SSlAiContaineBaseWidget
+class SLAI_API SSlAiContainerShortcutWidget : public SSlAiContainerBaseWidget
 {
 public:
 	SLATE_BEGIN_ARGS(SSlAiContainerShortcutWidget)
 	{}
+	SLATE_ATTRIBUTE(int,workIndex)
 	SLATE_END_ARGS()
 
 	/** Constructs this widget with InArgs */

@@ -14,6 +14,8 @@
 #include "UI/Widget/SSlAiPointerWidget.h"
 #include "UI/Widget/SSlAiRayInfoWidget.h"
 #include "UI/Widget/SSlAiShortcutWidget.h"
+#include "UI/Widget/Package/SSlAiContainerBaseWidget.h"
+#include "UI/Widget/Package/SSlAiPackageWidget.h"
 #include "Widgets/SWeakWidget.h"
 
 ASlAiGameHUD::ASlAiGameHUD()
@@ -47,4 +49,7 @@ void ASlAiGameHUD::BeginPlay()
 
 	//绑定显示UI委托
 	GM->SPController->ShowGameUI.BindRaw(GameHUDWidget.Get(),&SSlAiGameHUDWidget::ShowGameUI);
+
+	//初始化背包管理器到背包组件
+	GM->InitPackageManager.BindRaw(GameHUDWidget->PackageWidget.Get(),&SSlAiPackageWidget::InitPackageManager);
 }

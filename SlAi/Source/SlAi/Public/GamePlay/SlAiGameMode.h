@@ -9,6 +9,8 @@
 /**
  * 
  */
+//初始化背包管理类委托
+DECLARE_DELEGATE(FInitPackageManager)
 UCLASS()
 class SLAI_API ASlAiGameMode : public AGameModeBase
 {
@@ -24,7 +26,14 @@ public:
 	class ASlAiPlayerController* SPController;
 	class ASlAiPlayerCharacter* SPCharacter;
 	class ASlAiPlayerState* SPState;
+
+	FInitPackageManager InitPackageManager;
 protected:
 	virtual void BeginPlay() override;
-	
+
+	//初始化背包管理器
+	void InitializePackage();  
+private:
+	//是否已经初始化背包
+	bool IsInitPackage;
 };

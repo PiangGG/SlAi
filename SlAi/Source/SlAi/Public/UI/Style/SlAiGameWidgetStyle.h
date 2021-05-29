@@ -34,7 +34,12 @@ struct SLAI_API FSlAiGameStyle : public FSlateWidgetStyle
 	//指定没有颜色的Bursh
 	UPROPERTY(EditAnywhere,Category=Package)
 	FSlateBrush EmptyBrush;
-
+	//背包背景图
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush PackageBGBrush;
+	//合成表箭头
+	UPROPERTY(EditAnywhere,Category=Package)
+	FSlateBrush CompoundArrowBrush;
 	//物品Brush
 	UPROPERTY(EditAnywhere,Category=Package)
 	FSlateBrush ObjectBrush_1;
