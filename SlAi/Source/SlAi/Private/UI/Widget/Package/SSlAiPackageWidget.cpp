@@ -14,6 +14,7 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiPackageWidget::Construct(const FArguments& InArgs)
 {
 	GameStyle=&SlAiStyle::Get().GetWidgetStyle<FSlAiGameStyle>("BPSlAiGameStyle");
+	UIScaler=InArgs._UIScaler;
 	ChildSlot
 	[
 		// Populate the widget
@@ -78,8 +79,30 @@ void SSlAiPackageWidget::Construct(const FArguments& InArgs)
 			]
 		]
 	];
-	
+	MousePosition = FVector2D(0.0f,0.0f);
+
+	IsInitPackageMana = false;
 }
+
+void SSlAiPackageWidget::Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime)
+{
+	//如果背包显示并且世界存在,实时更新鼠标位置
+	if (GetVisibility()==EVisibility::Visible&&GEngine)
+	{
+		GEngine->GameViewport->GetMousePosition(MousePosition);
+		SlAiHelper::Debug(FString("APos"+MousePosition.ToString()),0.f);
+		MousePosition = MousePosition/UIScaler.Get();
+		SlAiHelper::Debug(FString("RPos"+MousePosition.ToString()),0.f);
+	}
+
+	//如果背包管理器已经初始化
+	if (IsInitPackageMana)
+	{
+		//实时更新容器是否悬停
+		SlAiPackageManager::Get()->UpdateHovered(MousePosition,AllottedGeometry);
+	}
+}
+
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
 
 void SSlAiPackageWidget::InitPackageManager()
@@ -91,6 +114,7 @@ void SSlAiPackageWidget::InitPackageManager()
 		TSharedPtr<SSlAiContainerBaseWidget> NewContainer = SSlAiContainerBaseWidget::CreateContainer(EContainerType::Shortcut,i);
 		//将容器实例添加到UI
 		ShortcutGrid->AddSlot(i,0)[NewContainer->AsShared()];
+		SlAiPackageManager::Get()->InsertContainer(NewContainer,EContainerType::Shortcut);
 	}
 
 	//背包主体
@@ -98,7 +122,7 @@ void SSlAiPackageWidget::InitPackageManager()
 	{
 		TSharedPtr<SSlAiContainerBaseWidget> NewContainer = SSlAiContainerBaseWidget::CreateContainer(EContainerType::Normal,i);
 		PackageGrid->AddSlot(i%9,i/9)[NewContainer->AsShared()];
-		//SlAiPackageManager::Get()->InSertContainer(NewContainer,EContainerType::Normal);
+		SlAiPackageManager::Get()->InsertContainer(NewContainer,EContainerType::Normal);
 	}
 
 	//初始化合成台
@@ -106,12 +130,14 @@ void SSlAiPackageWidget::InitPackageManager()
 	{
 		TSharedPtr<SSlAiContainerBaseWidget> NewContainer = SSlAiContainerBaseWidget::CreateContainer(EContainerType::Input,i);
 		CompoundGrid->AddSlot(i%3,i/3)[NewContainer->AsShared()];
-		//SlAiPackageManager::Get()->InSertContainer(NewContainer,EContainerType::Normal);
+		SlAiPackageManager::Get()->InsertContainer(NewContainer,EContainerType::Input);
 	}
 	//初始化输出容器
 	TSharedPtr<SSlAiContainerBaseWidget> NewContainer = SSlAiContainerBaseWidget::CreateContainer(EContainerType::Output,1);
 	OutputBorder->SetContent(NewContainer->AsShared());
-		
+	SlAiPackageManager::Get()->InsertContainer(NewContainer,EContainerType::Output);
+
+	IsInitPackageMana = true;
 }
 
 

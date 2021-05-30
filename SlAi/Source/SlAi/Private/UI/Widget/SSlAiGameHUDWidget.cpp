@@ -3,6 +3,7 @@
 #include "UI/Widget/SSlAiGameHUDWidget.h"
 
 #include "SlateOptMacros.h"
+#include "Common/SlAiHelper.h"
 #include "UI/Widget/SSlAiChatRoomWidget.h"
 #include "UI/Widget/SSlAiPlayerStateWidget.h"
 #include "UI/Widget/SSlAiPointerWidget.h"
@@ -16,7 +17,6 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
 {
 	UIScaler.Bind(this,&SSlAiGameHUDWidget::GetUIScaler);
-	
 	ChildSlot
 	[
 		SNew(SDPIScaler)
@@ -82,6 +82,7 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
             [
 				SAssignNew(PackageWidget,SSlAiPackageWidget)
 				.Visibility(EVisibility::Hidden)
+				.UIScaler(UIScaler)
             ]
 		]
 	];

@@ -23,6 +23,9 @@ public:
 
 	//获取实例
 	static TSharedPtr<SSlAiContainerBaseWidget> CreateContainer(EContainerType::Type NeedType,int workId);
+
+	//设置鼠标移动到上面的状态
+	void UpdateHovered(bool IsHovered);
 protected:
 	//容器各个组件
 	TSharedPtr<class SBorder> ContainerBorder;
@@ -32,5 +35,6 @@ protected:
 	const struct FSlAiGameStyle* GameStyle;
 	//工作序号
 	TAttribute<int>workIndex;
-	
+	//是否Hover
+	bool IsHover;
 };

@@ -17,7 +17,8 @@ void SSlAiContainerBaseWidget::Construct(const FArguments& InArgs)
 	GameStyle=&SlAiStyle::Get().GetWidgetStyle<FSlAiGameStyle>("BPSlAiGameStyle");
 	//获取工作号
 	workIndex = InArgs._workIndex;
-	
+
+	IsHover =false;
 	ChildSlot
 	[
 		// Populate the widget
@@ -60,4 +61,18 @@ TSharedPtr<SSlAiContainerBaseWidget> SSlAiContainerBaseWidget::CreateContainer(E
 		break;
 	}
 	return ResultContainer;
+}
+
+void SSlAiContainerBaseWidget::UpdateHovered(bool IsHovered)
+{
+	//如果鼠标移动到上边
+	if (IsHovered)
+	{
+		if(!IsHover)ContainerBorder->SetBorderImage(&GameStyle->ChoosedContainerBrush);
+	}else
+	{
+		if(IsHover)ContainerBorder->SetBorderImage(&GameStyle->NormalContainerBrush);
+	}
+	IsHover = IsHovered;
+		
 }
