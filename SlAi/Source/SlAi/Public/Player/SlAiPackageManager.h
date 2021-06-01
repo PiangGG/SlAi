@@ -19,6 +19,16 @@ public:
 	void InsertContainer(TSharedPtr<class SSlAiContainerBaseWidget> Container,EContainerType::Type InsertType);
 	//更新悬停容器颜色
 	void UpdateHovered(FVector2D MousePos,FGeometry PackGeo);
+
+	//左键事件,参数是鼠标位置和PackageWidget的Geometry
+	void LeftOption(FVector2D MousePos,FGeometry PackGeo);
+	//右键事件,参数是鼠标位置和PackageWidget的Geometry
+	void RightOption(FVector2D MousePos,FGeometry PackGeo);
+public:
+	//鼠标物品ID
+	int ObjectIndex;
+	//鼠标物品数量
+	int ObjectNum;
 private:
 	//创建实例
 	static TSharedRef<SlAiPackageManager> Create();

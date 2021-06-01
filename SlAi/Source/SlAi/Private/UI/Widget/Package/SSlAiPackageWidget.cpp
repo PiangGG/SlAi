@@ -4,6 +4,7 @@
 #include "UI/Widget/Package/SSlAiPackageWidget.h"
 #include "SlateOptMacros.h"
 #include "Common/SlAiHelper.h"
+#include "Data/SlAiDataHandle.h"
 #include "Player/SlAiPackageManager.h"
 #include "UI/Style/SlAiGameWidgetStyle.h"
 #include "UI/Style/SlAIStyle.h"
@@ -84,6 +85,8 @@ void SSlAiPackageWidget::Construct(const FArguments& InArgs)
 	IsInitPackageMana = false;
 }
 
+END_SLATE_FUNCTION_BUILD_OPTIMIZATION
+
 void SSlAiPackageWidget::Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime)
 {
 	//如果背包显示并且世界存在,实时更新鼠标位置
@@ -103,7 +106,66 @@ void SSlAiPackageWidget::Tick(const FGeometry& AllottedGeometry, const double In
 	}
 }
 
-END_SLATE_FUNCTION_BUILD_OPTIMIZATION
+int32 SSlAiPackageWidget::OnPaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
+	const FSlateRect& MyCullingRect, FSlateWindowElementList& OutDrawElements, int32 LayerId,
+	const FWidgetStyle& InWidgetStyle, bool bParentEnabled) const
+{
+	//先调用父类
+	SCompoundWidget::OnPaint(Args, AllottedGeometry, MyCullingRect, OutDrawElements, LayerId, InWidgetStyle, bParentEnabled);
+	//如果背包管理没有初始化
+	if (!IsInitPackageMana)return LayerId;
+
+	//如果背包管理器的手上物品不等于0，就进行渲染
+	if (GetVisibility()==EVisibility::Visible&&SlAiPackageManager::Get()->ObjectIndex!=0&&SlAiPackageManager::Get()->ObjectNum!=0)
+	{
+		//渲染物品
+		FSlateDrawElement::MakeBox(
+			OutDrawElements,
+			LayerId+30,
+			AllottedGeometry.ToPaintGeometry(MousePosition-FVector2D(32.0f,32.0f),FVector2D(64.0f,64.0f)),
+			SlAiDataHandle::Get()->ObjectBrushList[SlAiPackageManager::Get()->ObjectIndex],
+			ESlateDrawEffect::None,
+			FLinearColor(1.0f,1.0f,1.0f,1.0f)
+		);
+
+		//获取物品属性
+		TSharedPtr<ObjectAttribute> ObjectAttr = *SlAiDataHandle::Get()->ObjectAttrMap.Find(SlAiPackageManager::Get()->ObjectIndex);
+		//渲染数量
+		if (ObjectAttr->ObjectType!=EObjectType::Tool&&ObjectAttr->ObjectType!=EObjectType::Weapon)
+		{
+			//渲染数量
+			FSlateDrawElement::MakeText
+			(
+				OutDrawElements,
+				LayerId+30,
+				AllottedGeometry.ToPaintGeometry(MousePosition+FVector2D(12.0f,16.0f),FVector2D(16.0,16.0)),
+				FString::FromInt(SlAiPackageManager::Get()->ObjectNum),
+				GameStyle->Font_16,
+				ESlateDrawEffect::None,
+				GameStyle->FontColor_Black
+			);
+		}
+	}
+	return LayerId;
+}
+
+FReply SSlAiPackageWidget::OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent)
+{
+	//如果背包没有初始化
+	if (!IsInitPackageMana)return FReply::Handled();
+
+	//如果是左键点击
+	if ( MouseEvent.IsMouseButtonDown(EKeys::LeftMouseButton))
+	{
+		SlAiPackageManager::Get()->LeftOption(MousePosition,MyGeometry);
+	}
+	if ( MouseEvent.IsMouseButtonDown(EKeys::RightMouseButton))
+	{
+		SlAiPackageManager::Get()->RightOption(MousePosition,MyGeometry);
+	}
+	return FReply::Handled();
+}
+
 
 void SSlAiPackageWidget::InitPackageManager()
 {

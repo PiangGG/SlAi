@@ -26,6 +26,21 @@ public:
 
 	//设置鼠标移动到上面的状态
 	void UpdateHovered(bool IsHovered);
+
+	//重置自身属性状态
+	virtual void ResetContainerPara(int ObjectID,int Num);
+
+	//获取容器物品的数量和ID
+	int GetIndex()const;
+	int GetNum()const;
+
+	//左键点击操作
+	virtual void LeftOperate(int InputID,int InputNum,int &OutputID,int&OutputNum);
+	//右键点击操作
+	virtual void RightOperate(int InputID,int inputNum,int &OutputID,int&OutputNum);
+protected:
+	//获取是否可以叠加
+	bool MultiplyAble(int ObjectID);
 protected:
 	//容器各个组件
 	TSharedPtr<class SBorder> ContainerBorder;
@@ -37,4 +52,9 @@ protected:
 	TAttribute<int>workIndex;
 	//是否Hover
 	bool IsHover;
+
+	//物品序号
+	int ObjectIndex;
+	//物品数量
+	int ObjectNum;
 };

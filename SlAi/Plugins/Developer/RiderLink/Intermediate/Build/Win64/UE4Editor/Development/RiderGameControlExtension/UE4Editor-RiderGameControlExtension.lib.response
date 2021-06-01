@@ -6,8 +6,8 @@
 /NAME:"UE4Editor-RiderGameControlExtension.dll"
 /IGNORE:4221
 /NODEFAULTLIB
-"D:\Code\UE4\SlAi\SlAi\Intermediate\Build\Win64\SlAiEditor\Development\UnrealEd\SharedPCH.UnrealEd.RTTI.ShadowErrors.h.obj"
-"D:\Code\UE4\SlAi\SlAi\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderGameControlExtension\RiderGameControlExtension.cpp.obj"
-"D:\Code\UE4\SlAi\SlAi\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderGameControlExtension\Default.rc2.res"
-/OUT:"D:\Code\UE4\SlAi\SlAi\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderGameControlExtension\UE4Editor-RiderGameControlExtension.lib"
+"D:\Code\unrealengine\SlAi\SlAi\Intermediate\Build\Win64\SlAiEditor\Development\UnrealEd\SharedPCH.UnrealEd.RTTI.ShadowErrors.h.obj"
+"D:\Code\unrealengine\SlAi\SlAi\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderGameControlExtension\RiderGameControlExtension.cpp.obj"
+"D:\Code\unrealengine\SlAi\SlAi\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderGameControlExtension\Default.rc2.res"
+/OUT:"D:\Code\unrealengine\SlAi\SlAi\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderGameControlExtension\UE4Editor-RiderGameControlExtension.lib"
 /INCLUDE:IMPLEMENT_MODULE_RiderGameControlExtension

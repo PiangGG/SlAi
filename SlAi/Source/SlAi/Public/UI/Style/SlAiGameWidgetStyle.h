@@ -15,7 +15,8 @@ USTRUCT()
 struct SLAI_API FSlAiGameStyle : public FSlateWidgetStyle
 {
 	GENERATED_USTRUCT_BODY()
-
+public:
+	
 	FSlAiGameStyle();
 	virtual ~FSlAiGameStyle();
 

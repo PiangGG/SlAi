@@ -42,6 +42,7 @@
 			"SSlAiContainerShortcutWidget.cpp.obj",
 			"SSlAiChatRoomWidget.cpp.obj",
 			"SSlAiChooseRecordWidget.cpp.obj",
+			"SSlAiGameHUDWidget.cpp.obj",
 			"SSlAiGameMenuWidget.cpp.obj",
 			"SSlAiGameOptionWidget.cpp.obj",
 			"SSlAiMenuHUDWidget.cpp.obj",
@@ -56,15 +57,16 @@
 			"SlAiGameModeBase.cpp.obj",
 			"SlAiPackageManager.cpp.obj",
 			"SSlAiContaineBaseWidget.cpp.obj",
-			"SSlAiPackageWidget.cpp.obj",
-			"SSlAiGameHUDWidget.cpp.obj"
+			"SSlAiPackageWidget.cpp.obj"
 		],
 		"Module.SlAi.gen.cpp.obj": [
+			"SlAi.init.gen.cpp.obj",
 			"SlAiFirstPlayerAnim.gen.cpp.obj",
 			"SlAiFlobObject.gen.cpp.obj",
 			"SlAiGameHUD.gen.cpp.obj",
 			"SlAiGameInstance.gen.cpp.obj",
 			"SlAiGameMode.gen.cpp.obj",
+			"SlAiGameModeBase.gen.cpp.obj",
 			"SlAiGameWidgetStyle.gen.cpp.obj",
 			"SlAiHandApple.gen.cpp.obj",
 			"SlAiHandAxe.gen.cpp.obj",
@@ -75,6 +77,10 @@
 			"SlAiHandStone.gen.cpp.obj",
 			"SlAiHandSword.gen.cpp.obj",
 			"SlAiHandWood.gen.cpp.obj",
+			"SlAiMenuController.gen.cpp.obj",
+			"SlAIMenuGameMode.gen.cpp.obj",
+			"SlAiMenuHUD.gen.cpp.obj",
+			"SlAiMenuWidgetStyle.gen.cpp.obj",
 			"SlAiPickUpObject.gen.cpp.obj",
 			"SlAiPickUpStone.gen.cpp.obj",
 			"SlAiPickUpWood.gen.cpp.obj",
@@ -86,12 +92,6 @@
 			"SlAiResourceRock.gen.cpp.obj",
 			"SlAiResourceTree.gen.cpp.obj",
 			"SlAiThirdPlayerAnim.gen.cpp.obj",
-			"SlAi.init.gen.cpp.obj",
-			"SlAiGameModeBase.gen.cpp.obj",
-			"SlAiMenuController.gen.cpp.obj",
-			"SlAIMenuGameMode.gen.cpp.obj",
-			"SlAiMenuHUD.gen.cpp.obj",
-			"SlAiMenuWidgetStyle.gen.cpp.obj",
 			"SlAiTypes.gen.cpp.obj"
 		]
 	}
