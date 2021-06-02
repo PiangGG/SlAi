@@ -36,6 +36,8 @@ public:
 	void ChangeHandObjectDetect(bool IsOpen);
 	//是否渲染手上物品
 	void RenderHandObject(bool IsRender);
+	//丟棄物品
+	void PlayerThrowObject(int ObjectID,int Num);
 public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class USpringArmComponent* CameraBoom;

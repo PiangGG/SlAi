@@ -5,6 +5,7 @@
 
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Flob/SlAiFlobObject.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Hand/SlAiHandObject.h"
@@ -173,6 +174,20 @@ void ASlAiPlayerCharacter::RenderHandObject(bool IsRender)
 	if (!HandObject->GetChildActor())return;
 	//如果有物品
 	HandObject->GetChildActor()->SetActorHiddenInGame(!IsRender);
+}
+
+void ASlAiPlayerCharacter::PlayerThrowObject(int ObjectID, int Num)
+{
+	if (GetWorld())
+	{
+		for (int i=0;i<Num;++i)
+		{
+			//生成掉落資源
+			ASlAiFlobObject* FlobObject = GetWorld()->SpawnActor<ASlAiFlobObject>
+			(GetActorLocation()+FVector(0.0f,0.0f,40.0f),FRotator::ZeroRotator);
+			FlobObject->ThrowFlobObject(ObjectID,GetActorRotation().Yaw);
+		}
+	}
 }
 
 void ASlAiPlayerCharacter::MoveForward(float value)

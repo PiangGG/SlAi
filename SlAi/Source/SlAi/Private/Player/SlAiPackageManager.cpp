@@ -33,14 +33,19 @@ void SlAiPackageManager::InsertContainer(TSharedPtr<SSlAiContainerBaseWidget> Co
 	{
 	case EContainerType::Output:
 		OutputContainer = Container;
+		OutputContainer->CompoundOutput.BindRaw(this,&SlAiPackageManager::Compoundoutput);
+		OutputContainer->ThrowObject.BindRaw(this,&SlAiPackageManager::ThrowObject);
 		break;
 	case EContainerType::Input:
+		Container->CompoundInput.BindRaw(this,&SlAiPackageManager::CompoundInput);
+		Container->CompoundInput.BindRaw(this, &SlAiPackageManager::CompoundInput);
 		InputContainerList.Add(Container);
 		break;
 	case EContainerType::Normal:
 		NormalContainerList.Add(Container);
 		break;
 	case EContainerType::Shortcut:
+		Container->PackShortChange.BindRaw(this,&SlAiPackageManager::PackShortChange);
 		ShortcutContainerList.Add(Container);
 		break;
 	}
@@ -89,6 +94,7 @@ void SlAiPackageManager::LeftOption(FVector2D MousePos, FGeometry PackGeo)
 	if (!ClickedContainer.IsValid()&&ObjectIndex!=0)
 	{
 		//把物品丢弃
+		ThrowObject(ObjectIndex,ObjectNum);
 		//重置物品
 		ObjectIndex = ObjectNum = 0;
 		
@@ -161,4 +167,23 @@ TSharedPtr<SSlAiContainerBaseWidget> SlAiPackageManager::LocateContainer(FVector
 	}
 	//最后返回空
 	return nullptr;
+}
+
+void SlAiPackageManager::ThrowObject(int ObjectID, int Num)
+{
+	PlayerThrowObject.ExecuteIfBound(ObjectID,Num);
+}
+
+void SlAiPackageManager::Compoundoutput(int ObjectID, int Num)
+{
+}
+
+void SlAiPackageManager::CompoundInput()
+{
+}
+
+void SlAiPackageManager::PackShortChange(int ShortcutID, int ObjectID, int ObjectNumber)
+{
+	//执行委托,绑定的方法是PlayerState的ChangeHandObject,在playercharacter下进行绑定
+	ChangeHandObject.ExecuteIfBound(ShortcutID, ObjectID, ObjectNumber);
 }

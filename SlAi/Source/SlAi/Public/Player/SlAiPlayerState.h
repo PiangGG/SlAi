@@ -37,6 +37,8 @@ public:
 	int GetAffectRange();
 	//获取伤害值
 	int GetDamageValue(EResourceType::Type ResourceType);
+	//更改快捷欄信息
+	void ChangeHandObject(int ShortcoutID,int ObjectID,int ObjectNum);
 public:
 	//当被选中的快捷栏序号
 	int CurrentShortcutInfoIndex;
@@ -44,6 +46,12 @@ public:
 	FText RayInfoText;
 	//更新玩家状态UI,绑定的方法是PlayerStateWidget的UpdateStateWidget
 	FUpdateStateWidget UpdateStateWidget;
+
+	//獲取控制器指針
+	class ASlAiPlayerController* SPController;
+
+	protected:
+virtual void BeginPlay() override;
 private:
 	//获取快捷栏物品信息
 	FText GetShortcutInfoText()const;

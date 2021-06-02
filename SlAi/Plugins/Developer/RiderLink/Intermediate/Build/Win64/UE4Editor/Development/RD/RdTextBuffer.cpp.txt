@@ -1,2 +1,0 @@
-D:\Code\unrealengine\SlAi\SlAi\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RD\Definitions.h
-d:\code\unrealengine\slai\slai\plugins\developer\riderlink\source\rd\src\rd_gen_cpp\src\RdTextBuffer.h

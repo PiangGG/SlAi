@@ -86,7 +86,7 @@ void ASlAiFlobObject::DetectPlayer()
 			if (Cast<ASlAiPlayerCharacter>(It->GetActor()))
 			{
 				SPCharacter = Cast<ASlAiPlayerCharacter>(It->GetActor());
-				if (true)
+				if (SPCharacter)
 				{
 					//停止检测
 					GetWorld()->GetTimerManager().PauseTimer(DeterctTimer);
@@ -157,8 +157,25 @@ void ASlAiFlobObject::CreateFlobObject(int ObjectID)
 	//做随机方向力
 	FRandomStream Stream;
 	Stream.GenerateNewSeed();
-	int DirYaw = Stream.RandRange(-180.0f,180.0f);
+	int DirYaw = Stream.RandRange(-180,180);
 	FRotator ForcRot=FRotator(0.0f,DirYaw,0.0f);
-	BoxCollison->AddForce((FVector(0.0f,0.0f,4.0f)-ForcRot.Vector())*100000.0f) ;
+	
+	BoxCollison->AddForce((FVector(0.0f,0.0f,4.0f)+ForcRot.Vector())*100000.0f) ;
+}
+
+void ASlAiFlobObject::ThrowFlobObject(int ObjectID, float DirYaw)
+{
+	//指定ID
+	ObjectIndex=ObjectID;
+	//渲染贴图
+	RenderTexture();
+	//做随机方向力
+	FRandomStream Stream;
+	
+	Stream.GenerateNewSeed();
+	DirYaw+=Stream.RandRange(-30,30);
+	FRotator ForcRot=FRotator(0.0f,DirYaw,0.0f);
+	
+	BoxCollison->AddForce((FVector(0.0f,0.0f,4.0f)+ForcRot.Vector())*120000.0f) ;
 }
 

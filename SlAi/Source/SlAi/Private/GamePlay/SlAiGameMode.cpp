@@ -7,6 +7,7 @@
 #include "Data/SlAiDataHandle.h"
 #include "GamePlay/SlAiGameInstance.h"
 #include "Kismet/GameplayStatics.h"
+#include "Player/SlAiPackageManager.h"
 #include "Player/SlAiPlayerCharacter.h"
 #include "Player/SlAiPlayerController.h"
 #include "Player/SlAiPlayerState.h"
@@ -54,5 +55,11 @@ void ASlAiGameMode::InitializePackage()
 {
 	if (IsInitPackage)return;
 	InitPackageManager.ExecuteIfBound();
+	//綁定丟棄物品委托
+	SlAiPackageManager::Get()->PlayerThrowObject.BindUObject(SPCharacter,&ASlAiPlayerCharacter::PlayerThrowObject);
+	//綁定修改快捷欄信息
+	SlAiPackageManager::Get()->ChangeHandObject.BindUObject(SPState,&ASlAiPlayerState::ChangeHandObject);
+	
 	IsInitPackage=true;
+	
 }

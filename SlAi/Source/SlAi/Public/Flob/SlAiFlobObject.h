@@ -20,6 +20,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	//生成初始化
 	void CreateFlobObject(int ObjectID);
+
+	//丟棄物品初始化
+	void ThrowFlobObject(int ObjectID,float DirYaw);
 	
 protected:
 	// Called when the game starts or when spawned

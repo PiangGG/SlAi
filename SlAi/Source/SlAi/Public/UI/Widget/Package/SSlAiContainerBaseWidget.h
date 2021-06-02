@@ -7,6 +7,16 @@
 #include "Data/SlAiTypes.h"
 #include "Widgets/SCompoundWidget.h"
 
+//合成输入委托
+DECLARE_DELEGATE(FCompoundInput)
+//合成提取委托,参数是物品序列号
+DECLARE_DELEGATE_TwoParams(FCompoundOutput,int,int)
+//丢弃物品委托
+DECLARE_DELEGATE_TwoParams(FThrowObject,int,int)
+//背包快捷栏更新状态引起游戏变化委托,参数分别是快捷栏序列号，更新的物品ID，更新物品数量
+DECLARE_DELEGATE_ThreeParams(FPackShortChange,int,int,int)
+
+//
 /**
  * 
  */
@@ -38,6 +48,16 @@ public:
 	virtual void LeftOperate(int InputID,int InputNum,int &OutputID,int&OutputNum);
 	//右键点击操作
 	virtual void RightOperate(int InputID,int inputNum,int &OutputID,int&OutputNum);
+
+public:
+	//合成输入委托
+	FCompoundInput CompoundInput;
+	//合成输出委托
+	FCompoundOutput CompoundOutput;
+	//丢弃物品委托
+	FThrowObject ThrowObject;
+	//快捷栏更新委托
+	FPackShortChange PackShortChange;
 protected:
 	//获取是否可以叠加
 	bool MultiplyAble(int ObjectID);
