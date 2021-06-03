@@ -5,10 +5,15 @@
 
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Data/SlAiDataHandle.h"
 #include "Flob/SlAiFlobObject.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Hand/SlAiHandObject.h"
+#include "Kismet/GameplayStatics.h"
+#include "Player/SlAiPackageManager.h"
+#include "Player/SlAiPlayerController.h"
+#include "Player/SlAiPlayerState.h"
 
 // Sets default values
 ASlAiPlayerCharacter::ASlAiPlayerCharacter()
@@ -99,11 +104,13 @@ ASlAiPlayerCharacter::ASlAiPlayerCharacter()
 void ASlAiPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
+	//如果控制器指针为空,添加引用
+	SPController=Cast<ASlAiPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(),0));
 	//把手持物品组件绑定到第三人称模型右手上
 	HandObject->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetNotIncludingScale,FName("RHSocket"));
 	//添加actor到hand组件
 	HandObject->SetChildActorClass(ASlAiHandObject::SpawnHandObject(0));
+	
 }
 
 // Called every frame
@@ -187,6 +194,27 @@ void ASlAiPlayerCharacter::PlayerThrowObject(int ObjectID, int Num)
 			(GetActorLocation()+FVector(0.0f,0.0f,40.0f),FRotator::ZeroRotator);
 			FlobObject->ThrowFlobObject(ObjectID,GetActorRotation().Yaw);
 		}
+	}
+}
+
+bool ASlAiPlayerCharacter::IsPackageFree(int ObjectID)
+{
+	return SlAiPackageManager::Get()->SearchFreeSpace(ObjectID);
+}
+
+void ASlAiPlayerCharacter::AddPackageObject(int ObjectID)
+{
+	SlAiPackageManager::Get()->AddObject(ObjectID);
+}
+
+void ASlAiPlayerCharacter::EatUpEvent()
+{
+	//
+	if(!SPController->SPState)return;
+	//告诉背包哪个快捷栏被吃了,如果成功吃掉东西
+	if (SlAiPackageManager::Get()->EatUpEvent(SPController->SPState->CurrentShortcutInfoIndex))
+	{
+		SPController->SPState->ProomoteHunger();
 	}
 }
 

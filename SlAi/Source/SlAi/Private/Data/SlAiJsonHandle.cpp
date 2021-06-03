@@ -194,7 +194,7 @@ void SlAiJsonHandle::ResourceAttrJsonRead(TMap<int, TSharedPtr<ResourceAttribute
 			FText ZH = FText::FromString(ResourceAttr[1]->AsObject()->GetStringField("ZH"));
 			EResourceType::Type ResourceType = StringToResourceType(ResourceAttr[2]->AsObject()->GetStringField("ResourceType"));
 			int HP = ResourceAttr[3]->AsObject()->GetIntegerField("HP");
-
+			
 			TArray<TArray<int>> FlobObjectInfoArray;
 
 			TArray<TSharedPtr<FJsonValue>> FlobObjectInfo = ResourceAttr[4]->AsObject()->GetArrayField(FString("FlobObjectInfo"));

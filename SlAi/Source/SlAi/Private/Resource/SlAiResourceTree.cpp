@@ -67,4 +67,10 @@ ASlAiResourceTree::ASlAiResourceTree()
 	ConstructorHelpers::FObjectFinder<UStaticMesh> StaticMesh(*ResourcePath[RandIndex]);
 	BaseMesh->SetStaticMesh(StaticMesh.Object);
 	ResourceIndex = 1;
+	HP = BaseHP=2000;
+}
+
+int ASlAiResourceTree::GetResourceIndex()
+{
+	return ResourceIndex;
 }

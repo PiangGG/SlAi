@@ -29,9 +29,11 @@ public:
 
 	//获取伤害
 	ASlAiResourceObject* TakeObjectDamage(int Damge);
+	
+	virtual int GetResourceIndex();
 public:
 	//资源ID
-	int ResourceIndex;
+	int ResourceIndex=0;
 
 protected:
 	// Called when the game starts or when spawned

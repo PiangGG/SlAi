@@ -86,7 +86,7 @@ void ASlAiFlobObject::DetectPlayer()
 			if (Cast<ASlAiPlayerCharacter>(It->GetActor()))
 			{
 				SPCharacter = Cast<ASlAiPlayerCharacter>(It->GetActor());
-				if (SPCharacter)
+				if (SPCharacter->IsPackageFree(ObjectIndex))
 				{
 					//停止检测
 					GetWorld()->GetTimerManager().PauseTimer(DeterctTimer);
@@ -127,9 +127,10 @@ void ASlAiFlobObject::Tick(float DeltaTime)
 		if(FVector::Distance(GetActorLocation(),SPCharacter->GetActorLocation()+FVector(0.0f,0.0f,40.0f))<10)
 		{
 			//判断玩家背包是否有空间
-			if (true)
+			if (SPCharacter->IsPackageFree(ObjectIndex))
 			{
 				//添加对应物品到背包
+				SPCharacter->AddPackageObject(ObjectIndex);
 				//销毁自己
 				DestroyEvent();
 			}else

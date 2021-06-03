@@ -266,10 +266,10 @@ void ASlAiPlayerController::StateMachine()
 		//修改准心锁定模式
 		UpdatePointer.ExecuteIfBound(false,0);
 		//如果右键按下
-		if (IsRightButtonDonw)
+		if (IsRightButtonDonw&&SPCharacter->IsPackageFree(Cast<ASlAiPickUpObject>(RayActor)->ObjectIndex))
 		{
 			//吧物品捡起来
-			Cast<ASlAiPickUpObject>(RayActor)->TakePickUp();
+			SPCharacter->AddPackageObject(Cast<ASlAiPickUpObject>(RayActor)->TakePickUp());
 		}
 	}
 }

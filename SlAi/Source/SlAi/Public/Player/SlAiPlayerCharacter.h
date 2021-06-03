@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
 #include "Data/SlAiTypes.h"
 #include "GameFramework/Character.h"
 #include "SlAiPlayerCharacter.generated.h"
@@ -38,6 +37,12 @@ public:
 	void RenderHandObject(bool IsRender);
 	//丟棄物品
 	void PlayerThrowObject(int ObjectID,int Num);
+	//背包是否有空间
+	bool IsPackageFree(int ObjectID);
+	//添加物品到背包
+	void AddPackageObject(int ObjectID);
+	//吃完东西调用事件，由Anim进行调用
+	void EatUpEvent();
 public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class USpringArmComponent* CameraBoom;
@@ -45,7 +50,8 @@ public:
 	class UCameraComponent* ThirdCamera;
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class UCameraComponent* FirstCamera;
-
+	//玩家控制器指针
+	class ASlAiPlayerController *SPController;
 	//当前视角模式
 	EGameViewMode::Type GameView;
 

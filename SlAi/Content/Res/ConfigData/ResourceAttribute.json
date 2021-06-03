@@ -1,11 +1,11 @@
-ï»¿[	
+[	
   {
     "1": 
 	[
       {"EN":                        "Tree"},
-      {"ZH":                        "æ ‘æœ¨"},
+      {"ZH":                        "Ê÷Ä¾"},
 	  {"ResourceType":              "Plant"},
-	  {"HP":                        "2000"},
+	  {"HP":                        2000},
 	  {
 	    "FlobObjectInfo": 
 		[
@@ -19,9 +19,9 @@
     "2": 
 	[
       {"EN":                        "Rock"},
-      {"ZH":                        "å²©çŸ³"},
+      {"ZH":                        "ÑÒÊ¯"},
 	  {"ResourceType":              "Metal"},
-	  {"HP":                        "4000"},
+	  {"HP":                        4000},
 	  {
 	    "FlobObjectInfo": 
 		[
@@ -34,9 +34,9 @@
     "3": 
 	[
       {"EN":                        "Emeny"},
-      {"ZH":                        "æ•Œäºº"},
+      {"ZH":                        "µÐÈË"},
 	  {"ResourceType":              "Animal"},
-	  {"HP":                        "5000"},
+	  {"HP":                        5000},
 	  {
 	    "FlobObjectInfo": 
 		[

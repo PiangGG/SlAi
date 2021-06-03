@@ -167,6 +167,31 @@ void SSlAiContainerBaseWidget::RightOperate(int InputID, int InputNum, int& Outp
 	ResetContainerPara(InputID,InputNum);
 }
 
+bool SSlAiContainerBaseWidget::IsEmpty()
+{
+	return ObjectIndex ==0;
+}
+
+bool SSlAiContainerBaseWidget::RemainSpace(int ObjectID)
+{
+	if (ObjectIndex==ObjectID&&ObjectNum<64&&MultiplyAble(ObjectIndex))return true;
+	return false;
+}
+
+void SSlAiContainerBaseWidget::AddObject(int ObjectID)
+{
+	if (ObjectIndex==0)
+	{
+		ResetContainerPara(ObjectID,1);
+		return;
+	}
+	if (ObjectIndex == ObjectID&&ObjectNum<64&&MultiplyAble(ObjectIndex))
+	{
+		ResetContainerPara(ObjectIndex,ObjectNum+1);
+		return;
+	}
+}
+
 bool SSlAiContainerBaseWidget::MultiplyAble(int ObjectID)
 {
 	//获取物品属性

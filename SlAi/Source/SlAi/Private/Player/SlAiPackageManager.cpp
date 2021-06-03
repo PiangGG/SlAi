@@ -9,8 +9,8 @@ TSharedPtr<SlAiPackageManager> SlAiPackageManager::PackageInstance = NULL;
 SlAiPackageManager::SlAiPackageManager()
 {
 	//初始化
-	ObjectIndex = 1;
-	ObjectNum = 35;
+	ObjectIndex = 0;
+	ObjectNum = 0;
 }
 
 void SlAiPackageManager::Initialize()
@@ -110,6 +110,41 @@ void SlAiPackageManager::RightOption(FVector2D MousePos, FGeometry PackGeo)
 	{
 		ClickedContainer->RightOperate(ObjectIndex,ObjectNum,ObjectIndex,ObjectNum);
 	}
+}
+
+bool SlAiPackageManager::SearchFreeSpace(int ObjectID)
+{
+	TSharedPtr<SSlAiContainerBaseWidget> FreeContainer;
+	return SearchFreeSpace(ObjectID, FreeContainer);
+}
+
+void SlAiPackageManager::AddObject(int ObjectID)
+{
+	TSharedPtr<SSlAiContainerBaseWidget> FreeContainer;
+	if (SearchFreeSpace(ObjectID, FreeContainer)) {
+		//添加物品到容器
+		FreeContainer->AddObject(ObjectID);
+	}
+}
+
+bool SlAiPackageManager::EatUpEvent(int ShortcutID)
+{
+	//获取物品属性
+	TSharedPtr<ObjectAttribute> ObjectAttr=*SlAiDataHandle::Get()->ObjectAttrMap.Find(ShortcutContainerList[ShortcutID]->GetIndex());
+	//如果这个物品是食物
+	if (ObjectAttr->ObjectType==EObjectType::Food)
+	{
+		//新的物品数量
+		int NewNum = (ShortcutContainerList[ShortcutID]->GetNum()-1)<0?0:ShortcutContainerList[ShortcutID]->GetNum()-1;
+		//新的物品ID
+		int NewIndex =NewNum=0?0:ShortcutContainerList[ShortcutID] ->GetIndex();
+		//更新这个容器属性
+		ShortcutContainerList[ShortcutID]->ResetContainerPara(NewIndex,NewNum);
+
+		return true;
+	}
+
+	return false;
 }
 
 TSharedRef<SlAiPackageManager> SlAiPackageManager::Create()
@@ -249,4 +284,52 @@ bool SlAiPackageManager::MultiplyAble(int OutputIndex)
 	TSharedPtr<ObjectAttribute> ObjectAttr = *SlAiDataHandle::Get()->ObjectAttrMap.Find(OutputIndex);
 	//返回是否是武器或者工具
 	return  (ObjectAttr->ObjectType!=EObjectType::Tool&&ObjectAttr->ObjectType!=EObjectType::Weapon);
+}
+
+bool SlAiPackageManager::SearchFreeSpace(int ObjectID, TSharedPtr<SSlAiContainerBaseWidget>& FreeContainer)
+{
+	//空容器引用
+	TSharedPtr<SSlAiContainerBaseWidget> EmptyContainer;
+
+	for (TArray<TSharedPtr<SSlAiContainerBaseWidget>>::TIterator It(ShortcutContainerList); It; ++It) {
+		//如果优先容器有没有引用
+		if (!FreeContainer.IsValid())
+		{
+			//如果这个容器的物品和输入物品ID相同并且有空间,直接指定
+			if ((*It)->RemainSpace(ObjectID))
+			{
+				FreeContainer = *It;
+				return true;
+			}
+		}
+		//如果空容器无引用
+		if (!EmptyContainer.IsValid()) 
+		{
+			if ((*It)->IsEmpty()) EmptyContainer = *It;
+		}
+	}
+
+	for (TArray<TSharedPtr<SSlAiContainerBaseWidget>>::TIterator It(NormalContainerList); It; ++It) {
+		//如果空容器无引用
+		if (!EmptyContainer.IsValid()) {
+			if ((*It)->IsEmpty()) EmptyContainer = *It;
+		}
+		//如果优先容器有没有引用
+		if (!FreeContainer.IsValid())
+		{
+			//如果这个容器的物品和输入物品ID相同并且有空间,直接指定
+			if ((*It)->RemainSpace(ObjectID))
+			{
+				FreeContainer = *It;
+				return true;
+			}
+		}
+	}
+	//如运行到这里说明需要指定空容器
+	if (EmptyContainer.IsValid()) {
+		FreeContainer = EmptyContainer;
+		return true;
+	}
+	//如果连空容器都没有,返回false
+	return false;
 }

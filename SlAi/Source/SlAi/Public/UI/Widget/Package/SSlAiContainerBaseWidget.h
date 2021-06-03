@@ -48,7 +48,13 @@ public:
 	virtual void LeftOperate(int InputID,int InputNum,int &OutputID,int&OutputNum);
 	//右键点击操作
 	virtual void RightOperate(int InputID,int inputNum,int &OutputID,int&OutputNum);
+	//是否为空
+	bool IsEmpty();
 
+	//是否有空间
+	bool RemainSpace(int ObjectID);
+	//添加一个元素
+	void AddObject(int ObjectID);
 public:
 	//合成输入委托
 	FCompoundInput CompoundInput;

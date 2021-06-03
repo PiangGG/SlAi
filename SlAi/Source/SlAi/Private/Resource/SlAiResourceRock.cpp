@@ -35,4 +35,10 @@ ASlAiResourceRock::ASlAiResourceRock()
 	BaseMesh->SetStaticMesh(StaticBaseMesh.Object);
 
 	ResourceIndex = 2;
+	HP = BaseHP=4000;
+}
+
+int ASlAiResourceRock::GetResourceIndex()
+{
+	return ResourceIndex;
 }

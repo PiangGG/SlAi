@@ -15,4 +15,5 @@ class SLAI_API ASlAiResourceRock : public ASlAiResourceObject
 	GENERATED_BODY()
 	public:
 	ASlAiResourceRock();
+	virtual int GetResourceIndex() override;
 };

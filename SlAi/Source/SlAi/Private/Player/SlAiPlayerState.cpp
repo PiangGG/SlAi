@@ -50,12 +50,12 @@ void ASlAiPlayerState::RegisterShortcutContainer(TArray<TSharedPtr<ShortcutConta
 	/*
 	 * 临时测试代码
 	 */
-	ShortcutContainerList[1]->SetObject(1)->SetObjectNum(5);
+	/*ShortcutContainerList[1]->SetObject(1)->SetObjectNum(5);
 	ShortcutContainerList[2]->SetObject(2)->SetObjectNum(4);
 	ShortcutContainerList[3]->SetObject(3)->SetObjectNum(3);
 	ShortcutContainerList[7]->SetObject(7)->SetObjectNum(1);
 	ShortcutContainerList[4]->SetObject(6)->SetObjectNum(1);
-	ShortcutContainerList[5]->SetObject(5)->SetObjectNum(1);
+	ShortcutContainerList[5]->SetObject(5)->SetObjectNum(1);*/
 }
 
 void ASlAiPlayerState::ChoosedShortcut(bool isPre)
@@ -125,6 +125,18 @@ void ASlAiPlayerState::ChangeHandObject(int ShortcoutID, int ObjectID, int Objec
 	ShortcutContainerList[ShortcoutID]->SetObject(ObjectID)->SetObjectNum(ObjectNum);
 	//告訴controller更新一次手持物品
 	SPController->ChangeHandObject();
+}
+
+void ASlAiPlayerState::ProomoteHunger()
+{
+	//只要超过500,马上设置为600
+	if (Hunger+100>500.0f)
+	{
+		Hunger = 600.0f;
+		return;
+	}
+	//否则只加100
+	Hunger = FMath::Clamp<float>(Hunger+100.0f,0,600.0f);
 }
 
 void ASlAiPlayerState::BeginPlay()

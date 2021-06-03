@@ -25,8 +25,11 @@ public:
 	UFUNCTION(BlueprintCallable,Category=SlAi)
 	void ChangeDetection(bool IsOpen);
 	//开启和关闭手上物品的交互检测
-	UFUNCTION(BlueprintCallable,Category=SlAi)
+	UFUNCTION(BlueprintCallable,Category=PlayAnim)
 	void RenderHandObject(bool isRender);
+	//吃完东西时调用
+	UFUNCTION(BlueprintCallable,Category=PlayAnim)
+	void EatUpEvent();
 public:
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category=PlayAnim)
 	float Speed;

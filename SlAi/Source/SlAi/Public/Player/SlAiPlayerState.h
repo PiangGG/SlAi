@@ -39,6 +39,8 @@ public:
 	int GetDamageValue(EResourceType::Type ResourceType);
 	//更改快捷欄信息
 	void ChangeHandObject(int ShortcoutID,int ObjectID,int ObjectNum);
+	//提升饥饿度
+	void ProomoteHunger();
 public:
 	//当被选中的快捷栏序号
 	int CurrentShortcutInfoIndex;

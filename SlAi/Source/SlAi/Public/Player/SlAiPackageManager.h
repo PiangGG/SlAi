@@ -24,6 +24,14 @@ public:
 	void LeftOption(FVector2D MousePos,FGeometry PackGeo);
 	//右键事件,参数是鼠标位置和PackageWidget的Geometry
 	void RightOption(FVector2D MousePos,FGeometry PackGeo);
+
+	//是否有外部的空间，提供给外部访问
+	bool SearchFreeSpace(int ObjectID);
+	//添加物品
+	void AddObject(int ObjectID);
+
+	//吃东西，传入快捷栏的ID()
+	bool EatUpEvent(int ShortcutID);
 public:
 	//鼠标物品ID
 	int ObjectIndex;
@@ -50,6 +58,8 @@ private:
 	void PackShortChange(int ShortcutID,int ObjectID,int ObjectNumber);
 	//物品可叠加
 	bool MultiplyAble(int OutputIndex);
+	//是否有插入物品的空间，每次只插入一个，返回可插入的那个容器
+	bool SearchFreeSpace(int ObjectID,TSharedPtr<SSlAiContainerBaseWidget>&FreeContainer);
 private:
 	//单例指针
 	static TSharedPtr<SlAiPackageManager> PackageInstance;

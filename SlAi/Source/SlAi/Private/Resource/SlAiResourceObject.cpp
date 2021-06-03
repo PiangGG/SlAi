@@ -31,7 +31,11 @@ void ASlAiResourceObject::BeginPlay()
 {
 	Super::BeginPlay();
 	//TSharedPtr<ResourceAttribute> ResourceAttr=*SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
-	HP=BaseHP=2000;//ResourceAttr->HP;
+	//HP=BaseHP=2000;//ResourceAttr->HP;
+	//这段有问题
+	//TSharedPtr<ResourceAttribute> ResourceAttr=*SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
+	//HP = BaseHP = ResourceAttr->HP;
+	HP = BaseHP=200;
 }
 
 void ASlAiResourceObject::CreateFlobObject()
@@ -99,5 +103,10 @@ ASlAiResourceObject* ASlAiResourceObject::TakeObjectDamage(int Damge)
 		GetWorld()->DestroyActor(this);
 	}
 	return this;
+}
+
+int ASlAiResourceObject::GetResourceIndex()
+{
+	return ResourceIndex;
 }
 
