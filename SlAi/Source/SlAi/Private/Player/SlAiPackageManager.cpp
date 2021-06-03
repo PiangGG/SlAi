@@ -2,14 +2,14 @@
 
 
 #include "Player/SlAiPackageManager.h"
-
 #include "Common/SlAiHelper.h"
+#include "Data/SlAiDataHandle.h"
 
 TSharedPtr<SlAiPackageManager> SlAiPackageManager::PackageInstance = NULL;
 SlAiPackageManager::SlAiPackageManager()
 {
 	//初始化
-	ObjectIndex = 3;
+	ObjectIndex = 1;
 	ObjectNum = 35;
 }
 
@@ -176,14 +176,77 @@ void SlAiPackageManager::ThrowObject(int ObjectID, int Num)
 
 void SlAiPackageManager::Compoundoutput(int ObjectID, int Num)
 {
+	//如果生产为0,直接return
+	if (ObjectID==0)return;
+	//合成表结构数组
+	TArray<int> TableMap;
+	for (TArray<TSharedPtr<SSlAiContainerBaseWidget>>::TIterator It(InputContainerList);It;++It)
+	{
+		TableMap.Add((*It)->GetIndex());
+	}
+	TableMap.Add(ObjectID);
+	//消耗数量的数组
+	TArray<int> ExpendMap;
+	//遍历找出符合合成表并且拿到消耗数量的数组
+	for (TArray<TSharedPtr<CompoundTable>>::TIterator It(SlAiDataHandle::Get()->CompoundTableMap);It;++It)
+	{
+		//如果找到符合的直接跳出循环
+		if ((*It)->DetectExpend(&TableMap,Num,ExpendMap))break;
+	}
+	//如果消耗数组元素数量不是9，直接返回
+	if (ExpendMap.Num()!=9)return;
+
+	//循环设置合成输入表的属性
+	for (int i=0;i<9;++i)
+	{
+		//如果原有数量减去消耗数量已经小于0，直接把物品ID设置为0
+		int InputID = (InputContainerList[i]->GetNum()-ExpendMap[i]<=0)?0:InputContainerList[i]->GetIndex();
+		int InputNum = (InputID ==0)?0:(InputContainerList[i]->GetNum()-ExpendMap[i]);
+		//重置参数
+		InputContainerList[i]->ResetContainerPara(InputID,InputNum);
+	}
 }
 
 void SlAiPackageManager::CompoundInput()
 {
+	//获取合成台9个容器的物品ID和数量写进两个数组
+	TArray<int> IDMap;
+	TArray<int> NumMap;
+	for (TArray<TSharedPtr<SSlAiContainerBaseWidget>>::TIterator It(InputContainerList);It;++It)
+	{
+		IDMap.Add((*It)->GetIndex());
+		NumMap.Add((*It)->GetNum());
+	}
+	//定义检测出来的输出框的ID和数量
+	int OutputIndex = 0;
+	int OutputNum = 0;
+	//迭代合成表进行检测
+	for(TArray<TSharedPtr<CompoundTable>>::TIterator It(SlAiDataHandle::Get()->CompoundTableMap);It;++It)
+	{
+		(*It)->DetectTable(&IDMap,&NumMap,OutputIndex,OutputNum);
+		//如果检测出来，直接跳出循环
+		if (OutputIndex!=0&&OutputNum!=0)break;
+	}
+	//先判断是否可以叠加
+	if (MultiplyAble(OutputIndex))
+	{
+		OutputContainer->ResetContainerPara(OutputIndex,OutputNum);
+	}else
+	{
+		OutputContainer->ResetContainerPara(OutputIndex,1);
+	}
 }
 
 void SlAiPackageManager::PackShortChange(int ShortcutID, int ObjectID, int ObjectNumber)
 {
 	//执行委托,绑定的方法是PlayerState的ChangeHandObject,在playercharacter下进行绑定
 	ChangeHandObject.ExecuteIfBound(ShortcutID, ObjectID, ObjectNumber);
+}
+
+bool SlAiPackageManager::MultiplyAble(int OutputIndex)
+{
+	//获取物品属性
+	TSharedPtr<ObjectAttribute> ObjectAttr = *SlAiDataHandle::Get()->ObjectAttrMap.Find(OutputIndex);
+	//返回是否是武器或者工具
+	return  (ObjectAttr->ObjectType!=EObjectType::Tool&&ObjectAttr->ObjectType!=EObjectType::Weapon);
 }

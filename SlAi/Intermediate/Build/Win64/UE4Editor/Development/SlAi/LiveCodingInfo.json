@@ -2,10 +2,10 @@
 	"RemapUnityFiles": 
 	{
 		"Module.SlAi.cpp.obj": [
-			"SlAiDataHandle.cpp.obj",
-			"SlAiJsonHandle.cpp.obj",
 			"SlAiSingleton.cpp.obj",
+			"SlAiFlobObject.cpp.obj",
 			"SlAiGameInstance.cpp.obj",
+			"SlAiGameMode.cpp.obj",
 			"SlAiMenuController.cpp.obj",
 			"SlAIMenuGameMode.cpp.obj",
 			"SlAiHandApple.cpp.obj",
@@ -22,7 +22,9 @@
 			"SlAiPickUpWood.cpp.obj",
 			"SlAiFirstPlayerAnim.cpp.obj",
 			"SlAiPlayerAnim.cpp.obj",
+			"SlAiPlayerCharacter.cpp.obj",
 			"SlAiPlayerController.cpp.obj",
+			"SlAiPlayerState.cpp.obj",
 			"SlAiThirdPlayerAnim.cpp.obj",
 			"SlAiResourceObject.cpp.obj",
 			"SlAiResourceRock.cpp.obj",
@@ -33,7 +35,10 @@
 			"SlAiMenuWidgetStyle.cpp.obj",
 			"SlAiStyle.cpp.obj",
 			"SSlAiContaineBaseWidget.cpp.obj",
+			"SSlAiContaineInputWidget.cpp.obj",
 			"SSlAiContaineNormalWidget.cpp.obj",
+			"SSlAiContainerOutputWidget.cpp.obj",
+			"SSlAiContainerShortcutWidget.cpp.obj",
 			"SSlAiPackageWidget.cpp.obj",
 			"SSlAiChatRoomWidget.cpp.obj",
 			"SSlAiChooseRecordWidget.cpp.obj",
@@ -50,14 +55,9 @@
 			"SSlAiShortcutWidget.cpp.obj",
 			"SlAi.cpp.obj",
 			"SlAiGameModeBase.cpp.obj",
-			"SlAiFlobObject.cpp.obj",
-			"SlAiGameMode.cpp.obj",
-			"SlAiPackageManager.cpp.obj",
-			"SlAiPlayerCharacter.cpp.obj",
-			"SlAiPlayerState.cpp.obj",
-			"SSlAiContaineInputWidget.cpp.obj",
-			"SSlAiContainerOutputWidget.cpp.obj",
-			"SSlAiContainerShortcutWidget.cpp.obj"
+			"SlAiDataHandle.cpp.obj",
+			"SlAiJsonHandle.cpp.obj",
+			"SlAiPackageManager.cpp.obj"
 		],
 		"Module.SlAi.gen.cpp.obj": [
 			"SlAi.init.gen.cpp.obj",

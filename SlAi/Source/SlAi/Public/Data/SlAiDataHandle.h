@@ -43,6 +43,8 @@ public:
 	TArray<const FSlateBrush*> ObjectBrushList;
 	//资源属性图
 	TMap<int,TSharedPtr<ResourceAttribute>> ResourceAttrMap;
+	//合成表图
+	TArray<TSharedPtr<CompoundTable>> CompoundTableMap;
 private:
 	static TSharedPtr<SlAiDataHandle> Create();
 
@@ -56,6 +58,8 @@ private:
 	void InitRecordData();
 	//初始化Menu声音数据
 	void InitializedMenuAudio();
+	//初始化合成表图
+	void InitCompoundTableMap();
 private:
 	static TSharedPtr<SlAiDataHandle> DataInstance;
 	//保存Menu的声音

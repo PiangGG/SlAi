@@ -262,3 +262,83 @@ namespace EContainerType
 		Shortcut,//快捷容器栏
 	};
 }
+
+//合成表结构体
+struct CompoundTable
+{
+	//合成图
+	TArray<int> CompoundMap;
+	
+	CompoundTable(TArray<int> *InsertMap)
+	{
+		for (TArray<int>::TIterator It(*InsertMap);It;++It)
+		{
+			CompoundMap.Add(*It);
+		}
+	}
+
+	//检测符合表的输出物品ID和数量
+	void DetectTable(TArray<int>* IDMap,TArray<int>*NumMap,int&OutputID,int&OutputNum)
+	{
+		//先默认设定输出ID为表输出ID
+		int TempID = CompoundMap[9];
+		//先定义输出数量为64，一点一点减去
+		int TempNum=64;
+		for(int	i=0;i<9;++i)
+		{
+			if ((*IDMap)[i]==CompoundMap[i])
+			{
+				if ((*IDMap)[i]!=0)TempNum = (*NumMap)[i]<TempNum?(*NumMap)[i]:TempNum;
+			}else
+			{
+				TempID = TempNum=0;
+				break;
+			}
+		}
+		//如果输出ID不为空，更新Output数据
+		if (TempID!=0&&TempNum!=0)
+		{
+			OutputID = TempID;
+			OutputNum=TempNum;
+		}
+	}
+	//根据输入物品的ID和输出物品ID序列以及产生数量查询是否匹配这个合成表并且输出消耗数组
+	bool DetectExpend(TArray<int>* TableMap,int ProductNum,TArray<int>&ExpendMap)
+	{
+		//是否匹配这个合成表,开始设置为true
+		bool IsMatch = true;
+		for (int i=0;i<10;++i)
+		{
+			if ((*TableMap)[i]!=CompoundMap[i])
+			{
+				IsMatch=false;
+				break;
+			}
+		}
+		//如果匹配
+		if (IsMatch)
+		{
+			for (int i=0;i<9;++i)
+			{
+				if (CompoundMap[i]!=0)
+				{
+					ExpendMap.Add(ProductNum);
+				}else
+				{
+					ExpendMap.Add(0);
+				}
+			}
+		}
+		return IsMatch;
+	}
+	//字符串打印
+	FString ToString()
+	{
+		FString OutputString("");
+		for (TArray<int>::TIterator It(CompoundMap);It;++It)
+		{
+			OutputString+=FString::FromInt(*It)+FString("_");
+		}
+		return OutputString;
+	}
+};

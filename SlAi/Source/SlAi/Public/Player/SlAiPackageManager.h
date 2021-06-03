@@ -48,6 +48,8 @@ private:
 	void CompoundInput();
 	//快捷欄變換事件
 	void PackShortChange(int ShortcutID,int ObjectID,int ObjectNumber);
+	//物品可叠加
+	bool MultiplyAble(int OutputIndex);
 private:
 	//单例指针
 	static TSharedPtr<SlAiPackageManager> PackageInstance;

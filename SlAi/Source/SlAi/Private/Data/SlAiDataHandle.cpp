@@ -75,6 +75,11 @@ void SlAiDataHandle::InitializedMenuAudio()
 	ResetMenuVolume(MusicVolume,SoundVolume);
 }
 
+void SlAiDataHandle::InitCompoundTableMap()
+{
+	SlAiSingleton<SlAiJsonHandle>::Get()->CompoundTableJsonRead(CompoundTableMap);
+}
+
 SlAiDataHandle::SlAiDataHandle()
 {
 	//SlAiHelper::Debug(FString("initing"));
@@ -141,6 +146,8 @@ void SlAiDataHandle::InitializeGameData()
 	InitObjectAttr();
 	
 	InitResourceAttrMap();
+	//初始化合成表
+	InitCompoundTableMap();
 }
 
 void SlAiDataHandle::InitObjectAttr()
