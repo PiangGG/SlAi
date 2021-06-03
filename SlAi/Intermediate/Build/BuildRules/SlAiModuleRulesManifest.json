@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"D:\\Code\\unrealengine\\SlAi\\SlAi\\Source\\SlAi\\SlAi.Build.cs",
-		"D:\\Code\\unrealengine\\SlAi\\SlAi\\Source\\SlAi.Target.cs",
-		"D:\\Code\\unrealengine\\SlAi\\SlAi\\Source\\SlAiEditor.Target.cs"
-	],
-	"EngineVersion": "4.26.2"
-}

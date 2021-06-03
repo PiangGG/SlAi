@@ -1,3 +1,0 @@
-D:\Code\unrealengine\SlAi\SlAi\Intermediate\Build\Win64\UE4Editor\Development\SlAi\Definitions.SlAi.h
-D:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
-D:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
