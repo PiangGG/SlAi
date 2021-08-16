@@ -16,8 +16,10 @@ public class SlAi : ModuleRules
 		"Slate",
 		"SlateCore",
 		"Json",
-		"JsonUtilities"
-		 });
+		"JsonUtilities",
+		"AIModule",
+		"GameplayTasks",
+		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
