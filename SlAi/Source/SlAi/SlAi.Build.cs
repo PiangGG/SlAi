@@ -19,6 +19,8 @@ public class SlAi : ModuleRules
 		"JsonUtilities",
 		"AIModule",
 		"GameplayTasks",
+		"NavigationSystem",
+		"UMG"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });

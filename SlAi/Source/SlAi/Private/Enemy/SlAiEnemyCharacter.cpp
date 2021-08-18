@@ -4,7 +4,15 @@
 #include "Enemy/SlAiEnemyCharacter.h"
 
 #include "Components/CapsuleComponent.h"
+#include "Components/WidgetComponent.h"
+#include "Data/SlAiDataHandle.h"
+#include "Data/SlAiTypes.h"
+#include "Enemy/SlAiEnemyAnim.h"
+#include "Enemy/SlAiEnemyController.h"
 #include "EnemyTool/SlAiEnemyTool.h"
+#include "Flob/SlAiFlobObject.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Perception/PawnSensingComponent.h"
 
 // Sets default values
 ASlAiEnemyCharacter::ASlAiEnemyCharacter()
@@ -34,6 +42,22 @@ ASlAiEnemyCharacter::ASlAiEnemyCharacter()
 	//实例化插槽
 	WeaponSocket = CreateDefaultSubobject<UChildActorComponent>(TEXT("WeaponSocket"));
 	SheildSocket = CreateDefaultSubobject<UChildActorComponent>(TEXT("SheildSocket"));
+
+	//实例化血条
+	HPBar = CreateDefaultSubobject<UWidgetComponent>(TEXT("HPBar"));
+	HPBar->SetupAttachment(RootComponent);
+	//HPBar->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("HeadTop_EndSocket"));
+	//实例化敌人感知组件
+	EnemySense = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("EnemySense"));
+
+	/*//加载死亡动画资源
+	AnimDead_I = Cast<UAnimationAsset>(StaticLoadObject(UAnimationAsset::StaticClass(), NULL, *FString("AnimSequence'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/Enemy_Dead_I.Enemy_Dead_I'")));
+	AnimDead_II = Cast<UAnimationAsset>(StaticLoadObject(UAnimationAsset::StaticClass(), NULL, *FString("AnimSequence'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/Enemy_Dead_II.Enemy_Dead_II'")));
+
+	//设置资源ID是3
+	ResourceIndex = 3;
+	//设置下一帧不销毁自己,得放在构造函数进行初始化,避免与GameMode的加载函数冲突
+	IsDestroyNextTick = false;*/
 }
 
 // Called when the game starts or when spawned
@@ -41,6 +65,10 @@ void ASlAiEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	//获取动作引用
+	SEAnim = Cast<USlAiEnemyAnim>(GetMesh()->GetAnimInstance());
+	//控制器引用
+	SEController = Cast<ASlAiEnemyController>(GetController());
 	//绑定插槽
 	WeaponSocket->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetNotIncludingScale,FName("RHSocket"));
 	SheildSocket->AttachToComponent(GetMesh(),FAttachmentTransformRules::SnapToTargetNotIncludingScale,FName("LHSocket"));
@@ -48,6 +76,61 @@ void ASlAiEnemyCharacter::BeginPlay()
 	//给插槽添加物品
 	WeaponSocket->SetChildActorClass(ASlAiEnemyTool::SpawnEnemyWeapon());
 	SheildSocket->SetChildActorClass(ASlAiEnemyTool::SpawnEnemyShild());
+
+		/*//设置血条widget
+	SAssignNew(HPBarWidget, SSlAiEnemyHPWidget);
+	HPBar->SetSlateWidget(HPBarWidget);
+	HPBar->SetRelativeLocation(FVector(0.f, 0.f, 100.f));
+	HPBar->SetDrawSize(FVector2D(100.f, 10.f));
+	//设置初始血量
+	HP = 200.f;
+	HPBarWidget->ChangeHP(HP / 200.f);
+
+	//敌人感知参数设置
+	EnemySense->HearingThreshold = 0.f;
+	EnemySense->LOSHearingThreshold = 0.f;
+	EnemySense->SightRadius = 1000.f;
+	EnemySense->SetPeripheralVisionAngle(55.f);
+	EnemySense->bHearNoises = false;
+	//绑定看到玩家的方法
+	FScriptDelegate OnSeePlayerDele;
+	OnSeePlayerDele.BindUFunction(this, "OnSeePlayer");
+	EnemySense->OnSeePawn.Add(OnSeePlayerDele);
+
+	//设置资源ID是3
+	ResourceIndex = 3;*/
+}
+
+void ASlAiEnemyCharacter::CreateFlobObject()
+{
+	TSharedPtr<ResourceAttribute> ResourceAttr = *SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
+	//遍历生成
+	for (TArray<TArray<int>>::TIterator It(ResourceAttr->FlobObjectInfo); It; ++It)
+	{
+		//随机流
+		FRandomStream Stream;
+		//产生随机种子
+		Stream.GenerateNewSeed();
+		int Num = Stream.RandRange((*It)[1], (*It)[2]);
+
+		if (GetWorld())
+		{
+			for (int i = 0; i < Num; ++i)
+			{
+				//生成掉落资源
+				ASlAiFlobObject* FlobObject = GetWorld()->SpawnActor<ASlAiFlobObject>(GetActorLocation() + FVector(0.f, 0.f, 40.f), FRotator::ZeroRotator);
+				FlobObject->CreateFlobObject((*It)[0]);
+			}
+		}
+	}
+}
+
+void ASlAiEnemyCharacter::OnSeePlayer(APawn* PlayerChar)
+{
+	if (Cast<ASlAiPlayerCharacter>(PlayerChar)){
+		//SlAiHelper::Debug(FString("I See Player!"));
+	}
+	if (SEController) SEController->OnSeePlayer();
 }
 
 // Called every frame
@@ -55,6 +138,8 @@ void ASlAiEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	//如果准备销毁为true,进行销毁
+	if (IsDestroyNextTick) DestroyEvent();
 }
 
 // Called to bind functionality to input
@@ -62,5 +147,152 @@ void ASlAiEnemyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ASlAiEnemyCharacter::UpdateHPBarRotation(FVector SPLoaction)
+{
+	FVector StartPos(GetActorLocation().X, GetActorLocation().Y, 0);
+	FVector TargetPos(SPLoaction.X, SPLoaction.Y, 0.f);
+	HPBar->SetWorldRotation(FRotationMatrix::MakeFromX(TargetPos - StartPos).Rotator());
+}
+
+void ASlAiEnemyCharacter::SetMaxSpeed(float Speed)
+{
+	//设置最大运动速度
+	GetCharacterMovement()->MaxWalkSpeed = Speed;
+}
+
+float ASlAiEnemyCharacter::GetIdleWaitTime()
+{
+	//如果动作引用不存在，直接返回3秒
+	if (!SEAnim) return 3.f;
+
+	//创建随机流
+	FRandomStream Stream;
+	Stream.GenerateNewSeed();
+	int IdleType = Stream.RandRange(0, 2);
+	float AnimLength = SEAnim->SetIdelType(IdleType);
+	//更新种子
+	Stream.GenerateNewSeed();
+	//产生动作次数
+	int AnimCount = Stream.RandRange(1, 3);
+	//返回全部时长
+	return AnimLength * AnimCount;
+}
+/*
+float ASlAiEnemyCharacter::PlayAttackAction(EEnemyAttackType AttackType)
+{
+	//如果动作蓝图不存在，直接返回0s;
+	if (!SEAnim) return 0.f;
+	//返回攻击时长
+	return SEAnim->PlayAttackAction(AttackType);
+}
+*/
+void ASlAiEnemyCharacter::AcceptDamage(int DamageVal)
+{
+	//进行血条更新
+	/*HP = FMath::Clamp<float>(HP - DamageVal, 0.f, 500.f);
+	HPBarWidget->ChangeHP(HP / 200.f);
+	//如果血值小于0
+	if (HP == 0&&!DeadHandle.IsValid())
+	{
+		//告诉控制器死亡
+		SEController->EnemyDead();
+		//停止所有动画
+		SEAnim->StopAllAction();
+
+		float DeadDuration = 0.f;
+		FRandomStream Stream;
+		Stream.GenerateNewSeed();
+		int SelectIndex = Stream.RandRange(0, 1);
+		if (SelectIndex == 0)
+		{
+			GetMesh()->PlayAnimation(AnimDead_I, false);
+			DeadDuration = AnimDead_I->GetMaxCurrentTime() * 2;
+		} 
+		else
+		{
+			GetMesh()->PlayAnimation(AnimDead_II, false);
+			DeadDuration = AnimDead_II->GetMaxCurrentTime() * 2;
+		}
+
+		//生成掉落物
+		CreateFlobObject();
+
+		//添加事件委托
+		FTimerDelegate TimerDelegate = FTimerDelegate::CreateUObject(this, &ASlAiEnemyCharacter::DestroyEvent);
+		GetWorld()->GetTimerManager().SetTimer(DeadHandle, TimerDelegate, DeadDuration, false);
+	} 
+	else
+	{
+		//告诉控制器收到伤害
+		if (SEController) SEController->UpdateDamageRatio(HP / 200.f);
+	}*/
+}
+
+float ASlAiEnemyCharacter::PlayHurtAction()
+{
+	//如果动作蓝图不存在直接返回0秒
+	if (!SEAnim) return 0.f;
+	//返回攻击时长
+	return SEAnim->PlayHurtAction();
+}
+
+void ASlAiEnemyCharacter::StartDefence()
+{
+	//开启防御
+	if (SEAnim) SEAnim->IsDefence = true;
+}
+
+void ASlAiEnemyCharacter::StopDefence()
+{
+}
+
+void ASlAiEnemyCharacter::DestroyEvent()
+{
+	//销毁时间函数
+	if (DeadHandle.IsValid()) GetWorld()->GetTimerManager().ClearTimer(DeadHandle);
+	//销毁自己
+	GetWorld()->DestroyActor(this);
+}
+
+FText ASlAiEnemyCharacter::GetInfoText() const
+{
+	TSharedPtr<ResourceAttribute> ResourceAttr = *SlAiDataHandle::Get()->ResourceAttrMap.Find(ResourceIndex);
+	switch (SlAiDataHandle::Get()->CurrentCultrueTeam)
+	{
+	case ECultureTeam::EN:
+		return ResourceAttr->EN;
+		break;
+	case ECultureTeam::ZH:
+		return ResourceAttr->ZH;
+		break;
+	}
+	return ResourceAttr->ZH;
+}
+
+void ASlAiEnemyCharacter::ChangeWeaponDetect(bool IsOpen)
+{
+	//如果手持物品存在,修改检测
+	ASlAiEnemyTool* WeaponClass = Cast<ASlAiEnemyTool>(WeaponSocket->GetChildActor());
+	if (WeaponClass) WeaponClass->ChangeOverlayDetect(IsOpen);
+}
+
+bool ASlAiEnemyCharacter::IsLockPlayer()
+{
+	if (SEController) return SEController->IsLockPlayer;
+	return false;
+}
+
+void ASlAiEnemyCharacter::LoadHP(float HPVal)
+{
+	HP = HPVal;
+	//修改血量显示
+	//HPBarWidget->ChangeHP(HP / 200.f);
+}
+
+float ASlAiEnemyCharacter::GetHP()
+{
+	return HP;
 }
 

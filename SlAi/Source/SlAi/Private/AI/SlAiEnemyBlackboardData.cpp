@@ -4,7 +4,11 @@
 #include "AI/SlAiEnemyBlackboardData.h"
 
 #include "BehaviorTree/Blackboard/BlackboardKeyType_Enum.h"
+#include "BehaviorTree/Blackboard/BlackboardKeyType_Float.h"
 #include "BehaviorTree/Blackboard/BlackboardKeyType_Vector.h"
+
+
+
 
 void USlAiEnemyBlackboardData::PostLoad()
 {
@@ -24,6 +28,12 @@ void USlAiEnemyBlackboardData::PostLoad()
 	EnemyStateKeyType->EnumName = FString("EEnemyAIState");
 	EnemyState.KeyType = EnemyStateKeyType;
 
+	//等待时间
+	FBlackboardEntry WaitTime;
+	WaitTime.EntryName = FName("WaitTime");
+	WaitTime.KeyType = NewObject<UBlackboardKeyType_Float>();
+	
 	Keys.Add(Destination);
 	Keys.Add(EnemyState);
+	Keys.Add(WaitTime);
 }
