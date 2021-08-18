@@ -218,6 +218,12 @@ void ASlAiPlayerCharacter::EatUpEvent()
 	}
 }
 
+bool ASlAiPlayerCharacter::IsPlayerDead()
+{
+	if(SPController->SPState)return SPController->SPState->IsPlayerDead();
+	return  false;
+}
+
 void ASlAiPlayerCharacter::MoveForward(float value)
 {
 	if (IsInputLocaked)return;

@@ -41,6 +41,9 @@ public:
 	void ChangeHandObject(int ShortcoutID,int ObjectID,int ObjectNum);
 	//提升饥饿度
 	void ProomoteHunger();
+	//是否已经死亡
+	bool IsPlayerDead();
+	
 public:
 	//当被选中的快捷栏序号
 	int CurrentShortcutInfoIndex;

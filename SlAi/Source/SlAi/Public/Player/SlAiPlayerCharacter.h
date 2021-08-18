@@ -43,6 +43,8 @@ public:
 	void AddPackageObject(int ObjectID);
 	//吃完东西调用事件，由Anim进行调用
 	void EatUpEvent();
+	//获取是否已经死亡
+	bool IsPlayerDead();
 public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class USpringArmComponent* CameraBoom;

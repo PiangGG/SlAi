@@ -21,7 +21,7 @@ EBTNodeResult::Type USlAiEnemyTaskWander::ExecuteTask(UBehaviorTreeComponent& Ow
 	//溜达点是自己的起始位置
 	const FVector WanderOrigin = SECharactor->GetActorLocation();
 
-	DrawDebugSphere(GetWorld(),WanderOrigin,50,10,FColor::Blue);
+	//DrawDebugSphere(GetWorld(),WanderOrigin,50,10,FColor::Blue);
 	//获取随机位置
 	FVector DesLoc(0.0f);
 	//使用导航系统获取随机点

@@ -3,6 +3,7 @@
 
 #include "Enemy/SlAiEnemyCharacter.h"
 
+#include "Common/SlAiHelper.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/WidgetComponent.h"
 #include "Data/SlAiDataHandle.h"
@@ -13,6 +14,7 @@
 #include "Flob/SlAiFlobObject.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Perception/PawnSensingComponent.h"
+#include "UI/Widget/SSlAiEnemyHPWidget.h"
 
 // Sets default values
 ASlAiEnemyCharacter::ASlAiEnemyCharacter()
@@ -21,7 +23,7 @@ ASlAiEnemyCharacter::ASlAiEnemyCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	//设置AI控制器
-	AIControllerClass = ASlAiEnemyCharacter::StaticClass();
+	AIControllerClass = ASlAiEnemyController::StaticClass();
 	//设置碰撞体属性文件
 	GetCapsuleComponent()->SetCollisionProfileName(FName("EnemyProfile"));
 	GetCapsuleComponent()->SetGenerateOverlapEvents(true);
@@ -46,7 +48,7 @@ ASlAiEnemyCharacter::ASlAiEnemyCharacter()
 	//实例化血条
 	HPBar = CreateDefaultSubobject<UWidgetComponent>(TEXT("HPBar"));
 	HPBar->SetupAttachment(RootComponent);
-	//HPBar->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("HeadTop_EndSocket"));
+	HPBar->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("HeadTop_EndSocket"));
 	//实例化敌人感知组件
 	EnemySense = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("EnemySense"));
 
@@ -77,7 +79,7 @@ void ASlAiEnemyCharacter::BeginPlay()
 	WeaponSocket->SetChildActorClass(ASlAiEnemyTool::SpawnEnemyWeapon());
 	SheildSocket->SetChildActorClass(ASlAiEnemyTool::SpawnEnemyShild());
 
-		/*//设置血条widget
+//设置血条widget
 	SAssignNew(HPBarWidget, SSlAiEnemyHPWidget);
 	HPBar->SetSlateWidget(HPBarWidget);
 	HPBar->SetRelativeLocation(FVector(0.f, 0.f, 100.f));
@@ -98,7 +100,7 @@ void ASlAiEnemyCharacter::BeginPlay()
 	EnemySense->OnSeePawn.Add(OnSeePlayerDele);
 
 	//设置资源ID是3
-	ResourceIndex = 3;*/
+	ResourceIndex = 3;
 }
 
 void ASlAiEnemyCharacter::CreateFlobObject()
@@ -128,7 +130,7 @@ void ASlAiEnemyCharacter::CreateFlobObject()
 void ASlAiEnemyCharacter::OnSeePlayer(APawn* PlayerChar)
 {
 	if (Cast<ASlAiPlayerCharacter>(PlayerChar)){
-		//SlAiHelper::Debug(FString("I See Player!"));
+		SlAiHelper::Debug(FString("I See Player!"));
 	}
 	if (SEController) SEController->OnSeePlayer();
 }

@@ -139,6 +139,11 @@ void ASlAiPlayerState::ProomoteHunger()
 	Hunger = FMath::Clamp<float>(Hunger+100.0f,0,600.0f);
 }
 
+bool ASlAiPlayerState::IsPlayerDead()
+{
+	return HP<=0.0f;
+}
+
 void ASlAiPlayerState::BeginPlay()
 {
 	Super::BeginPlay();

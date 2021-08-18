@@ -93,7 +93,7 @@ FVector ASlAiEnemyController::GetPlayerLocation() const
 
 bool ASlAiEnemyController::IsPlayerDead()
 {
-	//if (SPCharacter) return SPCharacter->IsPlayerDead();
+	if (SPCharacter) return SPCharacter->IsPlayerDead();
 	return false;
 }
 
@@ -260,11 +260,11 @@ void ASlAiEnemyController::BeginPlay()
 	//初始化玩家指针，这个指针会一直在
 	SPCharacter=Cast<ASlAiPlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GWorld,0));
 	//如果角色没有初始化
-	if(!SPCharacter)SECharacter = Cast<ASlAiEnemyCharacter>(GetPawn());
+	if(!SECharacter)SECharacter = Cast<ASlAiEnemyCharacter>(GetPawn());
 
-	/*//初始设定没有锁定玩家
+	//初始设定没有锁定玩家
 	IsLockPlayer = false;
-	//绑定定时器
+	/*//绑定定时器
 	FTimerDelegate EPDisDele = FTimerDelegate::CreateUObject(this, &ASlAiEnemyController::UpdateStatePama);
 	GetWorld()->GetTimerManager().SetTimer(EPDisHandle, EPDisDele, 0.3f, true);
 
@@ -279,4 +279,10 @@ void ASlAiEnemyController::BeginPlay()
 
 void ASlAiEnemyController::UpdateStatePama()
 {
+	//更新血值百分比
+	//HPRatio = HPRatioVal;
+	//状态修改为受伤
+	if(IsAllowHurt) BlackboardComp->SetValueAsEnum("EnemyState", (uint8)EEnemyAIState::ES_Hurt);
+	//设置允许受伤状态
+	IsAllowHurt = false;
 }
