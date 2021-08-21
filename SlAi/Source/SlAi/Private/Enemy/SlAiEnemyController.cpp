@@ -129,7 +129,7 @@ bool ASlAiEnemyController::IsPlayerAway()
 	return BiggerNum > 3;
 }
 
-/*void ASlAiEnemyController::UpdateStatePama()
+void ASlAiEnemyController::UpdateStatePama()
 {
 	if (EPDisList.Num()<6)
 	{
@@ -149,7 +149,7 @@ bool ASlAiEnemyController::IsPlayerAway()
 		HurtTimeCount = 0.f;
 		IsAllowHurt = true;
 	}
-}*/
+}
 
 UObject* ASlAiEnemyController::GetPlayerPawn()
 {
@@ -264,7 +264,7 @@ void ASlAiEnemyController::BeginPlay()
 
 	//初始设定没有锁定玩家
 	IsLockPlayer = false;
-	/*//绑定定时器
+	//绑定定时器
 	FTimerDelegate EPDisDele = FTimerDelegate::CreateUObject(this, &ASlAiEnemyController::UpdateStatePama);
 	GetWorld()->GetTimerManager().SetTimer(EPDisHandle, EPDisDele, 0.3f, true);
 
@@ -274,15 +274,4 @@ void ASlAiEnemyController::BeginPlay()
 	//设置状态计时器
 	IsAllowHurt = false;
 	HurtTimeCount = 0.f;
-	*/
-}
-
-void ASlAiEnemyController::UpdateStatePama()
-{
-	//更新血值百分比
-	//HPRatio = HPRatioVal;
-	//状态修改为受伤
-	if(IsAllowHurt) BlackboardComp->SetValueAsEnum("EnemyState", (uint8)EEnemyAIState::ES_Hurt);
-	//设置允许受伤状态
-	IsAllowHurt = false;
 }
