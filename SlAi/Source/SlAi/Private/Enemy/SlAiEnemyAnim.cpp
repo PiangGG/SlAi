@@ -2,7 +2,6 @@
 
 
 #include "Enemy/SlAiEnemyAnim.h"
-
 #include "Enemy/SlAiEnemyCharacter.h"
 
 USlAiEnemyAnim::USlAiEnemyAnim()
@@ -14,7 +13,7 @@ USlAiEnemyAnim::USlAiEnemyAnim()
 	AnimIdle_II = StaticAnimIdle_II.Object;
 	static ConstructorHelpers::FObjectFinder<UAnimSequence> StaticAnimIdle_III(TEXT("AnimSequence'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/MoveGroup/Enemy_Idle_III.Enemy_Idle_III'"));
 	AnimIdle_III = StaticAnimIdle_III.Object;
-/*
+
 	static ConstructorHelpers::FObjectFinder<UAnimMontage> StaticAnimAttack_I(TEXT("AnimMontage'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/MonEnemy_Attack_I.MonEnemy_Attack_I'"));
 	AnimAttack_I = StaticAnimAttack_I.Object;
 	static ConstructorHelpers::FObjectFinder<UAnimMontage> StaticAnimAttack_II(TEXT("AnimMontage'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/MonEnemy_Attack_II.MonEnemy_Attack_II'"));
@@ -23,15 +22,14 @@ USlAiEnemyAnim::USlAiEnemyAnim()
 	AnimAttack_III = StaticAnimAttack_III.Object;
 	static ConstructorHelpers::FObjectFinder<UAnimMontage> StaticAnimAttack_IV(TEXT("AnimMontage'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/MonEnemy_Attack_IV.MonEnemy_Attack_IV'"));
 	AnimAttack_IV = StaticAnimAttack_IV.Object;
-
-
+	
 	static ConstructorHelpers::FObjectFinder<UAnimSequence> StaticAnimAttackSeq_III(TEXT("AnimSequence'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/Enemy_Attack_III.Enemy_Attack_III'"));
 	AnimAttackSeq_III = StaticAnimAttackSeq_III.Object;
 	static ConstructorHelpers::FObjectFinder<UAnimSequence> StaticAnimAttackSeq_IV(TEXT("AnimSequence'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/Enemy_Attack_IV.Enemy_Attack_IV'"));
 	AnimAttackSeq_IV = StaticAnimAttackSeq_IV.Object;
 
 	static ConstructorHelpers::FObjectFinder<UAnimMontage> StaticAnimHurt(TEXT("AnimMontage'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/MonEnemy_Hurt.MonEnemy_Hurt'"));
-	AnimHurt = StaticAnimHurt.Object;*/
+	AnimHurt = StaticAnimHurt.Object;
 	//初始化参数
 	Speed = 0.f;
 	IdleType = 0.f;
@@ -103,7 +101,7 @@ float USlAiEnemyAnim::SetIdelType(int NewType)
 	return AnimIdle_I->GetPlayLength();
 }
 
-/*float USlAiEnemyAnim::PlayAttackAction(EEnemyAttackType AttackType)
+float USlAiEnemyAnim::PlayAttackAction(EEnemyAttackType AttackType)
 {
 	FRandomStream Stream;
 	Stream.GenerateNewSeed();
@@ -150,13 +148,6 @@ float USlAiEnemyAnim::SetIdelType(int NewType)
 	}
 	return 0.f;
 }
-
-float USlAiEnemyAnim::PlayHurtAction()
-{
-	if (!Montage_IsPlaying(AnimHurt)) Montage_Play(AnimHurt);
-	return AnimHurt->GetPlayLength();
-}
-*/
 
 float USlAiEnemyAnim::PlayHurtAction()
 {

@@ -50,7 +50,7 @@ ASlAiEnemyCharacter::ASlAiEnemyCharacter()
 	HPBar->SetupAttachment(RootComponent);
 	HPBar->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("HeadTop_EndSocket"));
 	//实例化敌人感知组件
-	EnemySense = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("EnemySense"));
+	 EnemySense = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("EnemySense"));
 
 	/*//加载死亡动画资源
 	AnimDead_I = Cast<UAnimationAsset>(StaticLoadObject(UAnimationAsset::StaticClass(), NULL, *FString("AnimSequence'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/Enemy_Dead_I.Enemy_Dead_I'")));
@@ -130,7 +130,7 @@ void ASlAiEnemyCharacter::CreateFlobObject()
 void ASlAiEnemyCharacter::OnSeePlayer(APawn* PlayerChar)
 {
 	if (Cast<ASlAiPlayerCharacter>(PlayerChar)){
-		SlAiHelper::Debug(FString("I See Player!"));
+		//SlAiHelper::Debug(FString("I See Player!"));
 	}
 	if (SEController) SEController->OnSeePlayer();
 }
@@ -181,7 +181,7 @@ float ASlAiEnemyCharacter::GetIdleWaitTime()
 	//返回全部时长
 	return AnimLength * AnimCount;
 }
-/*
+
 float ASlAiEnemyCharacter::PlayAttackAction(EEnemyAttackType AttackType)
 {
 	//如果动作蓝图不存在，直接返回0s;
@@ -189,7 +189,7 @@ float ASlAiEnemyCharacter::PlayAttackAction(EEnemyAttackType AttackType)
 	//返回攻击时长
 	return SEAnim->PlayAttackAction(AttackType);
 }
-*/
+
 void ASlAiEnemyCharacter::AcceptDamage(int DamageVal)
 {
 	//进行血条更新

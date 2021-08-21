@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+#include "Data/SlAiTypes.h"
 #include "SlAiEnemyAnim.generated.h"
 
 /**
@@ -23,7 +24,7 @@ public:
 	float SetIdelType(int NewType);
 
 	//播放攻击动画,返回动画时长
-	//float PlayAttackAction(EEnemyAttackType AttackType);
+	float PlayAttackAction(EEnemyAttackType AttackType);
 
 	//播放受伤动画返回动画时长
 	float PlayHurtAction();

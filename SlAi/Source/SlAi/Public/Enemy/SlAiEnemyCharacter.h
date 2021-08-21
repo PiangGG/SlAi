@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Data/SlAiTypes.h"
 #include "GameFramework/Character.h"
 #include "SlAiEnemyCharacter.generated.h"
 
@@ -31,7 +32,7 @@ public:
 	float GetIdleWaitTime();
 
 	//播放攻击动画,返回攻击时长
-	//float PlayAttackAction(EEnemyAttackType AttackType);
+	float PlayAttackAction(EEnemyAttackType AttackType);
 
 	//接受攻击,也可以重写APawn的TakeDamage函数,不过我嫌麻烦
 	void AcceptDamage(int DamageVal);
