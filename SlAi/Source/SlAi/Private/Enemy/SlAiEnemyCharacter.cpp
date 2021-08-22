@@ -140,6 +140,14 @@ void ASlAiEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	//插值更新朝向
+	if(NeedRoatate)
+	{
+		SetActorRotation(FMath::RInterpTo(GetActorRotation(),NextRotator,DeltaTime,10.0f));
+		//如果接近，不再旋转
+		if (FMath::Abs(GetActorRotation().Yaw-NextRotator.Yaw)<5)NeedRoatate=false;
+	}
+	
 	//如果准备销毁为true,进行销毁
 	if (IsDestroyNextTick) DestroyEvent();
 }
@@ -188,6 +196,12 @@ float ASlAiEnemyCharacter::PlayAttackAction(EEnemyAttackType AttackType)
 	if (!SEAnim) return 0.f;
 	//返回攻击时长
 	return SEAnim->PlayAttackAction(AttackType);
+}
+
+void ASlAiEnemyCharacter::UpdateRotatation(FRotator NewRotator)
+{
+	NextRotator = NewRotator;
+	NeedRoatate = true;
 }
 
 void ASlAiEnemyCharacter::AcceptDamage(int DamageVal)

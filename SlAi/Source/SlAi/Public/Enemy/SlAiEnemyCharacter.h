@@ -34,6 +34,8 @@ public:
 	//播放攻击动画,返回攻击时长
 	float PlayAttackAction(EEnemyAttackType AttackType);
 
+	//更改朝向
+	void UpdateRotatation(FRotator NewRotator);
 	//接受攻击,也可以重写APawn的TakeDamage函数,不过我嫌麻烦
 	void AcceptDamage(int DamageVal);
 
@@ -106,6 +108,10 @@ private:
 	//获取动作引用
 	class USlAiEnemyAnim* SEAnim;
 
+	//朝向设置
+	FRotator NextRotator;
+	bool NeedRoatate;
+	
 	//死亡动画资源
 	UAnimationAsset* AnimDead_I;
 	UAnimationAsset* AnimDead_II;

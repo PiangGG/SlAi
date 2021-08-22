@@ -54,7 +54,7 @@ EBTNodeResult::Type USlAiEnemyBTTaskAttackDash::AbortTask(UBehaviorTreeComponent
 	//如果初始化敌人参数不成功或者事件句柄没有激活，直接返回失败
 	if (!InitEnemyElement(OwnerComp)||!TimerHandle.IsValid())return EBTNodeResult::Failed;
 	//卸载时间委托
-	SEController->GetWorld()->GetTimerManager().ClearTimer(TimerHandle)
+	SEController->GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
 
 	return EBTNodeResult::Aborted;
 }

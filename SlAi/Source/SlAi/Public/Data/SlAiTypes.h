@@ -357,6 +357,7 @@ enum class EEnemyAIState : uint8
 };
 
 //敌人攻击状态
+UENUM(BlueprintType)
 enum class EEnemyAttackType:uint8
 {
 

@@ -56,7 +56,7 @@ void ASlAiEnemyController::OnPossess(APawn* InPawn)
 		}
 		BrainComponent=BehaviorTreeComp;
 		check(BehaviorTreeComp!=NULL);
-		//BehaviorTreeComp->StartTree(*BehaviorTreeObject,EBTExecutionMode::Looped);
+		BehaviorTreeComp->StartTree(*BehaviorTreeObject,EBTExecutionMode::Looped);
 
 		//设置状态为巡逻
 		BlackboardComp->SetValueAsEnum("EnemyState",(uint8)EEnemyAIState::ES_Patrol);

@@ -13,5 +13,8 @@ UCLASS()
 class SLAI_API USlAiEnemyBTTaskRotate : public USlAiEnemyBTTaskNodeBase
 {
 	GENERATED_BODY()
-	
+
+	//重写执行函数
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+
 };
