@@ -219,18 +219,18 @@ void ASlAiEnemyController::FinishStateHurt()
 
 void ASlAiEnemyController::FinishStateDefence()
 {
-	/*//设置状态完成
+	//设置状态完成
 	ResetProcess(true);
 	//停止防御动作
 	SECharacter->StopDefence();
 	//获取与玩家的距离
 	float SEToSP = FVector::Distance(SECharacter->GetActorLocation(), GetPlayerLocation());
 	//如果玩家还在攻击并且距离小于200,继续防御状态
-	if (SEToSP<200.f&&SPCharacter->IsAttack)
+	/*if (SEToSP<200.f&&SPCharacter->IsAttack)
 	{
 		BlackboardComp->SetValueAsEnum("EnemyState", (uint8)EEnemyAIState::ES_Defence);
 	}
-	else
+	else*/
 	{
 		//如果血值小于0.2,逃跑
 		if (HPRatio < 0.2f)
@@ -242,7 +242,7 @@ void ASlAiEnemyController::FinishStateDefence()
 			//跳到攻击状态
 			BlackboardComp->SetValueAsEnum("EnemyState", (uint8)EEnemyAIState::ES_Attack);
 		}
-	}*/
+	}
 }
 
 void ASlAiEnemyController::EnemyDead()

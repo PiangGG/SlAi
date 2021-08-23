@@ -5,6 +5,8 @@
 
 #include "Common/SlAiHelper.h"
 #include "Components/BoxComponent.h"
+#include "Data/SlAiDataHandle.h"
+#include "Enemy/SlAiEnemyCharacter.h"
 #include "Hand/SlAiHandApple.h"
 #include "Hand/SlAiHandAxe.h"
 #include "Hand/SlAiHandHammer.h"
@@ -84,7 +86,14 @@ void ASlAiHandObject::BeginPlay()
 void ASlAiHandObject::OnOverlayBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	SlAiHelper::Debug(FString("OnOverlayBegin"));
+	//SlAiHelper::Debug(FString("OnOverlayBegin"));
+	if (Cast<ASlAiEnemyCharacter>(OtherActor))
+	{
+		//获取属性
+		TSharedPtr<ObjectAttribute> ObjectAttr = *SlAiDataHandle::Get()->ObjectAttrMap.Find(ObjectIndex);
+		//获取对物体的伤害值
+		Cast<ASlAiEnemyCharacter>(OtherActor)->AcceptDamage(ObjectAttr->AnimalAttck);
+	}
 }
 
 void ASlAiHandObject::OnOverlayEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,

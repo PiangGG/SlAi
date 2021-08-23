@@ -207,7 +207,7 @@ void ASlAiEnemyCharacter::UpdateRotatation(FRotator NewRotator)
 void ASlAiEnemyCharacter::AcceptDamage(int DamageVal)
 {
 	//进行血条更新
-	/*HP = FMath::Clamp<float>(HP - DamageVal, 0.f, 500.f);
+	HP = FMath::Clamp<float>(HP - DamageVal, 0.f, 500.f);
 	HPBarWidget->ChangeHP(HP / 200.f);
 	//如果血值小于0
 	if (HP == 0&&!DeadHandle.IsValid())
@@ -243,7 +243,7 @@ void ASlAiEnemyCharacter::AcceptDamage(int DamageVal)
 	{
 		//告诉控制器收到伤害
 		if (SEController) SEController->UpdateDamageRatio(HP / 200.f);
-	}*/
+	}
 }
 
 float ASlAiEnemyCharacter::PlayHurtAction()
