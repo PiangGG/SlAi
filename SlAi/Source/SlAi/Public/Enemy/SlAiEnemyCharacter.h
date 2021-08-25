@@ -35,7 +35,7 @@ public:
 	float PlayAttackAction(EEnemyAttackType AttackType);
 
 	//更改朝向
-	void UpdateRotatation(FRotator NewRotator);
+	//void UpdateRotatation(FRotator NewRotator);
 	//接受攻击,也可以重写APawn的TakeDamage函数,不过我嫌麻烦
 	void AcceptDamage(int DamageVal);
 

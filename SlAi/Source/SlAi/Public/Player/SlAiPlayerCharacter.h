@@ -64,6 +64,8 @@ public:
 
 	//是否锁住输入
 	bool IsInputLocaked;
+
+	bool IsAttack;
 private:
 	void MoveForward(float value);
 	void MoveRight(float value);

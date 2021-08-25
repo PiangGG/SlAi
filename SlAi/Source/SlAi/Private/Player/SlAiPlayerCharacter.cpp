@@ -98,6 +98,8 @@ ASlAiPlayerCharacter::ASlAiPlayerCharacter()
 	IsAllowSwitch=true;
 
 	IsInputLocaked=false;
+
+	IsAttack=false;
 }
 
 // Called when the game starts or when spawned
@@ -173,6 +175,8 @@ void ASlAiPlayerCharacter::ChangeHandObjectDetect(bool IsOpen)
 	//获取手上物品
 	ASlAiHandObject* HandObjectClass=Cast<ASlAiHandObject>(HandObject->GetChildActor());
 	if (HandObjectClass)HandObjectClass->ChangeOverlayDetect(IsOpen);
+
+	IsAttack = IsOpen;
 }
 
 void ASlAiPlayerCharacter::RenderHandObject(bool IsRender)

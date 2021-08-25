@@ -50,16 +50,16 @@ ASlAiEnemyCharacter::ASlAiEnemyCharacter()
 	HPBar->SetupAttachment(RootComponent);
 	HPBar->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, FName("HeadTop_EndSocket"));
 	//实例化敌人感知组件
-	 EnemySense = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("EnemySense"));
+	EnemySense = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("EnemySense"));
 
-	/*//加载死亡动画资源
+	//加载死亡动画资源
 	AnimDead_I = Cast<UAnimationAsset>(StaticLoadObject(UAnimationAsset::StaticClass(), NULL, *FString("AnimSequence'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/Enemy_Dead_I.Enemy_Dead_I'")));
 	AnimDead_II = Cast<UAnimationAsset>(StaticLoadObject(UAnimationAsset::StaticClass(), NULL, *FString("AnimSequence'/Game/Res/PolygonAdventure/Mannequin/Enemy/Animation/FightGroup/Enemy_Dead_II.Enemy_Dead_II'")));
 
 	//设置资源ID是3
 	ResourceIndex = 3;
 	//设置下一帧不销毁自己,得放在构造函数进行初始化,避免与GameMode的加载函数冲突
-	IsDestroyNextTick = false;*/
+	IsDestroyNextTick = false;
 }
 
 // Called when the game starts or when spawned
@@ -139,17 +139,7 @@ void ASlAiEnemyCharacter::OnSeePlayer(APawn* PlayerChar)
 void ASlAiEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	//插值更新朝向
-	if(NeedRoatate)
-	{
-		SetActorRotation(FMath::RInterpTo(GetActorRotation(),NextRotator,DeltaTime,10.0f));
-		//如果接近，不再旋转
-		if (FMath::Abs(GetActorRotation().Yaw-NextRotator.Yaw)<5)NeedRoatate=false;
-	}
 	
-	//如果准备销毁为true,进行销毁
-	if (IsDestroyNextTick) DestroyEvent();
 }
 
 // Called to bind functionality to input
@@ -198,14 +188,11 @@ float ASlAiEnemyCharacter::PlayAttackAction(EEnemyAttackType AttackType)
 	return SEAnim->PlayAttackAction(AttackType);
 }
 
-void ASlAiEnemyCharacter::UpdateRotatation(FRotator NewRotator)
-{
-	NextRotator = NewRotator;
-	NeedRoatate = true;
-}
-
 void ASlAiEnemyCharacter::AcceptDamage(int DamageVal)
 {
+	//如果开启了防御，直接返回
+	//
+	if(SEAnim&&SEAnim->IsDefence)return;
 	//进行血条更新
 	HP = FMath::Clamp<float>(HP - DamageVal, 0.f, 500.f);
 	HPBarWidget->ChangeHP(HP / 200.f);
@@ -262,6 +249,8 @@ void ASlAiEnemyCharacter::StartDefence()
 
 void ASlAiEnemyCharacter::StopDefence()
 {
+	//停止防御
+	if (SEAnim) SEAnim->IsDefence = false;
 }
 
 void ASlAiEnemyCharacter::DestroyEvent()
@@ -304,7 +293,7 @@ void ASlAiEnemyCharacter::LoadHP(float HPVal)
 {
 	HP = HPVal;
 	//修改血量显示
-	//HPBarWidget->ChangeHP(HP / 200.f);
+	HPBarWidget->ChangeHP(HP / 200.f);
 }
 
 float ASlAiEnemyCharacter::GetHP()

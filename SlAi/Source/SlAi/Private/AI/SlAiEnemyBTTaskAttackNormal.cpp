@@ -14,7 +14,6 @@ EBTNodeResult::Type USlAiEnemyBTTaskAttackNormal::ExecuteTask(UBehaviorTreeCompo
 	//播放普通攻击动画
 	float AttackDuration  = SECharactor->PlayAttackAction(EEnemyAttackType::EA_Normal);
 	//设置参数
-	OwnerComp.GetBlackboardComponent()->SetValueAsObject(PlayerPawn.SelectedKeyName,SEController->GetPlayerPawn());
 	OwnerComp.GetBlackboardComponent()->SetValueAsFloat(WaitTime.SelectedKeyName,AttackDuration);
 	return  EBTNodeResult::Succeeded;
 }

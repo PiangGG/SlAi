@@ -4,26 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "AI/SlAiEnemyBTTaskNodeBase.h"
-#include "SlAiEnemyBTTaskAttackSwitch.generated.h"
+#include "SlAiEnemyBTTaskNodeEscapeSwitch.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class SLAI_API USlAiEnemyBTTaskAttackSwitch : public USlAiEnemyBTTaskNodeBase
+class SLAI_API USlAiEnemyBTTaskNodeEscapeSwitch : public USlAiEnemyBTTaskNodeBase
 {
 	GENERATED_BODY()
-
 	//重写执行函数
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 protected:
-
-	UPROPERTY(EditAnywhere,Category="Blackborad")
-	struct FBlackboardKeySelector AttactType;
-
-	UPROPERTY(EditAnywhere,Category="Blackborad")
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
 	struct FBlackboardKeySelector EnemyState;
-
-	UPROPERTY(EditAnywhere,Category="Blackborad")
-	struct FBlackboardKeySelector PlayerPawn;
 };
