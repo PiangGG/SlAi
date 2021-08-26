@@ -4,6 +4,7 @@
 #include "EnemyTool/SlAiEnemyWeapon.h"
 
 #include "Components/BoxComponent.h"
+#include "Player/SlAiPlayerCharacter.h"
 
 ASlAiEnemyWeapon::ASlAiEnemyWeapon()
 {
@@ -16,4 +17,13 @@ ASlAiEnemyWeapon::ASlAiEnemyWeapon()
 
 	AffectCollision->SetRelativeLocation(FVector(0.0f,0.0f,158.0f));
 	AffectCollision->SetRelativeScale3D(FVector(1.125f,0.22f,1.0f));
+}
+
+void ASlAiEnemyWeapon::OnOverlayBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (Cast<ASlAiPlayerCharacter>(OtherActor))
+	{
+		Cast<ASlAiPlayerCharacter>(OtherActor)->AcceptDamage(20.0f);
+	}
 }

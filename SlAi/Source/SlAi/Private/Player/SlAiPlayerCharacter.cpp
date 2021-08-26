@@ -228,6 +228,11 @@ bool ASlAiPlayerCharacter::IsPlayerDead()
 	return  false;
 }
 
+void ASlAiPlayerCharacter::AcceptDamage(int Damage)
+{
+	if(SPController->SPState)SPController->SPState->AcceptDamage(Damage);
+}
+
 void ASlAiPlayerCharacter::MoveForward(float value)
 {
 	if (IsInputLocaked)return;

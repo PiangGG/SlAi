@@ -18,7 +18,7 @@ EBTNodeResult::Type USlAiEnemyBTTaskNodeDefence::ExecuteTask(UBehaviorTreeCompon
 	//添加事件委托
 	FTimerDelegate TimerDelegate = FTimerDelegate::CreateUObject(this, &USlAiEnemyBTTaskNodeDefence::OnAnimationTimerDone);
 	//注册到事件管理器，循环检测是否进入其他状态
-	SEController->GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 2.f, true);
+	SEController->GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 2.f, false);
 	return EBTNodeResult::Succeeded;
 }
 

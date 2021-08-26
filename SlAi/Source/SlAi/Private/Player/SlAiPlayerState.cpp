@@ -15,6 +15,8 @@ ASlAiPlayerState::ASlAiPlayerState()
 	CurrentShortcutInfoIndex = 0;
 	HP = 500.0f;
 	Hunger = 600.0f;
+
+	IsDead = false; 
 }
 
 void ASlAiPlayerState::Tick(float DeltaSeconds)
@@ -34,6 +36,11 @@ void ASlAiPlayerState::Tick(float DeltaSeconds)
 	Hunger = FMath::Clamp<float>(Hunger,0,600.0f);
 	//执行修改玩家状态UI的委托
 	UpdateStateWidget.ExecuteIfBound(HP/500.0f,Hunger/600.0f);
+
+	if (HP==0&&!IsDead)
+	{
+		IsDead = true;
+	}
 }
 
 void ASlAiPlayerState::RegisterShortcutContainer(TArray<TSharedPtr<ShortcutContainer>>* ContainerList,
@@ -142,6 +149,17 @@ void ASlAiPlayerState::ProomoteHunger()
 bool ASlAiPlayerState::IsPlayerDead()
 {
 	return HP<=0.0f;
+}
+
+void ASlAiPlayerState::AcceptDamage(int Damage)
+{
+	HP = FMath::Clamp<float>(HP-Damage,0.0f,500.0f);
+	UpdateStateWidget.ExecuteIfBound(HP/500.0f,Hunger/500.0F);
+	//如果血值等于0但是没死
+	if (HP==0&&!IsDead)
+	{
+		IsDead=true;
+	}
 }
 
 void ASlAiPlayerState::BeginPlay()

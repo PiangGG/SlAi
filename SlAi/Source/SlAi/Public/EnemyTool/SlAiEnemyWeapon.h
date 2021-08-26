@@ -16,4 +16,8 @@ class SLAI_API ASlAiEnemyWeapon : public ASlAiEnemyTool
 
 public:
 	ASlAiEnemyWeapon();
+
+protected:
+	//UFUNCTION()
+	virtual void OnOverlayBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
 };

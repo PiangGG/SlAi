@@ -45,6 +45,8 @@ public:
 	void EatUpEvent();
 	//获取是否已经死亡
 	bool IsPlayerDead();
+	//接受伤害
+	void AcceptDamage(int Damage);
 public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class USpringArmComponent* CameraBoom;

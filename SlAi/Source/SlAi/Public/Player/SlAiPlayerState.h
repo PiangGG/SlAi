@@ -43,6 +43,8 @@ public:
 	void ProomoteHunger();
 	//是否已经死亡
 	bool IsPlayerDead();
+	//接受伤害
+	void AcceptDamage(int Damage);
 	
 public:
 	//当被选中的快捷栏序号
@@ -73,4 +75,7 @@ private:
 	//血值|饥饿度
 	float HP;
 	float Hunger;
+
+	//是否死亡
+	bool IsDead;
 };
