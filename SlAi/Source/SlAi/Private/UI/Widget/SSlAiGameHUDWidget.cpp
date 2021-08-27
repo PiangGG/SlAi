@@ -5,6 +5,7 @@
 #include "SlateOptMacros.h"
 #include "Common/SlAiHelper.h"
 #include "UI/Widget/SSlAiChatRoomWidget.h"
+#include "UI/Widget/SSlAiMiniMapWidget.h"
 #include "UI/Widget/SSlAiPlayerStateWidget.h"
 #include "UI/Widget/SSlAiPointerWidget.h"
 #include "UI/Widget/SSlAIRayInfoWidget.h"
@@ -47,7 +48,12 @@ void SSlAiGameHUDWidget::Construct(const FArguments& InArgs)
             [
 				SAssignNew(PlayerStateWidget,SSlAiPlayerStateWidget)
             ]
-            
+            +SOverlay::Slot()//小地图
+            .HAlign(HAlign_Right)
+            .VAlign(VAlign_Top)
+            [
+				SAssignNew(MiniMapWidget,SSlAiMiniMapWidget)
+            ]
             //暗黑色遮罩，放在事件界面和游戏UI中间
             +SOverlay::Slot()
             .HAlign(HAlign_Fill)

@@ -11,6 +11,8 @@
  */
 //初始化背包管理类委托
 DECLARE_DELEGATE(FInitPackageManager)
+//注册MiniMap的贴图和材质
+DECLARE_DELEGATE_OneParam(FRegisterMiniMap,class UTextureRenderTarget2D*)
 UCLASS()
 class SLAI_API ASlAiGameMode : public AGameModeBase
 {
@@ -22,12 +24,17 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 	//组件赋值，给GameHUD调用,避免空引用引起崩溃
 	void InitGamePlayModule();
+
+	//初始化与更新小地图
+	void InitializeMiniMapCamera();
 public:
 	class ASlAiPlayerController* SPController;
 	class ASlAiPlayerCharacter* SPCharacter;
 	class ASlAiPlayerState* SPState;
 
 	FInitPackageManager InitPackageManager;
+
+	FRegisterMiniMap RegisterMiniMap;
 protected:
 	virtual void BeginPlay() override;
 
@@ -36,4 +43,9 @@ protected:
 private:
 	//是否已经初始化背包
 	bool IsInitPackage;
+
+	//是否已经生成小地图
+	bool IsCreateMiniMap;
+	//小地图渲染相机指针
+	class ASlAiSceneCapture2D* MiniMapCamera;
 };

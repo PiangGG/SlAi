@@ -4,6 +4,7 @@
 #include "GamePlay/SlAiGameMode.h"
 
 #include "Common/SlAiHelper.h"
+#include "Common/SlAiSceneCapture2D.h"
 #include "Data/SlAiDataHandle.h"
 #include "GamePlay/SlAiGameInstance.h"
 #include "Kismet/GameplayStatics.h"
@@ -24,11 +25,13 @@ ASlAiGameMode::ASlAiGameMode()
 	PlayerStateClass = ASlAiPlayerState::StaticClass();
 
 	IsInitPackage=false;
-	
+	IsCreateMiniMap =false;
 }
 
 void ASlAiGameMode::Tick(float DeltaSeconds)
 {
+	InitializeMiniMapCamera();
+	
 	//Super()
 	InitializePackage();
 }
@@ -41,6 +44,25 @@ void ASlAiGameMode::InitGamePlayModule()
 	if (SPController->PlayerState&&SPController)
 	{
 		SPState=Cast<ASlAiPlayerState>(SPController->PlayerState);
+	}
+}
+
+void ASlAiGameMode::InitializeMiniMapCamera()
+{
+	//如果摄像机还不存在并且世界已经存在
+	if (!IsCreateMiniMap&&GetWorld())
+	{
+		//生成小地图摄像机
+		MiniMapCamera = GetWorld()->SpawnActor<ASlAiSceneCapture2D>(ASlAiSceneCapture2D::StaticClass());
+
+		//运行委托给MiniMapWidget传递渲染的MiniMapTex
+		RegisterMiniMap.ExecuteIfBound(MiniMapCamera->GetMiniMapTex());
+		IsCreateMiniMap = true;
+	}
+
+	if (IsCreateMiniMap&&MiniMapCamera&&SPCharacter)
+	{
+		MiniMapCamera->UpdateTransform(SPCharacter->GetActorLocation(),SPCharacter->GetActorRotation());
 	}
 }
 
