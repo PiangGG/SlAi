@@ -57,12 +57,20 @@ void ASlAiGameMode::InitializeMiniMapCamera()
 
 		//运行委托给MiniMapWidget传递渲染的MiniMapTex
 		RegisterMiniMap.ExecuteIfBound(MiniMapCamera->GetMiniMapTex());
+		//绑定修改小地图视野委托
+		SPController->UpdateMiniMapWidth.BindUObject(MiniMapCamera,&ASlAiSceneCapture2D::UpdateMiniMapMiniWidth);
 		IsCreateMiniMap = true;
 	}
 
 	if (IsCreateMiniMap&&MiniMapCamera&&SPCharacter)
 	{
 		MiniMapCamera->UpdateTransform(SPCharacter->GetActorLocation(),SPCharacter->GetActorRotation());
+		TArray<FVector2D> EnemyPosList;
+		TArray<bool>EnemyLockList;
+		TArray<float>EnemyRotateList;
+
+		//每帧更新小地图的方向文字位置
+		UpdateMapData.ExecuteIfBound(SPCharacter->GetActorRotation(),MiniMapCamera->GetMapSize(),&EnemyPosList,&EnemyLockList,&EnemyRotateList);
 	}
 }
 

@@ -42,3 +42,14 @@ void ASlAiSceneCapture2D::UpdateTransform(FVector NormLocation, FRotator NormRot
 	//更新旋转为玩家的旋转
 	SetActorRotation(FRotator(-90.0f,NormRotator.Yaw,NormRotator.Roll));
 }
+
+void ASlAiSceneCapture2D::UpdateMiniMapMiniWidth(int Delta)
+{
+	const float	PreWidth = GetCaptureComponent2D()->OrthoWidth;
+	GetCaptureComponent2D()->OrthoWidth = FMath::Clamp<float>(PreWidth+Delta,2000.0f,4000.0f);
+}
+
+float ASlAiSceneCapture2D::GetMapSize()
+{
+	return GetCaptureComponent2D()->OrthoWidth;
+}

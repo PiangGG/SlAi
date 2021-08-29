@@ -52,7 +52,7 @@ void SSlAiMiniMapWidget::RegisterMiniMap(UTextureRenderTarget2D* MiniMapRender)
 
 	//创建MiniMap笔刷
 	MiniMapBrush = new FSlateBrush();
-	MiniMapBrush->ImageSize = FVector2D(300.0f,300.0f);
+	MiniMapBrush->ImageSize = FVector2D(280.0f,280.0f);
 	MiniMapBrush->DrawAs = ESlateBrushDrawType::Image;
 
 	//绑定材质资源文件
@@ -60,6 +60,83 @@ void SSlAiMiniMapWidget::RegisterMiniMap(UTextureRenderTarget2D* MiniMapRender)
 	//将笔刷作为MiniMapImage的笔刷
 	MiniMapImage->SetImage(MiniMapBrush);
 	
+}
+
+void SSlAiMiniMapWidget::UpdateMapData(const FRotator PlayerRotator, const float MiniMapSize,
+	const TArray<FVector2D>* EnemyPosLost, const TArray<bool>* EnemyLockList, const TArray<float>* EnemyRotateList)
+{
+	//获取Yaw，这个Yaw从180到-180，我们把他变成负的，然后通过加角度来计算
+	float YawDir = -PlayerRotator.Yaw;
+
+	//使用三角函数来计算
+	NorthLocation = FVector2D(FMath::Sin(FMath::DegreesToRadians(YawDir)),FMath::Cos(FMath::DegreesToRadians(YawDir)))*150.f+FVector2D(160.0F,160.0F);
+	EastLocation = FVector2D(FMath::Sin(FMath::DegreesToRadians(YawDir+90.0f)),FMath::Cos(FMath::DegreesToRadians(YawDir+90.0f)))*150.f+FVector2D(160.0F,160.0F);
+	SouthLocation = FVector2D(FMath::Sin(FMath::DegreesToRadians(YawDir+180.0f)),FMath::Cos(FMath::DegreesToRadians(YawDir+180.0f)))*150.f+FVector2D(160.0F,160.0F);
+	WestLocation = FVector2D(FMath::Sin(FMath::DegreesToRadians(YawDir+270.0f)),FMath::Cos(FMath::DegreesToRadians(YawDir+270.0f)))*150.f+FVector2D(160.0F,160.0F);
+	
+}
+int32 SSlAiMiniMapWidget::OnPaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
+	const FSlateRect& MyCullingRect, FSlateWindowElementList& OutDrawElements, int32 LayerId,
+	const FWidgetStyle& InWidgetStyle, bool bParentEnabled) const
+{
+	SCompoundWidget::OnPaint(Args, AllottedGeometry, MyCullingRect, OutDrawElements, LayerId, InWidgetStyle, bParentEnabled);
+
+	//渲染玩家图标
+	FSlateDrawElement::MakeBox
+	(
+		OutDrawElements,
+		LayerId+100,
+		AllottedGeometry.ToPaintGeometry(FVector2D(155.0F,155.5F),FVector2D(10.0F,10.0F)),
+		&GameStyle->PawnPointBrush,
+		ESlateDrawEffect::None,
+		FLinearColor(1.0f,1.0f,0.0f,1.0f)
+	);
+
+	//渲染东西南北
+	FSlateDrawElement::MakeText
+	(
+		OutDrawElements,
+		LayerId+10,
+		AllottedGeometry.ToPaintGeometry(NorthLocation-FVector2D(8.0f,8.0f),FVector2D(16.0F,16.0F)),
+		NSLOCTEXT("SlAiGame","N","N"),
+		GameStyle->Font_16,
+		ESlateDrawEffect::None,
+		FLinearColor(1.0f,1.0f,1.0f,1.0f)
+	);
+
+	FSlateDrawElement::MakeText
+	(
+		OutDrawElements,
+		LayerId+10,
+		AllottedGeometry.ToPaintGeometry(SouthLocation+FVector2D(8.0f,8.0f),FVector2D(16.0F,16.0F)),
+		NSLOCTEXT("SlAiGame","S","S"),
+		GameStyle->Font_16,
+		ESlateDrawEffect::None,
+		FLinearColor(1.0f,1.0f,1.0f,1.0f)
+	);
+
+	FSlateDrawElement::MakeText
+	(
+		OutDrawElements,
+		LayerId+10,
+		AllottedGeometry.ToPaintGeometry(EastLocation+FVector2D(8.0f,8.0f),FVector2D(16.0F,16.0F)),
+		NSLOCTEXT("SlAiGame","E","E"),
+		GameStyle->Font_16,
+		ESlateDrawEffect::None,
+		FLinearColor(1.0f,1.0f,1.0f,1.0f)
+	);
+
+	FSlateDrawElement::MakeText
+	(
+		OutDrawElements,
+		LayerId+10,
+		AllottedGeometry.ToPaintGeometry(WestLocation+FVector2D(8.0f,8.0f),FVector2D(16.0F,16.0F)),
+		NSLOCTEXT("SlAiGame","W","W"),
+		GameStyle->Font_16,
+		ESlateDrawEffect::None,
+		FLinearColor(1.0f,1.0f,1.0f,1.0f)
+	);
+	return LayerId;
 }
 
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

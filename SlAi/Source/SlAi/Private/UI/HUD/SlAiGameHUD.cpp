@@ -56,4 +56,7 @@ void ASlAiGameHUD::BeginPlay()
 
 	//绑定注册小地图委托
 	GM->RegisterMiniMap.BindRaw(GameHUDWidget->MiniMapWidget.Get(),&SSlAiMiniMapWidget::RegisterMiniMap);
+
+	//绑定更新小地图数据委托
+	GM->UpdateMapData.BindRaw(GameHUDWidget->MiniMapWidget.Get(),&SSlAiMiniMapWidget::UpdateMapData);
 }

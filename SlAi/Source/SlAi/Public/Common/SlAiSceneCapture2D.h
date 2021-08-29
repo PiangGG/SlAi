@@ -22,6 +22,12 @@ public:
 
 	//更新变换
 	void UpdateTransform(FVector NormLocation,FRotator NormRotator);
+
+	//更新视野范围
+	void UpdateMiniMapMiniWidth(int Delta);
+
+	//获取小地图的尺寸
+	float GetMapSize();
 private:
 	UTextureRenderTarget2D* MiniMapTex;	
 };

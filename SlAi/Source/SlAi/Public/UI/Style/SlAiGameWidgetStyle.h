@@ -66,6 +66,8 @@ public:
 	//小地图背景图片
 	UPROPERTY(EditAnywhere,Category=MiniMap)
 	FSlateBrush MiniMapBursh;
+	UPROPERTY(EditAnywhere,Category=MiniMap)
+	FSlateBrush PawnPointBrush;
 	
 	UPROPERTY(EditAnywhere,Category=PlayerState)
 	FSlateBrush PlayerStateBGBrush;

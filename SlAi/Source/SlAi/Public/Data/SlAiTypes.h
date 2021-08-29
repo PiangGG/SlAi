@@ -365,3 +365,14 @@ enum class EEnemyAttackType:uint8
 	EA_Dash		UMETA(DisplayName="Dash"),
 	EA_Pursuit	UMETA(DisplayName="Pursuit"),
 };
+
+//小地图缩放状态
+namespace EMiniMapSizeMode
+{
+	enum Type
+	{
+		None,
+		Add,
+		Reduce
+	};
+}

@@ -13,6 +13,8 @@
 DECLARE_DELEGATE(FInitPackageManager)
 //注册MiniMap的贴图和材质
 DECLARE_DELEGATE_OneParam(FRegisterMiniMap,class UTextureRenderTarget2D*)
+//注册更新MiniMap的数据
+DECLARE_DELEGATE_FiveParams(FUpdateMapData,const FRotator,const float,const TArray<FVector2D>*,const TArray<bool>*,const TArray<float>*)
 UCLASS()
 class SLAI_API ASlAiGameMode : public AGameModeBase
 {
@@ -35,6 +37,8 @@ public:
 	FInitPackageManager InitPackageManager;
 
 	FRegisterMiniMap RegisterMiniMap;
+
+	FUpdateMapData UpdateMapData;
 protected:
 	virtual void BeginPlay() override;
 
