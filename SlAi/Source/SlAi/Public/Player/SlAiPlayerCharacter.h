@@ -47,6 +47,9 @@ public:
 	bool IsPlayerDead();
 	//接受伤害
 	void AcceptDamage(int Damage);
+
+	//获取摄像机位置
+	FVector GetCameraPos();
 public:
 	UPROPERTY(VisibleDefaultsOnly,Category="SlAi")
 	class USpringArmComponent* CameraBoom;

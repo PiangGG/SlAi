@@ -70,6 +70,8 @@ struct ChatShowItem
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SSlAiChatShowWidget::Construct(const FArguments& InArgs)
 {
+	//获取GameStyle
+	GameStyle=&SlAiStyle::Get().GetWidgetStyle<FSlAiGameStyle>("BPSlAiGameStyle");
 	
 	ChildSlot
 	[
@@ -79,13 +81,13 @@ void SSlAiChatShowWidget::Construct(const FArguments& InArgs)
 		]
 	];
 	
-	//InitlizeItem();
+	InitlizeItem();
 }
 
 void SSlAiChatShowWidget::Tick(const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime)
 {
 	//临时序列
-	/*TArray<TSharedPtr<ChatShowItem>> TempList;
+	TArray<TSharedPtr<ChatShowItem>> TempList;
 	//循环遍历已经激活的信息
 	for (TArray<TSharedPtr<ChatShowItem>>::TIterator It(ActiveList); It; ++It)
 	{
@@ -102,12 +104,12 @@ void SSlAiChatShowWidget::Tick(const FGeometry& AllottedGeometry, const double I
 	for (int i = 0; i < TempList.Num(); ++i) {
 		ActiveList.Remove(TempList[i]);
 		UnActiveList.Push(TempList[i]);
-	}*/
+	}
 }
 
 void SSlAiChatShowWidget::AddMessage(FText NewName, FText NewContent)
 {
-	/*TSharedPtr<ChatShowItem> InsertItem;
+	TSharedPtr<ChatShowItem> InsertItem;
 	//如果未激活列表不为空
 	if (UnActiveList.Num() > 0) {
 		//从未激活列表中提取出一个信息
@@ -128,7 +130,7 @@ void SSlAiChatShowWidget::AddMessage(FText NewName, FText NewContent)
 			InsertItem->ActiveItem(NewName, NewContent)->AsShared()
 		];
 	//将信息插入激活序列
-	ActiveList.Push(InsertItem);*/
+	ActiveList.Push(InsertItem);
 }
 
 void SSlAiChatShowWidget::InitlizeItem()

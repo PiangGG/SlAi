@@ -76,6 +76,8 @@ public:
 	UPROPERTY(EditAnywhere,Category=PlayerState)
 	FSlateBrush PlayerHeadBGBrush;
 	UPROPERTY(EditAnywhere,Category=PlayerState)
+	FSlateBrush ChatRoomBGBrush;
+	UPROPERTY(EditAnywhere,Category=PlayerState)
 	FSlateBrush HPBrush;
 	UPROPERTY(EditAnywhere,Category=PlayerState)
 	FSlateBrush HungerBrush;

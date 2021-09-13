@@ -233,6 +233,16 @@ void ASlAiPlayerCharacter::AcceptDamage(int Damage)
 	if(SPController->SPState)SPController->SPState->AcceptDamage(Damage);
 }
 
+FVector ASlAiPlayerCharacter::GetCameraPos()
+{
+	switch (GameView)
+	{
+		case EGameViewMode::First:return  FirstCamera->K2_GetComponentLocation();
+		case EGameViewMode::Third:return ThirdCamera->K2_GetComponentLocation();
+	}
+	return ThirdCamera->K2_GetComponentLocation();
+}
+
 void ASlAiPlayerCharacter::MoveForward(float value)
 {
 	if (IsInputLocaked)return;

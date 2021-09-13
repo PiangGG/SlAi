@@ -8,6 +8,8 @@
 /**
  * 
  */
+
+DECLARE_DELEGATE_TwoParams(FPushMessage,FText,FText)
 class SLAI_API SSlAiChatRoomWidget : public SCompoundWidget
 {
 public:
@@ -17,4 +19,30 @@ public:
 
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
+
+	//提交事件
+	void SubmitEvent(const FText& SubmitText,ETextCommit::Type CommitType);
+
+	//按钮事件
+	FReply SendEvent();
+	//添加信息
+	void AddMessage(FText NewName,FText NewContent);
+
+	//滑动到最底下
+	void ScrollToEnd();
+public:
+	FPushMessage PushMessage;
+
+private:
+	//获取GameStyle
+	const struct FSlAiGameStyle* GameStyle;
+
+	//滚动框
+	TSharedPtr<class SScrollBox>ScrollBox;
+
+	//输入框
+	TSharedPtr<class SEditableTextBox> EditTextBox;
+
+	//保存数组
+	TArray<TSharedPtr<struct ChatMessItem>> MessageList;
 };

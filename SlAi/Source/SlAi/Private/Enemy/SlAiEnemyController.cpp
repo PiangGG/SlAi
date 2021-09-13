@@ -80,8 +80,7 @@ void ASlAiEnemyController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	//如果玩家指针和角色指针存在，一直修改角色朝向
-	//if (SECharacter&&SPCharacter)SECharacter-
-	//if (SECharacter&&SPCharacter) SECharacter->UpdateHPBarRotation(SPCharacter->GetCameraPos());
+	if (SECharacter&&SPCharacter) SECharacter->UpdateHPBarRotation(SPCharacter->GetCameraPos());
 	
 }
 
